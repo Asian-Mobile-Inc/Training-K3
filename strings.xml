@@ -1,6 +1,0 @@
-<resources>
-    // bottom-sheet-premium
-    <string name="tv_image_selection">Image Selection</string>
-    <string name="tv_all_image">All Image</string>
-    <string name="tv_import">IMPORT (%1$d)</string>
-</resources>
