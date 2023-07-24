@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ConstrainLayout"
+    >
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="Thông tin cá nhân"
+        android:textColor="@color/yelow"
+        android:textSize="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <LinearLayout
+        android:id="@+id/linear_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tv_label">
+
+        <TextView
+            android:id="@+id/tv_label_username"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Họ tên:"
+            android:textSize="18dp"
+            android:textColor="@color/grey" />
+
+        <EditText
+            android:id="@+id/edt_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="10"
+            android:minHeight="48dp"
+            android:hint="Tên phải >=3 ký tự"
+            android:textColorHint="@color/grey"
+            android:backgroundTint="@color/black"
+            android:paddingVertical="10dp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_cmnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_username"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_cmnd"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="CMND"
+            android:textSize="18dp"
+            android:textColor="@color/grey" />
+
+        <EditText
+            android:id="@+id/edt_cmnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:minHeight="48dp"
+            android:layout_weight="10"
+            android:backgroundTint="@color/black"
+            android:paddingVertical="10dp"
+            android:hint="Nhập đúng 9 chữ số"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_certificate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="Bằng cấp"
+        android:textColor="@color/yelow"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_cmnd"></TextView>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tv_certificate">
+
+        <RadioButton
+            android:id="@+id/radio_intermediate"
+            android:text="Trung cấp"
+            android:minHeight="48dp"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/dart_pink"
+            android:checked="true"
+            android:textColor="@color/black"
+            android:onClick="onRadioButtonClick"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/radio_college"
+            android:text="Cao đẳng"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/grey"
+            android:onClick="onRadioButtonClick"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/radio_university"
+            android:text="Đại học"
+            android:minHeight="48dp"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/grey"
+            android:textColor="@color/black"
+            android:onClick="onRadioButtonClick"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_interest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="Sở thích"
+        android:textColor="@color/yelow"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_group"></TextView>
+    <LinearLayout
+        android:id="@+id/linear_interest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_interest"
+        >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đọc báo"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            ></CheckBox>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đọc sách"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            ></CheckBox>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đọc coding"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            ></CheckBox>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_addInfor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="Thông tin bổ sung"
+        android:textColor="@color/yelow"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_interest"></TextView>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="Nhập thông tin bổ sung - có thể để trống"
+        android:textColorHint="@color/grey"
+        android:backgroundTint="@color/black"
+        android:inputType="textMultiLine|textImeMultiLine"
+        android:maxLines="5"
+        android:minLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_addInfor"></EditText>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/grey"
+        android:text="GỬI THÔNG TIN"
+        android:textColor="@color/black"
+        android:paddingVertical="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText"></Button>
+</androidx.constraintlayout.widget.ConstraintLayout>
