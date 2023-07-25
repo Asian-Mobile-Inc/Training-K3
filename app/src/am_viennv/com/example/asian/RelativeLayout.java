@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,7 +13,6 @@ public class RelativeLayout extends AppCompatActivity {
 
     private EditText edtEmail;
     private EditText edtPass;
-    private Button btnLogin;
 
     private static final String MESSAGE_WARMNING_EMAIL = "Email invalid ! Please enter correct email";
     @Override
@@ -24,22 +22,20 @@ public class RelativeLayout extends AppCompatActivity {
 
         edtEmail = findViewById(R.id.edt_email);
         edtPass = findViewById(R.id.edt_pass);
-        btnLogin = findViewById(R.id.btn_login);
+        Button btnLogin = findViewById(R.id.btn_login);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String messageValidatePass = validatePass(edtPass.getText().toString());
-                if(!validateEmail(edtEmail.getText().toString())){
-                    makeText(view.getContext(),MESSAGE_WARMNING_EMAIL);
-                }
-                else if(messageValidatePass!=null){
-                    makeText(view.getContext(),messageValidatePass);
-                }
-                else {
-                    makeText(view.getContext(),"Login Success !");
-                    switchActivities(MainActivity.class);
-                }
+        btnLogin.setOnClickListener(view -> {
+            String messageValidatePass = validatePass(edtPass.getText().toString());
+            if(!validateEmail(edtEmail.getText().toString())){
+                makeText(view.getContext(),MESSAGE_WARMNING_EMAIL);
+            }
+            else if(messageValidatePass!=null){
+                makeText(view.getContext(),messageValidatePass);
+            }
+            else {
+                makeText(view.getContext(),"Login Success !");
+                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+                startActivity(switchActivityIntent);
             }
         });
     }
@@ -48,17 +44,10 @@ public class RelativeLayout extends AppCompatActivity {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void switchActivities(Class tClass) {
-        Intent switchActivityIntent = new Intent(this, tClass);
-        startActivity(switchActivityIntent);
-    }
 
     private boolean validateEmail(String email){
         // Phần trước email có thể chứa chữ thường, hoa, chữ số hoặc 1 số kí tự đặt biệt + @gmail.com
-        if(email.matches("^[a-zA-Z0-9._%+-]+@gmail\\.com$")){
-            return true;
-        }
-        return false;
+        return email.matches("^[a-zA-Z0-9._%+-]+@gmail\\.com$");
     }
 
     private String validatePass(String pass){

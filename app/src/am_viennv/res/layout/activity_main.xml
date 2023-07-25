@@ -5,45 +5,43 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="20sp"
     tools:context="com.example.asian.MainActivity">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mobile UI Design Xml"
+        android:text="@string/title_home_layout"
         android:gravity="center"
         android:layout_marginBottom="50sp"
         android:textSize="30sp"
         android:textColor="@color/blue"
-        android:textStyle="bold"
-        ></TextView>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_relative_layout"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_width="320sp"
         android:background="@color/blue"
         android:textColor="@color/yelow"
         android:layout_marginBottom="10sp"
-        android:text="Relative Layout" />
+        android:text="@string/navi_btn_relative" />
 
     <Button
         android:id="@+id/btn_linear_layout"
-        android:layout_width="match_parent"
+        android:layout_width="320sp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:background="@color/blue"
         android:textColor="@color/yelow"
         android:layout_marginBottom="10sp"
-        android:text="Linear Layout" />
+        android:text="@string/navi_btn_linear" />
 
     <Button
         android:id="@+id/btn_constrain_layout"
-        android:layout_width="match_parent"
+        android:layout_width="320sp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:background="@color/blue"
         android:textColor="@color/yelow"
-        android:text="Constrain Layout" />
+        android:text="@string/navi_btn_constrain" />
 </LinearLayout>

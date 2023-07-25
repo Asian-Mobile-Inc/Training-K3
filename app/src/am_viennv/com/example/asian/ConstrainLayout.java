@@ -16,27 +16,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConstrainLayout extends AppCompatActivity {
-    private Button btnSend;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_constrain_layout);
-        btnSend = findViewById(R.id.btn_send);
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String userName = ((EditText)findViewById(R.id.edt_username)).getText().toString();
-                String cardInfo = ((EditText)findViewById(R.id.edt_card)).getText().toString();
-                String moreInfo = ((EditText)findViewById(R.id.edt_more_info)).getText().toString();
-                if(
-                validateInfo(view.getContext(),userName,"UserName")&&
-                validateInfo(view.getContext(),cardInfo,"CardInfo")&&
-                validateInfo(view.getContext(),moreInfo,"MoreInfo")
-                ){
-                    makeText(view.getContext(),"Login Success !");
-                        Intent switchActivityIntent = new Intent(view.getContext(), MainActivity.class);
-                        startActivity(switchActivityIntent);
-                }
+        Button btnSend = findViewById(R.id.btn_send);
+        btnSend.setOnClickListener(view -> {
+            String userName = ((EditText)findViewById(R.id.edt_username)).getText().toString();
+            String cardInfo = ((EditText)findViewById(R.id.edt_card)).getText().toString();
+            String moreInfo = ((EditText)findViewById(R.id.edt_more_info)).getText().toString();
+            if(
+            validateInfo(view.getContext(),userName,"UserName")&&
+            validateInfo(view.getContext(),cardInfo,"CardInfo")&&
+            validateInfo(view.getContext(),moreInfo,"MoreInfo")
+            ){
+                makeText(view.getContext(),"Login Success !");
+                    Intent switchActivityIntent = new Intent(view.getContext(), MainActivity.class);
+                    startActivity(switchActivityIntent);
             }
         });
 

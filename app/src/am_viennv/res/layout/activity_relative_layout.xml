@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="140sp"
         android:gravity="center"
-        android:text="FACEBOOK"
+        android:text="@string/title_relative_layout"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -36,14 +36,17 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@color/white"
-        android:hint="Email or Phone"
+        android:hint="@string/hint_email"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingHorizontal="5dp"
         android:paddingVertical="10dp"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textColorHint="@color/grey"></EditText>
+        android:textColorHint="@color/grey"
+        android:autofillHints=""
+        android:inputType="text"
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/edt_pass"
@@ -55,7 +58,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:background="@color/white"
-        android:hint="Password"
+        android:hint="@string/hint_password"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingHorizontal="5dp"
@@ -63,7 +66,7 @@
         android:singleLine="true"
         android:textColor="@color/black"
         android:inputType="textPassword"
-        android:textColorHint="@color/grey"></EditText>
+        android:textColorHint="@color/grey" />
 
     <Button
         android:id="@+id/btn_login"
@@ -73,13 +76,13 @@
         android:layout_marginTop="40sp"
         android:layout_marginLeft="20sp"
         android:layout_marginRight="20sp"
-        android:text="LOGIN"
+        android:text="@string/name_button_login"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
         android:paddingVertical="16sp"
-        android:backgroundTint="@color/teal_200"></Button>
+        android:backgroundTint="@color/teal_200" />
 
 
 </RelativeLayout>

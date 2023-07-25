@@ -2,8 +2,8 @@ package com.example.asian;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,10 +14,6 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
 
     private EditText edtNumber1;
     private EditText edtNumber2;
-    private Button btnPlus;
-    private Button btnSub;
-    private Button btnMul;
-    private Button btnDiv;
     private TextView tvResult;
 
     @Override
@@ -25,10 +21,10 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_linear_layout);
 
-        btnPlus = findViewById(R.id.btn_plus);
-        btnSub  = findViewById(R.id.btn_sub);
-        btnMul = findViewById(R.id.btn_mul);
-        btnDiv  = findViewById(R.id.btn_div);
+        Button btnPlus = findViewById(R.id.btn_plus);
+        Button btnSub  = findViewById(R.id.btn_sub);
+        Button btnMul = findViewById(R.id.btn_mul);
+        Button btnDiv  = findViewById(R.id.btn_div);
 
         edtNumber1 = findViewById(R.id.edt_num1);
         edtNumber2 = findViewById(R.id.edt_num2);
@@ -41,6 +37,7 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     @Override
     public void onClick(View view) {
         String strNumber1 = edtNumber1.getText().toString();
@@ -55,10 +52,6 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
             }
             number_1 = Float.parseFloat(strNumber1);
             number_2 = Float.parseFloat(strNumber2);
-            if(Float.parseFloat(strNumber2)==0){
-                Toast.makeText(view.getContext(), "Number can't divide 0", Toast.LENGTH_SHORT).show();
-                return;
-            }
             switch (view.getId()){
                 case R.id.btn_plus:
                 {
@@ -77,6 +70,10 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
                 }
                 case R.id.btn_div:
                 {
+                    if(Float.parseFloat(strNumber2)==0){
+                        Toast.makeText(view.getContext(), "Number can't divide 0", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
                     tvResult.setText(Float.toString(number_1/number_2));
                     break;
                 }
@@ -86,9 +83,6 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
     }
 
     private boolean validateNumber(String number_1){
-        if (number_1.matches(".*[a-zA-Z].*")) {
-            return false;
-        }
-        return true;
+        return number_1.matches(".*[0-9].*");
     }
 }
