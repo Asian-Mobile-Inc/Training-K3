@@ -9,8 +9,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context=".RelativeLayout"
-    >
+    tools:context=".RelativeLayout">
 
     <TextView
         android:id="@+id/tv_label"
@@ -20,14 +19,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="140sp"
         android:gravity="center"
-        android:text="FACEBOOK"
+        android:text="@string/title_relative_layout"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edt_email"
-        android:layout_width="match_parent"
+        android:layout_width="480sp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_label"
         android:layout_centerHorizontal="true"
@@ -35,50 +34,53 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@color/white"
-        android:hint="Email or Phone"
+        android:hint="@string/hint_email"
+        android:inputType="text"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingHorizontal="5dp"
         android:paddingVertical="10dp"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textColorHint="@color/grey"></EditText>
+        android:textColorHint="@color/grey"
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/edt_pass"
-        android:layout_width="match_parent"
+        android:layout_width="480sp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edt_email"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
+        android:autofillHints=""
         android:background="@color/white"
-        android:hint="Password"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingHorizontal="5dp"
         android:paddingVertical="10dp"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:inputType="textPassword"
-        android:textColorHint="@color/grey"></EditText>
+        android:textColorHint="@color/grey" />
 
     <Button
-        android:layout_width="match_parent"
+        android:id="@+id/btn_login"
+        android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edt_pass"
-        android:layout_marginTop="40sp"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"
-        android:text="LOGIN"
-        android:textStyle="bold"
-        android:textSize="18sp"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="40sp"
+        android:layout_marginRight="20sp"
+        android:backgroundTint="@color/blue"
         android:paddingVertical="16sp"
-        android:backgroundTint="@color/teal_200"></Button>
-
-
+        android:text="@string/name_button_login"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 </RelativeLayout>

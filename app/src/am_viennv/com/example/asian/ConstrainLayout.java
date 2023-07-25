@@ -17,28 +17,28 @@ public class ConstrainLayout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_constrain_layout);
     }
-    public void onRadioButtonClick(View view){
+
+    public void onRadioButtonClick(View view) {
         List<RadioButton> radioButtons = new ArrayList<>();
         radioButtons.add(findViewById(R.id.radio_intermediate));
         radioButtons.add(findViewById(R.id.radio_college));
         radioButtons.add(findViewById(R.id.radio_university));
 
-        for(RadioButton radioButton : radioButtons){
-            if(radioButton.isChecked()){
+        for (RadioButton radioButton : radioButtons) {
+            if (radioButton.isChecked()) {
                 ColorStateList colorStateList = new ColorStateList(
                         new int[][]{
                                 new int[]{android.R.attr.state_enabled} //enabled
                         },
-                        new int[] {getResources().getColor(R.color.dart_pink) }
+                        new int[]{getResources().getColor(R.color.dart_pink)}
                 );
                 radioButton.setButtonTintList(colorStateList);
-            }
-            else{
+            } else {
                 ColorStateList colorStateList = new ColorStateList(
                         new int[][]{
                                 new int[]{android.R.attr.state_enabled} //enabled
                         },
-                        new int[] {getResources().getColor(R.color.grey) }
+                        new int[]{getResources().getColor(R.color.grey)}
                 );
                 radioButton.setButtonTintList(colorStateList);
             }
