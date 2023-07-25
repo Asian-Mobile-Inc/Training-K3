@@ -235,6 +235,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/grey"
         android:text="@string/name_button_send"
+
         android:textColor="@color/white"
         android:paddingVertical="14dp"
         app:layout_constraintEnd_toEndOf="parent"
