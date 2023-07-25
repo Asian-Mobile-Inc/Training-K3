@@ -20,81 +20,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linear_username"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_label_username"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:minHeight="48sp"
+        android:text="@string/label_fullname"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label">
+        app:layout_constraintTop_toBottomOf="@+id/tv_label" />
 
-        <TextView
-            android:id="@+id/tv_label_username"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="48sp"
-            android:text="@string/label_fullname"
-            android:textColor="@color/grey"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/edt_username"
-            android:layout_width="300sp"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:autofillHints=""
-            android:backgroundTint="@color/black"
-            android:hint="@string/hint_fullname"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:paddingVertical="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/grey"
-            app:layout_constraintStart_toEndOf="@+id/tv_label_username"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linear_cmnd"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/edt_username"
+        android:layout_width="300sp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_weight="10"
+        android:autofillHints=""
+        android:backgroundTint="@color/black"
+        android:hint="@string/hint_fullname"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingVertical="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        app:layout_constraintStart_toEndOf="@+id/tv_label_username"
+        app:layout_constraintTop_toBottomOf="@+id/tv_label" />
+
+    <TextView
+        android:id="@+id/tv_cmnd"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="48sp"
+        android:text="@string/label_card"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_username">
+        app:layout_constraintTop_toBottomOf="@+id/edt_username" />
 
-        <TextView
-            android:id="@+id/tv_cmnd"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="48sp"
-            android:text="@string/label_card"
-            android:textColor="@color/grey"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/edt_card"
-            android:layout_width="300sp"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:autofillHints=""
-            android:backgroundTint="@color/black"
-            android:hint="@string/hint_card"
-            android:inputType="text"
-            android:minHeight="48sp"
-            android:paddingVertical="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/grey"
-            app:layout_constraintStart_toEndOf="@+id/tv_cmnd"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/edt_card"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:autofillHints=""
+        android:backgroundTint="@color/black"
+        android:hint="@string/hint_card"
+        android:inputType="text"
+        android:minHeight="48sp"
+        android:paddingVertical="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        app:layout_constraintStart_toEndOf="@+id/tv_cmnd"
+        app:layout_constraintTop_toBottomOf="@+id/edt_username" />
 
     <TextView
         android:id="@+id/tv_certificate"
@@ -107,7 +87,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_cmnd" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_card" />
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -160,47 +140,37 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_group" />
+        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linear_interest"
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:minHeight="48dp"
+        android:text="@string/interest_item1"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_interest">
+        app:layout_constraintTop_toBottomOf="@+id/tv_interest" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:text="@string/interest_item1"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="@string/interest_item2"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/tv_interest" />
 
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:text="@string/interest_item2"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/checkBox"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:text="@string/interest_item3"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/checkBox3"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="@string/interest_item3"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/checkBox3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_interest" />
 
     <TextView
         android:id="@+id/tv_moreInfor"
@@ -213,7 +183,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_interest" />
+        app:layout_constraintTop_toBottomOf="@id/checkBox2" />
 
     <EditText
         android:id="@+id/edt_more_info"
@@ -237,7 +207,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/grey"
         android:paddingVertical="14dp"
-
         android:text="@string/name_button_send"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
