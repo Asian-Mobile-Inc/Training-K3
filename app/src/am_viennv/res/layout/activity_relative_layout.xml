@@ -9,8 +9,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context=".RelativeLayout"
-    >
+    tools:context=".RelativeLayout">
 
     <TextView
         android:id="@+id/tv_label"
@@ -35,8 +34,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:autofillHints=""
         android:background="@color/white"
         android:hint="@string/hint_email"
+        android:inputType="text"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingHorizontal="5dp"
@@ -44,8 +45,6 @@
         android:singleLine="true"
         android:textColor="@color/black"
         android:textColorHint="@color/grey"
-        android:autofillHints=""
-        android:inputType="text"
         tools:ignore="TextFields" />
 
     <EditText
@@ -59,13 +58,13 @@
         android:layout_marginRight="20dp"
         android:background="@color/white"
         android:hint="@string/hint_password"
+        android:inputType="textPassword"
         android:maxLines="1"
         android:minHeight="48dp"
         android:paddingHorizontal="5dp"
         android:paddingVertical="10dp"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:inputType="textPassword"
         android:textColorHint="@color/grey" />
 
     <Button
@@ -73,16 +72,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edt_pass"
-        android:layout_marginTop="40sp"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"
-        android:text="@string/name_button_login"
-        android:textStyle="bold"
-        android:textSize="18sp"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="40sp"
+        android:layout_marginRight="20sp"
+        android:backgroundTint="@color/teal_200"
         android:paddingVertical="16sp"
-        android:backgroundTint="@color/teal_200" />
+        android:text="@string/name_button_login"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

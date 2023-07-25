@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ConstrainLayout"
-    >
+    tools:context=".ConstrainLayout">
 
     <TextView
         android:id="@+id/tv_label"
@@ -47,33 +46,34 @@
             android:layout_width="300sp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
+            android:autofillHints=""
             android:backgroundTint="@color/black"
             android:hint="@string/hint_fullname"
+            android:inputType="text"
             android:minHeight="48dp"
             android:paddingVertical="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/grey"
             app:layout_constraintStart_toEndOf="@+id/tv_label_username"
-            app:layout_constraintTop_toTopOf="parent"
-            android:autofillHints=""
-            android:inputType="text" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear_cmnd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_username"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@+id/linear_username">
 
         <TextView
             android:id="@+id/tv_cmnd"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:minHeight="48sp"
             android:text="@string/label_card"
-            android:gravity="center"
             android:textColor="@color/grey"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,16 +84,16 @@
             android:layout_width="300sp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
+            android:autofillHints=""
             android:backgroundTint="@color/black"
             android:hint="@string/hint_card"
+            android:inputType="text"
             android:minHeight="48sp"
             android:paddingVertical="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/grey"
             app:layout_constraintStart_toEndOf="@+id/tv_cmnd"
-            app:layout_constraintTop_toTopOf="parent"
-            android:autofillHints=""
-            android:inputType="text" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -113,38 +113,40 @@
         android:id="@+id/radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_certificate">
 
         <RadioButton
             android:id="@+id/radio_intermediate"
-            android:text="@string/txt_intermediate"
-            android:minHeight="48dp"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:buttonTint="@color/dart_pink"
             android:checked="true"
-            android:textColor="@color/black"
+            android:minHeight="48dp"
             android:onClick="onRadioButtonClick"
-            android:layout_height="wrap_content" />
+            android:text="@string/txt_intermediate"
+            android:textColor="@color/black" />
+
         <RadioButton
             android:id="@+id/radio_college"
-            android:text="@string/txt_college"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:buttonTint="@color/grey"
+            android:minHeight="48dp"
             android:onClick="onRadioButtonClick"
-            android:layout_height="wrap_content" />
+            android:text="@string/txt_college"
+            android:textColor="@color/black" />
+
         <RadioButton
             android:id="@+id/radio_university"
-            android:text="@string/txt_university"
-            android:minHeight="48dp"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:buttonTint="@color/grey"
-            android:textColor="@color/black"
+            android:minHeight="48dp"
             android:onClick="onRadioButtonClick"
-            android:layout_height="wrap_content" />
+            android:text="@string/txt_university"
+            android:textColor="@color/black" />
     </RadioGroup>
 
     <TextView
@@ -159,6 +161,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/radio_group" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear_interest"
         android:layout_width="match_parent"
@@ -166,8 +169,7 @@
         android:minHeight="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_interest"
-        >
+        app:layout_constraintTop_toBottomOf="@id/tv_interest">
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -217,27 +219,27 @@
         android:id="@+id/edt_more_info"
         android:layout_width="400sp"
         android:layout_height="150sp"
-        android:hint="@string/hint_more_info"
-        android:textColorHint="@color/grey"
+        android:autofillHints=""
         android:backgroundTint="@color/black"
+        android:hint="@string/hint_more_info"
         android:inputType="textMultiLine|textImeMultiLine"
         android:maxLines="5"
         android:minLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_moreInfor"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@id/tv_moreInfor" />
 
     <Button
         android:id="@+id/btn_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/grey"
-        android:text="@string/name_button_send"
-
-        android:textColor="@color/white"
         android:paddingVertical="14dp"
+
+        android:text="@string/name_button_send"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_more_info" />

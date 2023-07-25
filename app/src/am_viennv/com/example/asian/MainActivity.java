@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     @Override
@@ -26,25 +26,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        Intent switchActivityIntent=null;
+        Intent switchActivityIntent = null;
         switch (view.getId()) {
-            case R.id.btn_relative_layout:
-            {
+            case R.id.btn_relative_layout: {
                 switchActivityIntent = new Intent(this, RelativeLayout.class);
                 break;
             }
-            case R.id.btn_linear_layout:
-            {
+            case R.id.btn_linear_layout: {
                 switchActivityIntent = new Intent(this, LinearLayout.class);
                 break;
             }
-            case R.id.btn_constrain_layout:
-            {
+            case R.id.btn_constrain_layout: {
                 switchActivityIntent = new Intent(this, ConstrainLayout.class);
                 break;
             }
         }
-        if(switchActivityIntent!=null){
+        if (switchActivityIntent != null) {
             startActivity(switchActivityIntent);
         }
     }
