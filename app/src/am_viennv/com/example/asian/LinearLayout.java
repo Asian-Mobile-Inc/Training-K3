@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 public class LinearLayout extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText edtNumber_one;
-    private EditText edtNumber_two;
-    private TextView tvResult;
+    private EditText mNumberOneEditText;
+    private EditText mNumberTwoEditText;
+    private TextView mResultTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +26,10 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
         Button btnMul = findViewById(R.id.btn_mul);
         Button btnDiv = findViewById(R.id.btn_div);
 
-        edtNumber_one = findViewById(R.id.edt_num1);
-        edtNumber_two = findViewById(R.id.edt_num2);
+        mNumberOneEditText = findViewById(R.id.edt_num1);
+        mNumberTwoEditText = findViewById(R.id.edt_num2);
 
-        tvResult = findViewById(R.id.tv_result);
+        mResultTextView = findViewById(R.id.tv_result);
         btnPlus.setOnClickListener(this);
         btnSub.setOnClickListener(this);
         btnMul.setOnClickListener(this);
@@ -40,28 +40,28 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     @Override
     public void onClick(View view) {
-        String strNumber1 = edtNumber_one.getText().toString();
-        String strNumber2 = edtNumber_two.getText().toString();
-        float number_1;
-        float number_2;
+        String strNumber1 = mNumberOneEditText.getText().toString();
+        String strNumber2 = mNumberTwoEditText.getText().toString();
+        float num1;
+        float num2;
         if (!strNumber1.equals("") && !strNumber2.equals("")) {
             if (!validateNumber(strNumber1) || !validateNumber(strNumber2)) {
                 Toast.makeText(view.getContext(), "Please Enter Number", Toast.LENGTH_SHORT).show();
                 return;
             }
-            number_1 = Float.parseFloat(strNumber1);
-            number_2 = Float.parseFloat(strNumber2);
+            num1 = Float.parseFloat(strNumber1);
+            num2 = Float.parseFloat(strNumber2);
             switch (view.getId()) {
                 case R.id.btn_plus: {
-                    tvResult.setText(Float.toString(number_1 + number_2));
+                    mResultTextView.setText(Float.toString(num1 + num2));
                     break;
                 }
                 case R.id.btn_sub: {
-                    tvResult.setText(Float.toString(number_1 - number_2));
+                    mResultTextView.setText(Float.toString(num1 - num2));
                     break;
                 }
                 case R.id.btn_mul: {
-                    tvResult.setText(Float.toString(number_1 * number_2));
+                    mResultTextView.setText(Float.toString(num1 * num2));
                     break;
                 }
                 case R.id.btn_div: {
@@ -69,7 +69,7 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(view.getContext(), "Number can't divide 0", Toast.LENGTH_SHORT).show();
                         break;
                     }
-                    tvResult.setText(Float.toString(number_1 / number_2));
+                    mResultTextView.setText(Float.toString(num1 / num2));
                     break;
                 }
             }
