@@ -1,147 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textview_Thongtin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="#00776C"
+        android:text="Thông tin cá nhân"
+        android:gravity="center"
+        android:textColor="#FFEB3B"
+        android:textSize="20dp"
+        tools:ignore="MissingConstraints" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_Hoten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/textview_Thongtin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00776C"
-            android:text="Thông tin cá nhân"
-            android:gravity="center"
-            android:textColor="#FFEB3B"
-            android:textSize="20dp"
-            tools:ignore="MissingConstraints" />
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            tools:ignore="MissingConstraints">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Họ Tên:" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tên phải >= 3 ký tự"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            tools:ignore="MissingConstraints">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CMND:" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nhập đúng 9 chữ số"
-                android:inputType="number"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#0C85F1"
-            android:text="Bằng cấp"
-            android:gravity="center"
-            android:textColor="#FFEB3B"
-            android:textSize="17dp"
-            tools:ignore="MissingConstraints" />
-
-        <RadioGroup
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radio_Trungcap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Trung cấp" />
-
-            <RadioButton
-                android:id="@+id/radio_Caodang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cao đẳng" />
-
-            <RadioButton
-                android:id="@+id/radio_Daihoc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đại học" />
-        </RadioGroup>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#0C85F1"
-            android:text="Sở thích"
-            android:gravity="center"
-            android:textColor="#FFEB3B"
-            android:textSize="17dp"
-            tools:ignore="MissingConstraints" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints">
-
-            <CheckBox android:id="@+id/checkbox_Docbao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đọc báo" />
-
-            <CheckBox android:id="@+id/checkbox_Docsach"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đọc sách" />
-
-            <CheckBox android:id="@+id/checkbox_Doccoding"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đọc coding" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#0C85F1"
-            android:text="Thông tin bổ sung"
-            android:gravity="center"
-            android:textColor="#FFEB3B"
-            android:textSize="17dp"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Nhập thông tin bổ sung - có thể để trống" />
+            android:layout_height="match_parent"
+            android:hint="Họ tên:"/>
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_CMND"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/layout_Hoten"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="CMND:"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textview_Bangcap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1D8AEC"
+        android:text="Bằng cấp"
+        android:gravity="center"
+        android:textColor="#FFEB3B"
+        android:textSize="16dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/layout_CMND"/>
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/textview_Bangcap"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/radio_Trungcap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gửi thông tin"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+            android:text="Trung cấp" />
+
+        <RadioButton
+            android:id="@+id/radio_Caodang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cao đẳng" />
+
+        <RadioButton
+            android:id="@+id/radio_Daihoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đại học" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textview_Sothich"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1D8AEC"
+        android:text="Sở thích"
+        android:gravity="center"
+        android:textColor="#FFEB3B"
+        android:textSize="16dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/radiogroup"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_Sothich"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/textview_Sothich"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <CheckBox android:id="@+id/checkbox_Docbao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đọc báo" />
+
+        <CheckBox android:id="@+id/checkbox_Docsach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đọc sách"
+            app:layout_constraintLeft_toRightOf="@id/checkbox_Docbao"/>
+
+        <CheckBox android:id="@+id/checkbox_Doccoding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đọc coding"
+            app:layout_constraintLeft_toRightOf="@id/checkbox_Docsach"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textview_Nhapthongtin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập thông tin bổ sung - có thể để trống"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/layout_Sothich"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/editext_Nhapthongtin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textview_Nhapthongtin"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gửi thông tin"
+        app:layout_constraintTop_toBottomOf="@id/editext_Nhapthongtin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
