@@ -67,7 +67,7 @@
             android:textColor="@color/grey" />
 
         <EditText
-            android:id="@+id/edt_cmnd"
+            android:id="@+id/edt_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
@@ -187,7 +187,7 @@
         app:layout_constraintTop_toBottomOf="@id/linear_interest"></TextView>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edt_more_info"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:hint="Nhập thông tin bổ sung - có thể để trống"
@@ -202,6 +202,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_addInfor"></EditText>
 
     <Button
+        android:id="@+id/btn_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/grey"
@@ -210,5 +211,5 @@
         android:paddingVertical="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/edt_more_info"></Button>
 </androidx.constraintlayout.widget.ConstraintLayout>
