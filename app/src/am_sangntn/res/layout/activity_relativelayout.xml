@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:background="#2E3F91">
+
+
+        <TextView
+            android:id="@+id/textview"
+            android:text="FACEBOOK"
+            android:textColor="#FFFFFF"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_below="@id/textview"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:hint="Email or Phone"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:id="@+id/username"
+            android:background="#FFFFFF">
+        </com.google.android.material.textfield.TextInputEditText>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_below="@id/username"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:hint="Password"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:id="@+id/password"
+            android:background="#FFFFFF"
+            android:inputType="textPassword">
+        </com.google.android.material.textfield.TextInputEditText>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password"
+            android:layout_marginTop="20dp"
+            android:textColor="#FFFFFF"
+            android:background="#203F91"
+            android:text="LOGIN" />
+
+    </RelativeLayout>
