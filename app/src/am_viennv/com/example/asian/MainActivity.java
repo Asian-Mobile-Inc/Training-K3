@@ -4,60 +4,70 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, FragmentManager.OnBackStackChangedListener {
+    private int mCountSwitch;
+    private FragmentManager mFragmentManager;
 
-    private Button btnFragmentOne;
-    private Button btnFragmentTwo;
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
-    private int countSwitch =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mCountSwitch = 0;
 
-        btnFragmentOne = findViewById(R.id.btn_fragment_one);
-        btnFragmentTwo = findViewById(R.id.btn_fragment_two);
+        Button btnFragmentOne = findViewById(R.id.btn_fragment_one);
+        Button btnFragmentTwo = findViewById(R.id.btn_fragment_two);
 
-        fragmentManager = getSupportFragmentManager();
-        Log.d("0000000000 Start : ",Integer.toString(fragmentManager.getBackStackEntryCount()) + " "+ Integer.toString(countSwitch));
+        mFragmentManager = getSupportFragmentManager();
+
+        mFragmentManager.addOnBackStackChangedListener(this);
 
         btnFragmentOne.setOnClickListener(this);
         btnFragmentTwo.setOnClickListener(this);
     }
 
     @Override
+    public void onBackStackChanged() {
+        int backStackEntryCount = mFragmentManager.getBackStackEntryCount();
+        if (backStackEntryCount > 0) {
+            FragmentManager.BackStackEntry backEntry = mFragmentManager.getBackStackEntryAt(backStackEntryCount - 1);
+            String fragmentName = backEntry.getName();
+            setTitle(fragmentName);
+        }
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_fragment_one:
-            {
-                fragmentTransaction = fragmentManager.beginTransaction();
+            case R.id.btn_fragment_one: {
+                checkClearBackStack();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container_fragment, FragmentOne.newInstance("#338837"));
                 fragmentTransaction.addToBackStack("Fragment One");
-                countSwitch++;
+                fragmentTransaction.commit();
                 break;
             }
-            case R.id.btn_fragment_two:{
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.container_fragment, FragmentTwo.newInstance("#671063"));
+            case R.id.btn_fragment_two: {
+                checkClearBackStack();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_fragment, FragmentTwo.newInstance("#671063"));
                 fragmentTransaction.addToBackStack("Fragment Two");
-                countSwitch++;
+                fragmentTransaction.commit();
                 break;
             }
         }
-        if(countSwitch>2){
-            Log.d("0000000000 : ",Integer.toString(fragmentManager.getBackStackEntryCount()) + " "+ Integer.toString(countSwitch));
-            for(int i = 0; i < fragmentManager.getBackStackEntryCount(); ++i) {
-                fragmentManager.popBackStack();
-            }
-            countSwitch=0;
-            Log.d("0000000000 : ",Integer.toString(fragmentManager.getBackStackEntryCount()) + " "+ Integer.toString(countSwitch));
+    }
+
+    private void checkClearBackStack() {
+        mCountSwitch++;
+        if (mCountSwitch > 2) {
+            mFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            mCountSwitch = 0;
         }
-        fragmentTransaction.commit();
     }
 }
