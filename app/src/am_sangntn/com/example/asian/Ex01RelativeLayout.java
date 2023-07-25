@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,9 +15,8 @@ import java.util.regex.Pattern;
 public class Ex01RelativeLayout extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
-    private Button btnLogin;
 
-    public static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+    public static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–{}:;',?/*~$^+=<>]).{8,20}$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +25,9 @@ public class Ex01RelativeLayout extends AppCompatActivity {
 
         editTextEmail = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkValidation();
-            }
-        });
+        btnLogin.setOnClickListener(view -> checkValidation());
     }
 
     public void checkValidation() {
@@ -46,18 +39,12 @@ public class Ex01RelativeLayout extends AppCompatActivity {
         }
     }
 
-    boolean checkLength(EditText editText) {
-        CharSequence str = editText.getText().toString();
-        return (str.length()>=8);
-    }
-
     boolean checkEmail(EditText editText) {
         CharSequence email = editText.getText().toString();
         return  (email.length() > 8 && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
 
     boolean checkPassword(EditText editText) {
-        CharSequence password = editText.getText().toString();
         return (isValidPassword(editText.getText().toString()));
     }
 
