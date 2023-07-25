@@ -19,9 +19,9 @@
         android:textSize="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,23 +33,28 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="Họ tên:"
+            android:textColor="@color/grey"
             android:textSize="18dp"
-            android:textColor="@color/grey" />
+            android:minHeight="48sp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/edt_username"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_width="300sp"
             android:layout_weight="10"
-            android:minHeight="48dp"
-            android:hint="Tên phải >=3 ký tự"
-            android:textColorHint="@color/grey"
             android:backgroundTint="@color/black"
+            android:hint="Tên phải >=3 ký tự"
+            android:minHeight="48dp"
             android:paddingVertical="10dp"
-            android:textColor="@color/black" />
-    </LinearLayout>
-    <LinearLayout
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            app:layout_constraintStart_toEndOf="@+id/tv_label_username"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear_cmnd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,23 +67,28 @@
             android:id="@+id/tv_cmnd"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="CMND"
+            android:minHeight="48sp"
+            android:text="CMND:"
+            android:gravity="center"
+            android:textColor="@color/grey"
             android:textSize="18dp"
-            android:textColor="@color/grey" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/edt_card"
-            android:layout_width="wrap_content"
+            android:layout_width="300sp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:minHeight="48dp"
             android:layout_weight="10"
             android:backgroundTint="@color/black"
-            android:paddingVertical="10dp"
             android:hint="Nhập đúng 9 chữ số"
+            android:minHeight="48sp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/grey"
-            android:textColor="@color/black" />
-    </LinearLayout>
+            app:layout_constraintStart_toEndOf="@+id/tv_cmnd"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_certificate"
@@ -91,7 +101,7 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_cmnd"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/linear_cmnd" />
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -142,37 +152,48 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_group"></TextView>
-    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/radio_group" />
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear_interest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_interest"
         >
+
         <CheckBox
+            android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:text="Đọc báo"
-            android:minHeight="48dp"
             android:textColor="@color/black"
-            ></CheckBox>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <CheckBox
+            android:id="@+id/checkBox3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:text="Đọc sách"
-            android:minHeight="48dp"
             android:textColor="@color/black"
-            ></CheckBox>
+            app:layout_constraintStart_toEndOf="@+id/checkBox"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <CheckBox
+            android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Đọc coding"
             android:minHeight="48dp"
+            android:text="Đọc coding"
             android:textColor="@color/black"
-            ></CheckBox>
-    </LinearLayout>
+            app:layout_constraintStart_toEndOf="@+id/checkBox3"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/tv_addInfor"
         android:layout_width="match_parent"
@@ -184,7 +205,7 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_interest"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/linear_interest" />
 
     <EditText
         android:id="@+id/edt_more_info"
@@ -199,7 +220,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_addInfor"></EditText>
+        app:layout_constraintTop_toBottomOf="@id/tv_addInfor"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/btn_send"
@@ -211,5 +233,5 @@
         android:paddingVertical="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_more_info"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/edt_more_info" />
 </androidx.constraintlayout.widget.ConstraintLayout>
