@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 public class LinearLayout extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText edtNumber1;
-    private EditText edtNumber2;
+    private EditText edtNumber_one;
+    private EditText edtNumber_two;
     private TextView tvResult;
 
     @Override
@@ -26,8 +26,8 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
         Button btnMul = findViewById(R.id.btn_mul);
         Button btnDiv = findViewById(R.id.btn_div);
 
-        edtNumber1 = findViewById(R.id.edt_num1);
-        edtNumber2 = findViewById(R.id.edt_num2);
+        edtNumber_one = findViewById(R.id.edt_num1);
+        edtNumber_two = findViewById(R.id.edt_num2);
 
         tvResult = findViewById(R.id.tv_result);
         btnPlus.setOnClickListener(this);
@@ -40,8 +40,8 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     @Override
     public void onClick(View view) {
-        String strNumber1 = edtNumber1.getText().toString();
-        String strNumber2 = edtNumber2.getText().toString();
+        String strNumber1 = edtNumber_one.getText().toString();
+        String strNumber2 = edtNumber_two.getText().toString();
         float number_1;
         float number_2;
         if (!strNumber1.equals("") && !strNumber2.equals("")) {
@@ -77,7 +77,7 @@ public class LinearLayout extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(view.getContext(), "Please enter number !", Toast.LENGTH_SHORT).show();
     }
 
-    private boolean validateNumber(String number_1) {
-        return number_1.matches(".*[0-9].*");
+    private boolean validateNumber(String number) {
+        return number.matches(".*[0-9].*");
     }
 }

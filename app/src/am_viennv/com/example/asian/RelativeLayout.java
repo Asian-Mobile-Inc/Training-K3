@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class RelativeLayout extends AppCompatActivity {
 
-    private EditText edtEmail;
-    private EditText edtPass;
+    private EditText mEmailEditText;
+    private EditText mPasswordEditText;
 
     private static final String MESSAGE_WARMNING_EMAIL = "Email invalid ! Please enter correct email";
 
@@ -21,13 +21,13 @@ public class RelativeLayout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relative_layout);
 
-        edtEmail = findViewById(R.id.edt_email);
-        edtPass = findViewById(R.id.edt_pass);
+        mEmailEditText = findViewById(R.id.edt_email);
+        mPasswordEditText = findViewById(R.id.edt_pass);
         Button btnLogin = findViewById(R.id.btn_login);
 
         btnLogin.setOnClickListener(view -> {
-            String messageValidatePass = validatePass(edtPass.getText().toString());
-            if (!validateEmail(edtEmail.getText().toString())) {
+            String messageValidatePass = validatePass(mPasswordEditText.getText().toString());
+            if (!validateEmail(mEmailEditText.getText().toString())) {
                 makeText(view.getContext(), MESSAGE_WARMNING_EMAIL);
             } else if (messageValidatePass != null) {
                 makeText(view.getContext(), messageValidatePass);
