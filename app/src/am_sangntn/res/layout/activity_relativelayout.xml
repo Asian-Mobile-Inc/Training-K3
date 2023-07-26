@@ -1,57 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:gravity="center"
-        android:background="#2E3F91">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:background="#2E3F91"
+    android:gravity="center">
 
 
-        <TextView
-            android:id="@+id/textview"
-            android:text="@string/tv_facebook"
-            android:textColor="#FFFFFF"
-            android:layout_centerHorizontal="true"
-            android:textSize="20sp"
-            android:textAllCaps="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/tv_facebook"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextUsername"
-            android:layout_below="@id/textview"
-            android:layout_width="480dp"
-            android:layout_height="48sp"
-            android:hint="@string/hint_username"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:background="#FFFFFF"
-            android:layout_centerHorizontal="true">
-        </com.google.android.material.textfield.TextInputEditText>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edtUsername"
+        android:layout_width="480dp"
+        android:layout_height="48sp"
+        android:layout_below="@id/tvTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:hint="@string/hint_username"
+        android:textColor="@color/black"></com.google.android.material.textfield.TextInputEditText>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPassword"
-            android:layout_below="@id/editTextUsername"
-            android:layout_width="480dp"
-            android:layout_height="48sp"
-            android:hint="@string/hint_password"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:background="#FFFFFF"
-            android:inputType="textPassword"
-            android:layout_centerHorizontal="true">
-        </com.google.android.material.textfield.TextInputEditText>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edtPassword"
+        android:layout_width="480dp"
+        android:layout_height="48sp"
+        android:layout_below="@id/edtUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:textColor="@color/black"></com.google.android.material.textfield.TextInputEditText>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPassword"
+        android:layout_below="@id/edtPassword"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
         android:background="#203F91"
         android:text="@string/btn_login"
-        android:textColor="#FFFFFF"
-        android:layout_centerHorizontal="true"/>
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

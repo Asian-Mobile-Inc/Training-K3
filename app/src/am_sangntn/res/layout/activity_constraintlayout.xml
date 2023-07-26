@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textview_Thongtin"
+        android:id="@+id/tvInfor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00776C"
@@ -17,13 +17,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_Hoten"
+        android:id="@+id/clName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_Thongtin"
+        app:layout_constraintTop_toBottomOf="@id/tvInfor"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -35,23 +35,22 @@
             android:layout_width="300dp"
             android:layout_height="48dp"
             android:layout_marginStart="80dp"
+            android:autofillHints="name"
+            android:hint="@string/et_hint"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:autofillHints="name"
-            android:inputType="text"
-            android:hint="@string/et_hint"
-             />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_CMND"
+        android:id="@+id/clCMND"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_Hoten"
+        app:layout_constraintTop_toBottomOf="@id/clName"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -60,11 +59,11 @@
             android:hint="@string/tv_cmnd" />
 
         <EditText
-            android:id="@+id/editText02"
+            android:id="@+id/edtName"
             android:layout_width="300dp"
             android:layout_height="48dp"
-            android:autofillHints="no"
             android:layout_marginStart="80dp"
+            android:autofillHints="no"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +71,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textview_Bangcap"
+        android:id="@+id/tvBangCap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#07447C"
@@ -80,38 +79,38 @@
         android:text="@string/tv_bangcap"
         android:textColor="#FFEB3B"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/layout_CMND"
+        app:layout_constraintTop_toBottomOf="@id/clCMND"
         tools:ignore="MissingConstraints" />
 
     <RadioGroup
-        android:id="@+id/radiogroup"
+        android:id="@+id/rgBangCap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/textview_Bangcap"
+        app:layout_constraintTop_toBottomOf="@id/tvBangCap"
         tools:ignore="MissingConstraints">
 
         <RadioButton
-            android:id="@+id/radio_Trungcap"
+            android:id="@+id/rbTrungCap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_trungcap" />
 
         <RadioButton
-            android:id="@+id/radio_Caodang"
+            android:id="@+id/rbCaoDang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_caodang" />
 
         <RadioButton
-            android:id="@+id/radio_Daihoc"
+            android:id="@+id/rbDaiHoc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_daihoc" />
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textview_Sothich"
+        android:id="@+id/tvSothich"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#07447C"
@@ -119,63 +118,62 @@
         android:text="@string/tv_sothich"
         android:textColor="#FFEB3B"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/radiogroup"
+        app:layout_constraintTop_toBottomOf="@id/rgBangCap"
         tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_Sothich"
+        android:id="@+id/clSoThich"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_Sothich"
+        app:layout_constraintTop_toBottomOf="@id/tvSothich"
         tools:ignore="MissingConstraints">
 
         <CheckBox
-            android:id="@+id/checkbox_Docbao"
+            android:id="@+id/cbDocBao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_docbao" />
 
         <CheckBox
-            android:id="@+id/checkbox_Docsach"
+            android:id="@+id/cbDocSach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_docsach"
-            app:layout_constraintLeft_toRightOf="@id/checkbox_Docbao" />
+            app:layout_constraintLeft_toRightOf="@id/cbDocBao" />
 
         <CheckBox
             android:id="@+id/checkbox_Doccoding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_doccoding"
-            app:layout_constraintLeft_toRightOf="@id/checkbox_Docsach" />
+            app:layout_constraintLeft_toRightOf="@id/cbDocSach" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/textview_Nhapthongtin"
+        android:id="@+id/tvNhapThongTin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="@string/tv_nhapthongtin"
-        app:layout_constraintTop_toBottomOf="@id/layout_Sothich"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clSoThich" />
 
     <EditText
-        android:id="@+id/editext_Nhapthongtin"
+        android:id="@+id/edtNhapThongTin"
         android:layout_width="400dp"
         android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:hint="@string/et_hint"
         android:importantForAccessibility="no"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_Sothich" />
+        app:layout_constraintTop_toBottomOf="@+id/clSoThich" />
 
     <Button
         android:layout_width="wrap_content"
@@ -183,7 +181,7 @@
         android:text="@string/tv_guithongtin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editext_Nhapthongtin" />
+        app:layout_constraintTop_toBottomOf="@id/edtNhapThongTin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
