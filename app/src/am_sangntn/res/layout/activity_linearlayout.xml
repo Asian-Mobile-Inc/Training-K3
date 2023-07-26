@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,22 +14,22 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="15dp"
             android:id="@+id/textview01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
             android:text="Số hạng 1"
             android:textColor="@color/black"
-            android:layout_centerHorizontal="true"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/edittext01"
-            android:layout_below="@id/textview"
-            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/textview"
+            android:layout_marginTop="40dp"
             android:inputType="number" />
 
 
@@ -38,49 +37,49 @@
 
     <LinearLayout
         android:id="@+id/line2"
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="15dp"
             android:id="@+id/textview02"
-            android:text="Số hạng 2"
-            android:textColor="@color/black"
-            android:layout_centerHorizontal="true"
-            android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textview01" />
+            android:layout_below="@id/textview01"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
+            android:text="Số hạng 2"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/edittext02"
-            android:layout_below="@id/textview"
-            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/textview"
+            android:layout_marginTop="40dp"
             android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/line3"
-        android:layout_marginTop="120dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
         tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/btnPlus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="15dp"
-            android:textColor="@color/black"
             android:background="#D5D5D5"
-            android:text="+" />
+            android:text="+"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btnSub"
@@ -89,9 +88,9 @@
             android:layout_below="@id/password"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
-            android:textColor="@color/black"
             android:background="#D5D5D5"
-            android:text="-" />
+            android:text="-"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btnMul"
@@ -100,9 +99,9 @@
             android:layout_below="@id/password"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
-            android:textColor="@color/black"
             android:background="#D5D5D5"
-            android:text="*" />
+            android:text="*"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btnDiv"
@@ -110,22 +109,22 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/password"
             android:layout_marginTop="20dp"
-            android:textColor="@color/black"
             android:background="#D5D5D5"
-            android:text="/" />
+            android:text="/"
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/line4"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="200dp">
 
         <TextView
-            android:hint="Ket qua:"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Ket qua:" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
