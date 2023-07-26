@@ -10,9 +10,8 @@ import android.widget.TextView;
 
 public class Ex02LinearLayout extends AppCompatActivity {
 
-    private EditText editText01, editText02;
-    private TextView textViewOutput;
-
+    private EditText mEdtFirstNumber, mEdtSecondNumber;
+    private TextView mTvResult;
 
 
     @Override
@@ -22,13 +21,13 @@ public class Ex02LinearLayout extends AppCompatActivity {
 
         Button btnMul, btnDiv, btnPlus, btnSub;
 
-        editText01 = (EditText) findViewById(R.id.editText01);
-        editText02 = (EditText) findViewById(R.id.editText02);
+        mEdtFirstNumber = (EditText) findViewById(R.id.edtFirstNumber);
+        mEdtSecondNumber = (EditText) findViewById(R.id.edtSecondNumber);
         btnPlus = (Button) findViewById(R.id.btnPlus);
         btnSub = (Button) findViewById(R.id.btnSub);
         btnMul = (Button) findViewById(R.id.btnMul);
         btnDiv = (Button) findViewById(R.id.btnDiv);
-        textViewOutput = (TextView) findViewById(R.id.textViewOutput);
+        mTvResult = (TextView) findViewById(R.id.tvResult);
 
         btnPlus.setOnClickListener(view -> plus());
 
@@ -41,59 +40,59 @@ public class Ex02LinearLayout extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     public void plus() {
-        if (checkEmpty(editText01, editText02)) {
-            float number1 = Float.parseFloat(editText01.getText().toString());
-            float number2 = Float.parseFloat(editText02.getText().toString());
-            textViewOutput.setText(Float.toString(number1 + number2));
+        if (checkEmpty(mEdtFirstNumber, mEdtSecondNumber)) {
+            float firstNumber = Float.parseFloat(mEdtFirstNumber.getText().toString());
+            float SecondNumber = Float.parseFloat(mEdtSecondNumber.getText().toString());
+            mTvResult.setText(Float.toString(firstNumber + SecondNumber));
         }
     }
 
     @SuppressLint("SetTextI18n")
     public void sub() {
-        if (checkEmpty(editText01, editText02)) {
-            float number1 = Float.parseFloat(editText01.getText().toString());
-            float number2 = Float.parseFloat(editText02.getText().toString());
-            textViewOutput.setText(Float.toString(number1 - number2));
+        if (checkEmpty(mEdtFirstNumber, mEdtSecondNumber)) {
+            float firstNumber = Float.parseFloat(mEdtFirstNumber.getText().toString());
+            float SecondNumber = Float.parseFloat(mEdtSecondNumber.getText().toString());
+            mTvResult.setText(Float.toString(firstNumber - SecondNumber));
         }
     }
 
     @SuppressLint("SetTextI18n")
     public void mul() {
-        if (checkEmpty(editText01, editText02)) {
-            float number1 = Float.parseFloat(editText01.getText().toString());
-            float number2 = Float.parseFloat(editText02.getText().toString());
-            textViewOutput.setText(Float.toString(number1 * number2));
+        if (checkEmpty(mEdtFirstNumber, mEdtSecondNumber)) {
+            float firstNumber = Float.parseFloat(mEdtFirstNumber.getText().toString());
+            float SecondNumber = Float.parseFloat(mEdtSecondNumber.getText().toString());
+            mTvResult.setText(Float.toString(firstNumber * SecondNumber));
         }
     }
 
     @SuppressLint("SetTextI18n")
     public void div() {
-        if (checkEmpty(editText01, editText02)) {
-            if (!checkZero(editText02)) {
-                float number1 = Float.parseFloat(editText01.getText().toString());
-                float number2 = Float.parseFloat(editText02.getText().toString());
-                textViewOutput.setText(Float.toString(number1 / number2));
+        if (checkEmpty(mEdtFirstNumber, mEdtSecondNumber)) {
+            if (!checkZero(mEdtSecondNumber)) {
+                float firstNumber = Float.parseFloat(mEdtFirstNumber.getText().toString());
+                float SecondNumber = Float.parseFloat(mEdtSecondNumber.getText().toString());
+                mTvResult.setText(Float.toString(firstNumber / SecondNumber));
             } else {
-                editText02.setError("Number can't divide 0");
+                mEdtSecondNumber.setError("Number can't divide 0");
             }
         }
     }
 
-    boolean checkEmpty(EditText editText01, EditText editText02) {
+    boolean checkEmpty(EditText mEdtFirstNumber, EditText mEdtSecondNumber) {
         boolean check = true;
-        if (editText01.getText().toString().matches("")) {
-            editText01.setError("Input do not empty");
+        if (mEdtFirstNumber.getText().toString().matches("")) {
+            mEdtFirstNumber.setError("Input do not empty");
             check = false;
         }
-        if (editText02.getText().toString().matches("")) {
-            editText02.setError("Input do not empty");
+        if (mEdtSecondNumber.getText().toString().matches("")) {
+            mEdtSecondNumber.setError("Input do not empty");
             check = false;
         }
         return check;
     }
 
     boolean checkZero(EditText editText) {
-        return (Float.parseFloat(editText.getText().toString())==0);
+        return (Float.parseFloat(editText.getText().toString()) == 0);
     }
 
 }
