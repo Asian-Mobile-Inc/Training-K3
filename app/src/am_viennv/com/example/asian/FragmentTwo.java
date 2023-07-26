@@ -41,4 +41,5 @@ public class FragmentTwo extends Fragment {
         frameLayout.setBackgroundColor(Color.parseColor(mParam1));
         super.onViewCreated(view, savedInstanceState);
     }
+
 }

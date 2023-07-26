@@ -42,4 +42,5 @@ public class FragmentOne extends Fragment {
         frameLayout.setBackgroundColor(Color.parseColor(mParam1));
         super.onViewCreated(view, savedInstanceState);
     }
+
 }
