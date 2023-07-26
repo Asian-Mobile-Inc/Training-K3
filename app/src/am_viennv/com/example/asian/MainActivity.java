@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonRelative;
     private Button mButtonLinear;
     private Button mButtonConstraint;
+    private Intent mSwitchActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void listener() {
-        mButtonRelative.setOnClickListener(view -> new Intent(this, RelativeLayout.class));
-        mButtonLinear.setOnClickListener(view -> new Intent(this, LinearLayout.class));
-        mButtonConstraint.setOnClickListener(view -> new Intent(this, ConstrainLayout.class));
+        mButtonRelative.setOnClickListener(view -> {
+            mSwitchActivity = new Intent(this, RelativeLayout.class);
+            startActivity(mSwitchActivity);
+        });
+        mButtonLinear.setOnClickListener(view -> {
+            mSwitchActivity = new Intent(this, LinearLayout.class);
+            startActivity(mSwitchActivity);
+        });
+        mButtonConstraint.setOnClickListener(view -> {
+            mSwitchActivity = new Intent(this, ConstrainLayout.class);
+            startActivity(mSwitchActivity);
+        });
     }
 
 }
