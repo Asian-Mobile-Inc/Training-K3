@@ -1,130 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
+        android:orientation="horizontal">
 
         <TextView
+            android:layout_marginStart="15dp"
             android:id="@+id/textview01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="40dp"
-            android:text="Số hạng 1"
+            android:text="@string/tv_sohang1"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/edittext01"
-            android:layout_width="match_parent"
+            android:id="@+id/editText01"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textview"
-            android:layout_marginTop="40dp"
-            android:inputType="number" />
-
-
+            android:inputType="number"
+            android:hint="@string/et_hint"
+            android:autofillHints="no" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/line2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
-        tools:ignore="MissingConstraints">
+        android:layout_height="wrap_content">
 
         <TextView
+            android:layout_marginStart="15dp"
             android:id="@+id/textview02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textview01"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="40dp"
-            android:text="Số hạng 2"
+            android:text="@string/tv_sohang2"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/edittext02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textview"
-            android:layout_marginTop="40dp"
-            android:inputType="number" />
+            android:id="@+id/editText02"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:importantForAutofill="no" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/line3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
-        tools:ignore="MissingConstraints">
+        android:layout_height="wrap_content" >
 
         <Button
             android:id="@+id/btnPlus"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/black"
             android:background="#D5D5D5"
-            android:text="+"
-            android:textColor="@color/black" />
+            android:text="@string/btnPlus"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/btnSub"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/password"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/black"
             android:background="#D5D5D5"
-            android:text="-"
-            android:textColor="@color/black" />
+            android:text="@string/btn_sub"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/btnMul"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/password"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/black"
             android:background="#D5D5D5"
-            android:text="*"
-            android:textColor="@color/black" />
+            android:text="@string/btn_mul"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/btnDiv"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/password"
-            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
             android:background="#D5D5D5"
-            android:text="/"
-            android:textColor="@color/black" />
+            android:text="@string/btn_div"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/line4"
+        android:layout_marginStart="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="200dp">
+        android:layout_height="wrap_content">
 
         <TextView
+            android:hint="@string/tv_ketqua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textViewOutput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ket qua:" />
+           />
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
