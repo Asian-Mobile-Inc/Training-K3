@@ -14,10 +14,10 @@ public class LinearLayout extends AppCompatActivity {
     private EditText mNumberOneEditText;
     private EditText mNumberTwoEditText;
     private TextView mResultTextView;
-    private Button btnPlus;
-    private Button btnSub;
-    private Button btnMul;
-    private Button btnDiv;
+    private Button mButtonPlus;
+    private Button mButtonSub;
+    private Button mButtonMul;
+    private Button mButtonDiv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +30,10 @@ public class LinearLayout extends AppCompatActivity {
     private void initView() {
         mNumberOneEditText = findViewById(R.id.edt_num1);
         mNumberTwoEditText = findViewById(R.id.edt_num2);
-        btnPlus = findViewById(R.id.btn_plus);
-        btnSub = findViewById(R.id.btn_sub);
-        btnMul = findViewById(R.id.btn_mul);
-        btnDiv = findViewById(R.id.btn_div);
+        mButtonPlus = findViewById(R.id.btn_plus);
+        mButtonSub = findViewById(R.id.btn_sub);
+        mButtonMul = findViewById(R.id.btn_mul);
+        mButtonDiv = findViewById(R.id.btn_div);
         mResultTextView = findViewById(R.id.tv_result);
     }
 
@@ -50,10 +50,10 @@ public class LinearLayout extends AppCompatActivity {
             }
             num1 = Float.parseFloat(strNumber1);
             num2 = Float.parseFloat(strNumber2);
-            btnPlus.setOnClickListener(view -> mResultTextView.setText(Float.toString(num1 + num2)));
-            btnSub.setOnClickListener(view -> mResultTextView.setText(Float.toString(num1 - num2)));
-            btnMul.setOnClickListener(view -> mResultTextView.setText(Float.toString(num1 * num2)));
-            btnDiv.setOnClickListener(view -> {
+            mButtonPlus.setOnClickListener(view -> mResultTextView.setText(Float.toString(num1 + num2)));
+            mButtonSub.setOnClickListener(view -> mResultTextView.setText(Float.toString(num1 - num2)));
+            mButtonMul.setOnClickListener(view -> mResultTextView.setText(Float.toString(num1 * num2)));
+            mButtonDiv.setOnClickListener(view -> {
                 if (Float.parseFloat(strNumber2) == 0) {
                     Toast.makeText(view.getContext(), "Number can't divide 0", Toast.LENGTH_SHORT).show();
                     return;
