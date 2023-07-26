@@ -11,4 +11,5 @@ public class LinearLayout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_linear_layout);
     }
+
 }

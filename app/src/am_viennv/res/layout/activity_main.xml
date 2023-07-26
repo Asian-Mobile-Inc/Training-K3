@@ -44,4 +44,5 @@
         android:background="@color/blue"
         android:text="@string/navi_btn_constrain"
         android:textColor="@color/yelow" />
+
 </LinearLayout>
