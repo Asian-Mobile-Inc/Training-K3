@@ -1,1 +1,6 @@
-<resources></resources>
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="fragment_tab1">Tab 1</string>
+    <string name="fragment_tab2">Tab 2</string>
+    <string name="fragment_tab3">Tab 3</string>
+</resources>
