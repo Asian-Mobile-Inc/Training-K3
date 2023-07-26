@@ -25,4 +25,6 @@
     <string name="hint_password">Password</string>
     <string name="btn_login">LOGIN</string>
     <string name="hint_username">Email or Phone</string>
+    <string name="fm_one">Fragment One</string>
+    <string name="fm_two">Fragment Two</string>
 </resources>

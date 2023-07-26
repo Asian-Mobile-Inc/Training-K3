@@ -41,7 +41,7 @@ public class Ex01RelativeLayout extends AppCompatActivity {
 
     boolean checkEmail(EditText editText) {
         CharSequence email = editText.getText().toString();
-        return  (email.length() > 8 && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        return (email.length() > 8 && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
 
     boolean checkPassword(EditText editText) {
