@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ConstrainLayout">
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/tv_label"
@@ -104,7 +102,6 @@
             android:buttonTint="@color/dart_pink"
             android:checked="true"
             android:minHeight="48dp"
-            android:onClick="onRadioButtonClick"
             android:text="@string/txt_intermediate"
             android:textColor="@color/black" />
 
@@ -112,9 +109,8 @@
             android:id="@+id/radio_college"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/grey"
+            android:buttonTint="@color/dart_pink"
             android:minHeight="48dp"
-            android:onClick="onRadioButtonClick"
             android:text="@string/txt_college"
             android:textColor="@color/black" />
 
@@ -122,11 +118,11 @@
             android:id="@+id/radio_university"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/grey"
+            android:buttonTint="@color/dart_pink"
             android:minHeight="48dp"
-            android:onClick="onRadioButtonClick"
             android:text="@string/txt_university"
             android:textColor="@color/black" />
+
     </RadioGroup>
 
     <TextView
@@ -212,4 +208,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_more_info" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

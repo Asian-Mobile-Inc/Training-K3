@@ -11,21 +11,27 @@ import android.widget.Toast;
 
 public class RelativeLayout extends AppCompatActivity {
 
+    private Button mButtonLogin;
     private EditText mEmailEditText;
     private EditText mPasswordEditText;
-
     private static final String MESSAGE_WARMNING_EMAIL = "Email invalid ! Please enter correct email";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relative_layout);
+        initView();
+        handleClick();
+    }
 
+    private void initView() {
         mEmailEditText = findViewById(R.id.edt_email);
         mPasswordEditText = findViewById(R.id.edt_pass);
-        Button btnLogin = findViewById(R.id.btn_login);
+        mButtonLogin = findViewById(R.id.btn_login);
+    }
 
-        btnLogin.setOnClickListener(view -> {
+    private void handleClick() {
+        mButtonLogin.setOnClickListener(view -> {
             String messageValidatePass = validatePass(mPasswordEditText.getText().toString());
             if (!validateEmail(mEmailEditText.getText().toString())) {
                 makeText(view.getContext(), MESSAGE_WARMNING_EMAIL);
@@ -42,7 +48,6 @@ public class RelativeLayout extends AppCompatActivity {
     public static void makeText(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
-
 
     private boolean validateEmail(String email) {
         // Phần trước email có thể chứa chữ thường, hoa, chữ số hoặc 1 số kí tự đặt biệt + @gmail.com
@@ -62,4 +67,5 @@ public class RelativeLayout extends AppCompatActivity {
         }
         return null;
     }
+
 }

@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:context=".RelativeLayout">
+    android:background="@color/teal_700">
 
     <TextView
         android:id="@+id/tv_label"
@@ -26,7 +20,7 @@
 
     <EditText
         android:id="@+id/edt_email"
-        android:layout_width="match_parent"
+        android:layout_width="480sp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_label"
         android:layout_centerHorizontal="true"
@@ -49,13 +43,14 @@
 
     <EditText
         android:id="@+id/edt_pass"
-        android:layout_width="match_parent"
+        android:layout_width="480sp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edt_email"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
+        android:autofillHints=""
         android:background="@color/white"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
@@ -69,19 +64,18 @@
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="match_parent"
+        android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edt_pass"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20sp"
         android:layout_marginTop="40sp"
         android:layout_marginRight="20sp"
-        android:backgroundTint="@color/teal_200"
+        android:backgroundTint="@color/blue"
         android:paddingVertical="16sp"
         android:text="@string/name_button_login"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
-
 
 </RelativeLayout>

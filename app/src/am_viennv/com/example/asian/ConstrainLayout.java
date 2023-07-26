@@ -4,24 +4,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ConstrainLayout extends AppCompatActivity {
+
+    private Button mButtonSend;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_constrain_layout);
-        Button btnSend = findViewById(R.id.btn_send);
-        btnSend.setOnClickListener(view -> {
+        initView();
+        handleClick();
+    }
+
+    private void initView() {
+        mButtonSend = findViewById(R.id.btn_send);
+    }
+
+    private void handleClick() {
+        mButtonSend.setOnClickListener(view -> {
             String userName = ((EditText) findViewById(R.id.edt_username)).getText().toString();
             String cardInfo = ((EditText) findViewById(R.id.edt_card)).getText().toString();
             String moreInfo = ((EditText) findViewById(R.id.edt_more_info)).getText().toString();
@@ -35,7 +40,6 @@ public class ConstrainLayout extends AppCompatActivity {
                 startActivity(switchActivityIntent);
             }
         });
-
     }
 
     private boolean validateInfo(Context context, String text, String nameMessage) {
@@ -66,30 +70,4 @@ public class ConstrainLayout extends AppCompatActivity {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-    public void onRadioButtonClick(View view) {
-        List<RadioButton> radioButtons = new ArrayList<>();
-        radioButtons.add(findViewById(R.id.radio_intermediate));
-        radioButtons.add(findViewById(R.id.radio_college));
-        radioButtons.add(findViewById(R.id.radio_university));
-
-        for (RadioButton radioButton : radioButtons) {
-            if (radioButton.isChecked()) {
-                ColorStateList colorStateList = new ColorStateList(
-                        new int[][]{
-                                new int[]{android.R.attr.state_enabled} //enabled
-                        },
-                        new int[]{getResources().getColor(R.color.dart_pink)}
-                );
-                radioButton.setButtonTintList(colorStateList);
-            } else {
-                ColorStateList colorStateList = new ColorStateList(
-                        new int[][]{
-                                new int[]{android.R.attr.state_enabled} //enabled
-                        },
-                        new int[]{getResources().getColor(R.color.grey)}
-                );
-                radioButton.setButtonTintList(colorStateList);
-            }
-        }
-    }
 }
