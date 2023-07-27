@@ -1,1 +1,13 @@
-<resources></resources>
+<resources>
+
+    <string name="fbtn_des">Floating btn</string>
+    <string name="tablayout_des">TabLayout</string>
+    <string name="viewpager_des">ViewPager</string>
+    <string name="option_delete">Delete Item</string>
+    <string name="option_edit">Edit Item</string>
+    <string name="option_add">Add Item</string>
+    <string name="title_handle_data">Update Data</string>
+    <string name="hint_edt_new_text">Enter new text</string>
+    <string name="hint_edt_position">Enter position</string>
+
+</resources>
