@@ -1,5 +1,7 @@
 <resources>
 
+    <string name="app_name" translatable="false">ExVienNv</string>
+
     <string name="fbtn_des">Floating btn</string>
     <string name="tablayout_des">TabLayout</string>
     <string name="viewpager_des">ViewPager</string>
