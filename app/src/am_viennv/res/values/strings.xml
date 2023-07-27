@@ -1,5 +1,7 @@
 <resources>
 
+    <string name="app_name" translatable="false">ExVienNv</string>
+    
     <string name="name_fragment_one">Fragment One</string>
     <string name="name_fragment_two">Fragment Two</string>
 
