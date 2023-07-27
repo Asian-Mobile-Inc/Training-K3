@@ -37,9 +37,9 @@ public class Fragment1 extends Fragment {
         if (getArguments() != null) {
             colorText = getArguments().getString("color");
         }
-        TextView textView = view.findViewById(R.id.tv_fg_1);
+        TextView textView = view.findViewById(R.id.tvNameFragmentOne);
         textView.setText("Fragment One");
-        LinearLayout layout_fragment = view.findViewById(R.id.layout_fragment1);
+        LinearLayout layout_fragment = view.findViewById(R.id.llFragmentOne);
         layout_fragment.setBackgroundColor(Color.parseColor(colorText));
     }
 }

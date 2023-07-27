@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 public class Fragment2 extends Fragment {
 
-    private View view;
+    private View mView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,15 +25,15 @@ public class Fragment2 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment2, container, false);
+        mView = inflater.inflate(R.layout.fragment2, container, false);
         initUI();
-        return view;
+        return mView;
     }
 
     @SuppressLint("SetTextI18n")
     private void initUI() {
-        TextView textView = view.findViewById(R.id.tv_fg_2);
-        LinearLayout layout_fragment = view.findViewById(R.id.layout_fragment2);
+        TextView textView = mView.findViewById(R.id.tvNameFragmentTwo);
+        LinearLayout layout_fragment = mView.findViewById(R.id.llFragmentTwo);
         try {
             if (getArguments() != null) {
                 String colorText = getArguments().getString("color");

@@ -5,30 +5,30 @@
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/flContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add" />
+        app:layout_constraintTop_toBottomOf="@+id/btnFragmentOne" />
 
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btnFragmentOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fm_one"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btn_replace"
+        app:layout_constraintRight_toLeftOf="@id/btnFragmentTwo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_replace"
+        android:id="@+id/btnFragmentTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fm_two"
-        app:layout_constraintLeft_toRightOf="@id/btn_add"
+        app:layout_constraintLeft_toRightOf="@id/btnFragmentOne"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
