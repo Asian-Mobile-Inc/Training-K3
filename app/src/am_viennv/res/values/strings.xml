@@ -1,5 +1,7 @@
 <resources>
 
+    <string name="app_name" translatable="false">ExVienNv</string>
+
     <string name="title_personel_info">Thông tin cá nhân</string>
     <string name="title_certificate_info">Bằng cấp</string>
     <string name="title_interest">Sở thích</string>
