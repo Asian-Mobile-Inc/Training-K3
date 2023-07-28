@@ -5,14 +5,14 @@ public enum CaseAction {
     CASE_EDIT(1),
     CASE_DEL(2);
 
-    private final int value;
+    private final int mValue;
 
     CaseAction(int value) {
-        this.value = value;
+        this.mValue = value;
     }
 
     public int getValue() {
-        return value;
+        return mValue;
     }
 
 }
