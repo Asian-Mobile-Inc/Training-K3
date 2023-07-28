@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/homeFragment"
+            android:icon="@drawable/baseline_home_24"
+            android:title="@string/nav_home" />
+
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@drawable/baseline_home_repair_service_24"
+            android:title="@string/nav_settings" />
+
+    </group>
+
+    <item android:title="@string/title_communicate">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/sendFragment"
+                    android:icon="@drawable/baseline_share_24"
+                    android:title="@string/nav_send" />
+
+                <item
+                    android:id="@+id/shareFragment"
+                    android:icon="@drawable/baseline_send_24"
+                    android:title="@string/nav_share" />
+
+            </group>
+
+        </menu>
+
+    </item>
+
+</menu>
