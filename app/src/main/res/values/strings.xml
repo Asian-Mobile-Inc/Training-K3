@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Asian-Training</string>
+    <string name="btnAdd">+</string>
+    <string name="it_delete">Delete</string>
 </resources>

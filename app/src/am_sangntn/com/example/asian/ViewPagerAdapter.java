@@ -4,12 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
+    FragmentTabOne fragmentTabOne = new FragmentTabOne();
+    FragmentTabTwo fragmentTabTwo = new FragmentTabTwo();
+    FragmentTabThree fragmentTabThree = new FragmentTabThree();
 
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
@@ -19,14 +20,13 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
-                return new Fragment_Tab1();
             case 1:
-                return new Fragment_Tab2();
+                return fragmentTabTwo;
             case 2:
-                return new Fragment_Tab3();
+                return fragmentTabThree;
+            case 0:
             default:
-                return new Fragment_Tab1();
+                return fragmentTabOne;
         }
     }
 
