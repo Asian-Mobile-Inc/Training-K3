@@ -22,11 +22,11 @@ public class FragmentTabOne extends Fragment {
     static RecyclerView rcvContainer;
 
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
 
         View view = inflater.inflate(R.layout.fragment_tab, container, false);
@@ -45,15 +45,15 @@ public class FragmentTabOne extends Fragment {
         Button btnAdd;
         btnAdd = view.findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(view1 -> {
-                listItemObject = updateListItems("Item " + (listItemObject.size() + 1));
-                itemAdapter.notifyDataSetChanged();
+            listItemObject = updateListItems("Item " + (listItemObject.size() + 1));
+            itemAdapter.notifyDataSetChanged();
         });
         return view;
     }
 
     private static List<ItemObject> getListItems() {
         List<ItemObject> list = new ArrayList<>();
-        for (int i = 0; i <= ALPHABET.length()-1; i++) {
+        for (int i = 0; i <= ALPHABET.length() - 1; i++) {
             list.add(new ItemObject("Item 1" + ALPHABET.charAt(i)));
         }
 

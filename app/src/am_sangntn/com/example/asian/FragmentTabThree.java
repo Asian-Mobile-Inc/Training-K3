@@ -24,6 +24,7 @@ public class FragmentTabThree extends Fragment {
 
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,8 +48,7 @@ public class FragmentTabThree extends Fragment {
         btnAdd.setOnClickListener(view1 -> {
             try {
                 listItemObject = updateListItems("Item " + (listItemObject.size() + 1));
-                itemAdapter.setData(listItemObject);
-                rcvContainer.setAdapter(itemAdapter);
+                itemAdapter.notifyDataSetChanged();
             } catch (Exception e) {
                 btnAdd.setError(e.toString());
             }

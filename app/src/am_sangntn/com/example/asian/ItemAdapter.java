@@ -35,7 +35,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         if (itemObject == null) {
             return;
         }
-        holder.tvName.setText(itemObject.getName());
+        holder.mTvName.setText(itemObject.getName());
 
     }
 
@@ -49,18 +49,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
 
-        private final TextView tvName;
+        private final TextView mTvName;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvName = itemView.findViewById(R.id.tvName);
-            tvName.setOnCreateContextMenuListener(this);
+            mTvName = itemView.findViewById(R.id.tvName);
+            mTvName.setOnCreateContextMenuListener(this);
         }
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            contextMenu.add(this.getAdapterPosition(),121,0,"Delete Item");
+            contextMenu.add(this.getAdapterPosition(), 121, 0, "Delete Item");
         }
     }
 }

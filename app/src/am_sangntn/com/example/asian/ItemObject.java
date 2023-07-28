@@ -1,17 +1,17 @@
 package com.example.asian;
 
 public class ItemObject {
-    private String Name;
+    private String mName;
 
     public ItemObject(String name) {
-        Name = name;
+        mName = name;
     }
 
     public String getName() {
-        return Name;
+        return mName;
     }
 
     public void setName(String name) {
-        Name = name;
+        mName = name;
     }
 }
