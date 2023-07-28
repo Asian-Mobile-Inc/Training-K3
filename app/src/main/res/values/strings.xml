@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Asian-Training</string>
+    <string name="tv_email">admin@javahelps.com</string>
+    <string name="tv_title_rav">Java Helps</string>
 </resources>

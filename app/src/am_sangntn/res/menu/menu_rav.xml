@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/item_navHome"
+            android:icon="@drawable/ic_home"
+            android:title="@string/nav_home" />
+
+        <item
+            android:id="@+id/item_navSettings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/nav_settings" />
+
+
+    </group>
+
+    <item android:title="@string/nav_communicate">
+        <menu>
+
+            <item
+                android:id="@+id/item_navShare"
+                android:icon="@drawable/ic_share"
+                android:title="@string/nav_share" />
+
+            <item
+                android:id="@+id/item_navSend"
+                android:icon="@drawable/ic_send"
+                android:title="@string/nav_send" />
+
+        </menu>
+    </item>
+</menu>
