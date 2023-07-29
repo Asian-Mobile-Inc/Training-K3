@@ -67,14 +67,14 @@ public class ForegroundService extends Service {
 
     private void registerNetworkChangeReceiver() {
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeReceiver, filter);
+        registerReceiver(mNetworkChangeReceiver, filter);
     }
 
     private void unregisterNetworkChangeReceiver() {
-        unregisterReceiver(networkChangeReceiver);
+        unregisterReceiver(mNetworkChangeReceiver);
     }
 
-    private final BroadcastReceiver networkChangeReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mNetworkChangeReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())) {
