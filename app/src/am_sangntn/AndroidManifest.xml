@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <service
+            android:name=".GPSService"
+            android:enabled="true"
+            android:exported="false" />
+
         <activity
             android:name=".RequestLocation"
             android:exported="true">
@@ -21,5 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainServiceHandleGPS"
+            android:exported="true"/>
     </application>
 </manifest>
