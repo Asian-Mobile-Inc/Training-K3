@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tbl_info_user"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_user_id"
+            android:layout_width="130sp"
+            android:layout_column="1"
+            android:background="@drawable/cell_shape"
+            android:gravity="center"
+            android:minHeight="36sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="130sp"
+            android:layout_column="1"
+            android:background="@drawable/cell_shape"
+            android:gravity="center"
+            android:minHeight="36sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_user_age"
+            android:layout_width="130sp"
+            android:layout_column="1"
+            android:background="@drawable/cell_shape"
+            android:gravity="center"
+            android:minHeight="36sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:background="@color/colorLightGrey"
+        android:minHeight="48sp"
+        android:text="@string/name_btn_delete_one"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</TableLayout>
