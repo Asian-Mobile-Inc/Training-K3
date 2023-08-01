@@ -12,28 +12,28 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table UsersInfo(idUser INTEGER PRIMARY KEY,name TEXT, age TEXT)");
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create Table UsersInfo(idUser INTEGER PRIMARY KEY,name TEXT, age TEXT)");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase DB, int i, int ii) {
-        DB.execSQL("drop Table if exists UsersInfo");
+    public void onUpgrade(SQLiteDatabase db, int i, int ii) {
+        db.execSQL("drop Table if exists UsersInfo");
     }
 
     public Boolean insertUserData(Integer idUser, String name, Integer age) {
-        SQLiteDatabase DB = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("idUser", idUser);
         contentValues.put("name", name);
         contentValues.put("age", age);
-        long result = DB.insert("UsersInfo", null, contentValues);
+        long result = db.insert("UsersInfo", null, contentValues);
         return result != -1;
     }
 
     public Cursor getAllData() {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        return DB.rawQuery("Select * from UsersInfo", null);
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery("Select * from UsersInfo", null);
     }
 
     public int deleteAll() {
