@@ -1,5 +1,6 @@
 package com.example.asian;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -16,11 +17,12 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+public class MainThread extends AppCompatActivity {
 
     private ImageView mImageView;
 
-    private Handler handler = new Handler() {
+    @SuppressLint("HandlerLeak")
+    private final Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             String message = (String) msg.obj;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_thread);
 
         Button btnDownload = findViewById(R.id.btnDownload);
         EditText edtURL = findViewById(R.id.edtURL);
