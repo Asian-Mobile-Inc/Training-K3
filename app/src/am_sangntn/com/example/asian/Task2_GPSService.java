@@ -12,7 +12,7 @@ import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
-public class GPSService extends Service {
+public class Task2_GPSService extends Service {
 
     private static final String TAG = "GPSService";
     private LocationManager locationManager;
@@ -40,10 +40,8 @@ public class GPSService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                    1000, 0, locationListener);
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListener);
         } else {
             Log.d(TAG, "Quyền truy cập GPS bị từ chối.");
         }

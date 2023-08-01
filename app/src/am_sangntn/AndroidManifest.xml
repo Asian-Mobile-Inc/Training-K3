@@ -14,20 +14,33 @@
         android:theme="@style/AppTheme">
 
         <service
-            android:name=".GPSService"
+            android:name=".Task2_GPSService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service
+            android:name=".NetworkService"
             android:enabled="true"
             android:exported="false" />
 
         <activity
-            android:name=".RequestLocation"
+            android:name=".Task1_RequestLocation"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".MainServiceHandleGPS"
+            android:name=".Task2_MainServiceHandleGPS"
+            android:exported="true"/>
+        <activity
+            android:name=".LocationReceiver"
+            android:exported="true"/>
+
+        <activity
+            android:name=".MainActivity"
             android:exported="true"/>
     </application>
 </manifest>
