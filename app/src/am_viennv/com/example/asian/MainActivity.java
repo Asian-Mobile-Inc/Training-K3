@@ -17,10 +17,11 @@ import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private int caseDownload;
+    private int mCaseDownload;
     private Button mButtonThread;
     private Button mButtonAsysn;
     private ImageView mImageView;
+    private ProgressBar mProgressBar;
 
 
     @Override
@@ -36,19 +37,17 @@ public class MainActivity extends AppCompatActivity {
         mButtonThread = findViewById(R.id.btn_thread);
         mButtonAsysn = findViewById(R.id.btn_asysn);
         mImageView = findViewById(R.id.iv_image);
-        progressBar = findViewById(R.id.progressBar);
+        mProgressBar = findViewById(R.id.progressBar);
     }
-
-    private ProgressBar progressBar;
 
     private void handleClick() {
         mButtonThread.setOnClickListener(view -> {
-            caseDownload = 0;
+            mCaseDownload = 0;
             startDownloadFile();
         });
 
         mButtonAsysn.setOnClickListener(view -> {
-            caseDownload = 1;
+            mCaseDownload = 1;
             startDownloadFile();
         });
     }
@@ -77,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
         }
         String mCurrentTimeAsStr = new SimpleDateFormat("HHmmss", Locale.getDefault()).format(new Date());
         String mPathFileSave = mCurrentTimeAsStr + "image_download.jpg";
-        String URL_IMAGE = "https://haycafe.vn/wp-content/uploads/2022/01/hinh-anh-galaxy-vu-tru-dep.jpg";
-        if (caseDownload == 0) {
-            DownloadByThread downloadThread = new DownloadByThread(this, URL_IMAGE, mPathFileSave, mImageView);
+        String urlImage = "https://haycafe.vn/wp-content/uploads/2022/01/hinh-anh-galaxy-vu-tru-dep.jpg";
+        if (mCaseDownload == 0) {
+            DownloadByThread downloadThread = new DownloadByThread(this, urlImage, mPathFileSave, mImageView);
             downloadThread.start();
         } else {
-            DownloadImageAsyncTask downloadTask = new DownloadImageAsyncTask(this, progressBar, mImageView, mPathFileSave);
-            downloadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, URL_IMAGE);
+            DownloadImageAsyncTask downloadTask = new DownloadImageAsyncTask(this, mProgressBar, mImageView, mPathFileSave);
+            downloadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, urlImage);
         }
     }
 
