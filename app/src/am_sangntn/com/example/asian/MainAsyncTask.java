@@ -30,7 +30,7 @@ public class MainAsyncTask extends AppCompatActivity {
     private long mStartTime;
 
     @SuppressLint("HandlerLeak")
-    private final Handler handler = new Handler() {
+    private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             String message = (String) msg.obj;
@@ -54,8 +54,12 @@ public class MainAsyncTask extends AppCompatActivity {
 
         btnDownload.setOnClickListener(view -> {
             String imageUrl = edtURL.getText().toString();
-            mStartTime = SystemClock.elapsedRealtime();
-            new DownloadImageTask().execute(imageUrl);
+            if (isImageURL(imageUrl)) {
+                mStartTime = SystemClock.elapsedRealtime();
+                new DownloadImageTask().execute(imageUrl);
+            } else {
+                showToast("Failed to download image");
+            }
         });
 
     }
@@ -70,8 +74,8 @@ public class MainAsyncTask extends AppCompatActivity {
                 URL url = new URL(imageUrl);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-                Message message = handler.obtainMessage(1, "Started to download image");
-                handler.sendMessage(message);
+                Message message = mHandler.obtainMessage(1, "Started to download image");
+                mHandler.sendMessage(message);
 
                 InputStream inputStream = connection.getInputStream();
                 int fileLength = connection.getContentLength();
@@ -94,8 +98,8 @@ public class MainAsyncTask extends AppCompatActivity {
 
                 return bitmap;
             } catch (Exception e) {
-                Message message = handler.obtainMessage(1, "Failed to download image");
-                handler.sendMessage(message);
+                Message message = mHandler.obtainMessage(1, "Failed to download image");
+                mHandler.sendMessage(message);
                 return null;
             }
         }
@@ -111,8 +115,8 @@ public class MainAsyncTask extends AppCompatActivity {
                     int speed = (int) (result.getByteCount() / (elapsedTime / 1000.0f));
                     mTvSpeed.setText("Tốc độ tải xuống: " + speed / (1024 * 1024.0 / 2) + " mb/s");
                     mProgressBarSpeed.setProgress(100);
-                    Message message = handler.obtainMessage(1, "Finished to download image");
-                    handler.sendMessage(message);
+                    Message message = mHandler.obtainMessage(1, "Finished to download image");
+                    mHandler.sendMessage(message);
 
                 }
             } catch (Exception e) {
@@ -131,5 +135,17 @@ public class MainAsyncTask extends AppCompatActivity {
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public static boolean isImageURL(String urlString) {
+        try {
+            String fileExtension = urlString.substring(urlString.lastIndexOf('.') + 1);
+            return fileExtension.equalsIgnoreCase("jpg") || fileExtension.equalsIgnoreCase("jpeg")
+                    || fileExtension.equalsIgnoreCase("png") || fileExtension.equalsIgnoreCase("gif")
+                    || fileExtension.equalsIgnoreCase("bmp");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

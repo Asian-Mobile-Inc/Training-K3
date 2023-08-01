@@ -22,7 +22,7 @@ public class MainThread extends AppCompatActivity {
     private ImageView mImageView;
 
     @SuppressLint("HandlerLeak")
-    private final Handler handler = new Handler() {
+    private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             String message = (String) msg.obj;
@@ -56,8 +56,8 @@ public class MainThread extends AppCompatActivity {
                 connection.setDoInput(true);
                 connection.connect();
 
-                Message message = handler.obtainMessage(1, "Started to download image");
-                handler.sendMessage(message);
+                Message message = mHandler.obtainMessage(1, "Started to download image");
+                mHandler.sendMessage(message);
 
                 InputStream inputStream = connection.getInputStream();
                 final Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
@@ -70,8 +70,8 @@ public class MainThread extends AppCompatActivity {
                 });
 
             } catch (Exception e) {
-                Message message = handler.obtainMessage(1, "Failed to download image");
-                handler.sendMessage(message);
+                Message message = mHandler.obtainMessage(1, "Failed to download image");
+                mHandler.sendMessage(message);
             }
         });
         downloadThread.start();
