@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
 
         <service
-            android:name=".Task2_GPSService"
+            android:name=".Task2GPSService"
             android:enabled="true"
             android:exported="false" />
 
@@ -24,7 +24,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".Task1_RequestLocation"
+            android:name=".Task1RequestLocation"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,7 @@
         </activity>
 
         <activity
-            android:name=".Task2_MainServiceHandleGPS"
+            android:name=".Task2MainServiceHandleGPS"
             android:exported="true"/>
         <activity
             android:name=".LocationReceiver"

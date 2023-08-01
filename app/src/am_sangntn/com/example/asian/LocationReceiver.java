@@ -24,9 +24,9 @@ import androidx.core.app.ActivityCompat;
 
 public class LocationReceiver extends AppCompatActivity {
 
-    private LocationManager locationManager;
+    private LocationManager mLocationManager;
 
-    private LocationListener locationListener;
+    private LocationListener mLocationListener;
     private static final String TAG = "WifiStateReceiver";
 
 
@@ -38,10 +38,10 @@ public class LocationReceiver extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
 
 
-            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             checkLocationPermission();
 
-            locationListener = location -> {
+            mLocationListener = location -> {
                 if (check) {
                     double latitude = location.getLatitude();
                     double longitude = location.getLongitude();
@@ -116,7 +116,7 @@ public class LocationReceiver extends AppCompatActivity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 20000, 0, locationListener);
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 20000, 0, mLocationListener);
     }
 
 

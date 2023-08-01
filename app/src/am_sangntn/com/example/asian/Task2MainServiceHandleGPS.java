@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class Task2_MainServiceHandleGPS extends AppCompatActivity {
+public class Task2MainServiceHandleGPS extends AppCompatActivity {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
 
@@ -28,7 +28,7 @@ public class Task2_MainServiceHandleGPS extends AppCompatActivity {
         });
 
         stopServiceButton.setOnClickListener(v -> {
-            Intent serviceIntent = new Intent(Task2_MainServiceHandleGPS.this, Task2_GPSService.class);
+            Intent serviceIntent = new Intent(Task2MainServiceHandleGPS.this, Task2GPSService.class);
             stopService(serviceIntent);
         });
     }
@@ -39,7 +39,7 @@ public class Task2_MainServiceHandleGPS extends AppCompatActivity {
             // Nếu quyền chưa được cấp, yêu cầu người dùng cấp quyền
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {
-            Intent serviceIntent = new Intent(Task2_MainServiceHandleGPS.this, Task2_GPSService.class);
+            Intent serviceIntent = new Intent(Task2MainServiceHandleGPS.this, Task2GPSService.class);
             startService(serviceIntent);
         }
     }
@@ -49,7 +49,7 @@ public class Task2_MainServiceHandleGPS extends AppCompatActivity {
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Người dùng đã cấp quyền, bạn có thể tiếp tục xử lý GPS hoặc bắt đầu Service tại đây
-                Intent serviceIntent = new Intent(Task2_MainServiceHandleGPS.this, Task2_GPSService.class);
+                Intent serviceIntent = new Intent(Task2MainServiceHandleGPS.this, Task2GPSService.class);
                 startService(serviceIntent);
             } else {
                 // Người dùng đã từ chối cấp quyền, bạn có thể thông báo hoặc xử lý tương ứng

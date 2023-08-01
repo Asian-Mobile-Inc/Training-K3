@@ -18,7 +18,7 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
-public class Task1_RequestLocation extends AppCompatActivity {
+public class Task1RequestLocation extends AppCompatActivity {
     Button mBtnRequest;
     FusedLocationProviderClient mFusedLocationProviderClient;
     @Override
@@ -48,7 +48,7 @@ public class Task1_RequestLocation extends AppCompatActivity {
     }
 
     private void getLocation() {
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mFusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, location -> {
             });
         } else {
@@ -64,7 +64,7 @@ public class Task1_RequestLocation extends AppCompatActivity {
                 getLocation();
             }
         } else {
-            Toast.makeText(Task1_RequestLocation.this, "Location is Required", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Task1RequestLocation.this, "Location is Required", Toast.LENGTH_SHORT).show();
         }
     }
 

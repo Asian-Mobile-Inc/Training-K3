@@ -12,18 +12,18 @@ import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
-public class Task2_GPSService extends Service {
+public class Task2GPSService extends Service {
 
     private static final String TAG = "GPSService";
-    private LocationManager locationManager;
-    private LocationListener locationListener;
+    private LocationManager mLocationManager;
+    private LocationListener mLocationListener;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
+        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mLocationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 double latitude = location.getLatitude();
@@ -41,7 +41,7 @@ public class Task2_GPSService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListener);
+            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, mLocationListener);
         } else {
             Log.d(TAG, "Quyền truy cập GPS bị từ chối.");
         }
@@ -52,8 +52,8 @@ public class Task2_GPSService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (locationManager != null) {
-            locationManager.removeUpdates(locationListener);
+        if (mLocationManager != null) {
+            mLocationManager.removeUpdates(mLocationListener);
         }
     }
 
