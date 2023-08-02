@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tvLabelInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/title_personel_info"
+        android:textColor="@color/yelow"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLabelUsername"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="48sp"
+        android:text="@string/label_fullname"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelInfo" />
+
+    <EditText
+        android:id="@+id/edtUserName"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:autofillHints=""
+        android:backgroundTint="@color/black"
+        android:hint="@string/hint_fullname"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingVertical="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelInfo" />
+
+    <TextView
+        android:id="@+id/tvCardInfo"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="48sp"
+        android:text="@string/label_card"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtUserName" />
+
+    <EditText
+        android:id="@+id/edtCard"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:autofillHints=""
+        android:backgroundTint="@color/black"
+        android:hint="@string/hint_card"
+        android:inputType="text"
+        android:minHeight="48sp"
+        android:paddingVertical="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        app:layout_constraintStart_toEndOf="@+id/tvCardInfo"
+        app:layout_constraintTop_toBottomOf="@+id/edtUserName" />
+
+    <TextView
+        android:id="@+id/tvCertificate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/title_certificate_info"
+        android:textColor="@color/yelow"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtCard" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCertificate">
+
+        <RadioButton
+            android:id="@+id/radioIntermediate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/dart_pink"
+            android:checked="true"
+            android:minHeight="48dp"
+            android:text="@string/txt_intermediate"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/radioCollege"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/dart_pink"
+            android:minHeight="48dp"
+            android:text="@string/txt_college"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/radioUniversity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/dart_pink"
+            android:minHeight="48dp"
+            android:text="@string/txt_university"
+            android:textColor="@color/black" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvInterest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/title_interest"
+        android:textColor="@color/yelow"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="@string/interest_item1"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInterest" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="@string/interest_item2"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/checkBox1"
+        app:layout_constraintTop_toBottomOf="@+id/tvInterest" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="@string/interest_item3"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/checkBox2"
+        app:layout_constraintTop_toBottomOf="@+id/tvInterest" />
+
+    <TextView
+        android:id="@+id/tvMoreInfor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/title_more_info"
+        android:textColor="@color/yelow"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBox2" />
+
+    <EditText
+        android:id="@+id/edtMoreInfo"
+        android:layout_width="400sp"
+        android:layout_height="150sp"
+        android:autofillHints=""
+        android:backgroundTint="@color/black"
+        android:hint="@string/hint_more_info"
+        android:inputType="textMultiLine|textImeMultiLine"
+        android:maxLines="5"
+        android:minLines="1"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMoreInfor" />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/grey"
+        android:paddingVertical="14dp"
+        android:text="@string/name_button_send"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtMoreInfo" />
+</androidx.constraintlayout.widget.ConstraintLayout>

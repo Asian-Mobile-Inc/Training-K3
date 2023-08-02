@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_700">
+
+    <TextView
+        android:id="@+id/tvLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140sp"
+        android:gravity="center"
+        android:text="@string/title_relative_layout"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="480sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:autofillHints=""
+        android:background="@color/white"
+        android:hint="@string/hint_email"
+        android:inputType="text"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/edtPass"
+        android:layout_width="480sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:autofillHints=""
+        android:background="@color/white"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="40sp"
+        android:layout_marginRight="20sp"
+        android:backgroundTint="@color/blue"
+        android:paddingVertical="16sp"
+        android:text="@string/name_button_login"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</RelativeLayout>
