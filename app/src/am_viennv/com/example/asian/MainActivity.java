@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -12,25 +13,26 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager mFragmentManager;
 
     @Override
+    @SuppressLint({"MissingInflatedId", "LocalSuppress"})
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mCountSwitch = 0;
-        Button btnFragmentOne = findViewById(R.id.btn_fragment_one);
-        Button btnFragmentTwo = findViewById(R.id.btn_fragment_two);
+        Button btnFragmentOne = findViewById(R.id.btnFragmentOne);
+        Button btnFragmentTwo = findViewById(R.id.btnFragmentTwo);
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.addOnBackStackChangedListener(this::handleBackStackChanged);
         btnFragmentOne.setOnClickListener(view -> {
             checkClearBackStack();
             FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment, FragmentOne.newInstance("#338837"));
+            fragmentTransaction.replace(R.id.containerFragment, FragmentOne.newInstance("#338837"));
             fragmentTransaction.addToBackStack("Fragment One");
             fragmentTransaction.commit();
         });
         btnFragmentTwo.setOnClickListener(view -> {
             checkClearBackStack();
             FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment, FragmentTwo.newInstance("#671063"));
+            fragmentTransaction.replace(R.id.containerFragment, FragmentTwo.newInstance("#671063"));
             fragmentTransaction.addToBackStack("Fragment Two");
             fragmentTransaction.commit();
         });
@@ -52,5 +54,4 @@ public class MainActivity extends AppCompatActivity {
             mCountSwitch = 0;
         }
     }
-
 }

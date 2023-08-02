@@ -37,9 +37,8 @@ public class FragmentTwo extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        FrameLayout frameLayout = view.findViewById(R.id.fragment_two);
+        FrameLayout frameLayout = view.findViewById(R.id.fragmentTwo);
         frameLayout.setBackgroundColor(Color.parseColor(mParam1));
         super.onViewCreated(view, savedInstanceState);
     }
-
 }

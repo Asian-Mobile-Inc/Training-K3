@@ -38,9 +38,8 @@ public class FragmentOne extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        FrameLayout frameLayout = view.findViewById(R.id.fragment_one);
+        FrameLayout frameLayout = view.findViewById(R.id.fragmentOne);
         frameLayout.setBackgroundColor(Color.parseColor(mParam1));
         super.onViewCreated(view, savedInstanceState);
     }
-
 }
