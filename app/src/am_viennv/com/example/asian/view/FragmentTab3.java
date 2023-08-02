@@ -52,5 +52,4 @@ public class FragmentTab3 extends Fragment {
     public void delDataToRecyclerView(String position) {
         mCustomAdapter.removeItem(Integer.parseInt(position));
     }
-
 }

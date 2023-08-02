@@ -84,9 +84,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mFloatingActionButton = findViewById(R.id.flbutton);
+        mFloatingActionButton = findViewById(R.id.flButton);
         mViewPager = findViewById(R.id.viewPager);
-        mTabLayout = findViewById(R.id.tb_layout);
+        mTabLayout = findViewById(R.id.tbLayout);
     }
 
     public ArrayList<String> createData(String name) {
@@ -135,15 +135,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void initView() {
-            mButtonAdd = findViewById(R.id.btn_add);
-            mButtonDel = findViewById(R.id.btn_del);
+            mButtonAdd = findViewById(R.id.btnAdd);
+            mButtonDel = findViewById(R.id.btnDel);
         }
 
         private void handleClick() {
             mButtonAdd.setOnClickListener(view -> showTextDialog("Add Item", "Enter data", CASE_ADD));
             mButtonDel.setOnClickListener(view -> showTextDialog("Delete Item", "Enter position delete", CASE_DEL));
         }
-
     }
-
 }

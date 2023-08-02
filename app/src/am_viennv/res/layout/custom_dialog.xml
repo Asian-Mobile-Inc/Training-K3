@@ -17,17 +17,16 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btnAdd"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:text="@string/option_add"
         android:textColor="@color/colorBlack" />
 
     <Button
-        android:id="@+id/btn_del"
+        android:id="@+id/btnDel"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:text="@string/option_delete"
         android:textColor="@color/colorBlack" />
-
 </LinearLayout>

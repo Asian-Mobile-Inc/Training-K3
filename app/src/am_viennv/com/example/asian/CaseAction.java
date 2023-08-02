@@ -14,6 +14,4 @@ public enum CaseAction {
     public int getValue() {
         return mValue;
     }
-
 }
-

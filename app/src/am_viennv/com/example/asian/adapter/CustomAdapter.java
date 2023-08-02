@@ -104,9 +104,7 @@ public class CustomAdapter extends
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mTextName = itemView.findViewById(R.id.tv_name);
+            mTextName = itemView.findViewById(R.id.tvName);
         }
-
     }
-
 }
