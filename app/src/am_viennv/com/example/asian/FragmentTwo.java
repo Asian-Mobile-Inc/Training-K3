@@ -13,14 +13,14 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 public class FragmentTwo extends Fragment {
-    private static String mParam1;
+    private static String mParam;
 
     public FragmentTwo() {
     }
 
-    public static FragmentTwo newInstance(String param1) {
+    public static FragmentTwo newInstance(String param) {
         FragmentTwo fragment = new FragmentTwo();
-        mParam1 = param1;
+        mParam = param;
         return fragment;
     }
 
@@ -38,7 +38,7 @@ public class FragmentTwo extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         FrameLayout frameLayout = view.findViewById(R.id.fragmentTwo);
-        frameLayout.setBackgroundColor(Color.parseColor(mParam1));
+        frameLayout.setBackgroundColor(Color.parseColor(mParam));
         super.onViewCreated(view, savedInstanceState);
     }
 }
