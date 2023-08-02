@@ -1,6 +1,7 @@
 package com.example.asian;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 public class ConstrainLayout extends AppCompatActivity {
@@ -10,5 +11,4 @@ public class ConstrainLayout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_constrain_layout);
     }
-
 }

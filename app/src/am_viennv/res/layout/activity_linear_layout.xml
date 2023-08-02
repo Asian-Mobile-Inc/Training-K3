@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_num1"
+            android:id="@+id/tvLabelNumberOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10sp"
@@ -22,14 +22,14 @@
             android:textColor="@color/black" />
 
         <EditText
-            android:id="@+id/edt_num1"
+            android:id="@+id/edtNumberOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:backgroundTint="@color/black"
             android:hint="@string/enter_number_1"
-            android:inputType="text"
+            android:inputType="number"
             android:minWidth="300sp"
             android:minHeight="48sp"
             android:paddingVertical="10dp"
@@ -44,7 +44,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_num2"
+            android:id="@+id/tvLabelNumberTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10sp"
@@ -53,14 +53,14 @@
             android:textColor="@color/black" />
 
         <EditText
-            android:id="@+id/edt_num2"
+            android:id="@+id/edtNumberTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:backgroundTint="@color/black"
             android:hint="@string/enter_number_2"
-            android:inputType="text"
+            android:inputType="number"
             android:minWidth="300sp"
             android:minHeight="48dp"
             android:paddingVertical="10dp"
@@ -75,7 +75,7 @@
         android:paddingRight="30dp">
 
         <Button
-            android:id="@+id/btn_plus"
+            android:id="@+id/btnPlus"
             style="?android:attr/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btn_sub"
+            android:id="@+id/btnSub"
             style="?android:attr/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btn_mul"
+            android:id="@+id/btnMul"
             style="?android:attr/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btn_div"
+            android:id="@+id/btnDiv"
             style="?android:attr/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -141,14 +141,12 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tv_result"
+            android:id="@+id/tvResult"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="20sp"
             android:hint="@string/txt_hint_result"
             android:textColor="@color/black"
             android:textSize="20sp" />
-
     </LinearLayout>
-
 </LinearLayout>

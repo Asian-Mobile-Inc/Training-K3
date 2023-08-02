@@ -11,5 +11,4 @@ public class RelativeLayout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relative_layout);
     }
-
 }
