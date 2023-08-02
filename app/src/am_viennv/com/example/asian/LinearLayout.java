@@ -30,52 +30,28 @@ public class LinearLayout extends AppCompatActivity {
     }
 
     private void initView() {
-        mNumberOneEditText = findViewById(R.id.edt_num1);
-        mNumberTwoEditText = findViewById(R.id.edt_num2);
-        mButtonPlus = findViewById(R.id.btn_plus);
-        mButtonSub = findViewById(R.id.btn_sub);
-        mButtonMul = findViewById(R.id.btn_mul);
-        mButtonDiv = findViewById(R.id.btn_div);
-        mResultTextView = findViewById(R.id.tv_result);
+        mNumberOneEditText = findViewById(R.id.edtNumberOne);
+        mNumberTwoEditText = findViewById(R.id.edtNumberTwo);
+        mButtonPlus = findViewById(R.id.btnPlus);
+        mButtonSub = findViewById(R.id.btnSub);
+        mButtonMul = findViewById(R.id.btnMul);
+        mButtonDiv = findViewById(R.id.btnDiv);
+        mResultTextView = findViewById(R.id.tvResult);
     }
 
     @SuppressLint("SetTextI18n")
     private void handleClick() {
-        mButtonPlus.setOnClickListener(view -> {
-            if (checkNumber()) {
-                mResultTextView.setText(Float.toString(mNumberOne + mNumberTwo));
-            }
-        });
-        mButtonSub.setOnClickListener(view -> {
-            if (checkNumber()) {
-                mResultTextView.setText(Float.toString(mNumberOne - mNumberTwo));
-            }
-        });
-        mButtonMul.setOnClickListener(view -> {
-            if (checkNumber()) {
-                mResultTextView.setText(Float.toString(mNumberOne * mNumberTwo));
-            }
-        });
+        mNumberOne = Float.parseFloat(mNumberOneEditText.getText().toString());
+        mNumberTwo = Float.parseFloat(mNumberTwoEditText.getText().toString());
+        mButtonPlus.setOnClickListener(view -> mResultTextView.setText(Float.toString(mNumberOne + mNumberTwo)));
+        mButtonSub.setOnClickListener(view -> mResultTextView.setText(Float.toString(mNumberOne - mNumberTwo)));
+        mButtonMul.setOnClickListener(view -> mResultTextView.setText(Float.toString(mNumberOne * mNumberTwo)));
         mButtonDiv.setOnClickListener(view -> {
-            if (checkNumber() && !mNumberTwoEditText.getText().toString().equals("0")) {
+            if (!(mNumberTwo == 0)) {
                 mResultTextView.setText(Float.toString(mNumberOne / mNumberTwo));
             } else {
                 Toast.makeText(this, "Number can't divide 0", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-    private boolean checkNumber() {
-        String strNumber1 = mNumberOneEditText.getText().toString();
-        String strNumber2 = mNumberTwoEditText.getText().toString();
-        if (strNumber1.matches(".*[0-9].*") && strNumber2.matches(".*[0-9].*")) {
-            mNumberOne = Float.parseFloat(strNumber1);
-            mNumberTwo = Float.parseFloat(strNumber2);
-            return true;
-        } else {
-            Toast.makeText(this, "Please Enter Number", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    }
-
 }

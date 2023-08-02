@@ -6,7 +6,7 @@
     android:background="@color/white">
 
     <TextView
-        android:id="@+id/tv_label"
+        android:id="@+id/tvLabelInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_label_username"
+        android:id="@+id/tvLabelUsername"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -28,10 +28,10 @@
         android:textColor="@color/grey"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelInfo" />
 
     <EditText
-        android:id="@+id/edt_username"
+        android:id="@+id/edtUserName"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_weight="10"
@@ -43,11 +43,11 @@
         android:paddingVertical="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/grey"
-        app:layout_constraintStart_toEndOf="@+id/tv_label_username"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label" />
+        app:layout_constraintStart_toEndOf="@+id/tvLabelUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelInfo" />
 
     <TextView
-        android:id="@+id/tv_cmnd"
+        android:id="@+id/tvCardInfo"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -56,10 +56,10 @@
         android:textColor="@color/grey"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_username" />
+        app:layout_constraintTop_toBottomOf="@+id/edtUserName" />
 
     <EditText
-        android:id="@+id/edt_card"
+        android:id="@+id/edtCard"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_weight="10"
@@ -71,11 +71,11 @@
         android:paddingVertical="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/grey"
-        app:layout_constraintStart_toEndOf="@+id/tv_cmnd"
-        app:layout_constraintTop_toBottomOf="@+id/edt_username" />
+        app:layout_constraintStart_toEndOf="@+id/tvCardInfo"
+        app:layout_constraintTop_toBottomOf="@+id/edtUserName" />
 
     <TextView
-        android:id="@+id/tv_certificate"
+        android:id="@+id/tvCertificate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
@@ -85,18 +85,18 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_card" />
+        app:layout_constraintTop_toBottomOf="@+id/edtCard" />
 
     <RadioGroup
-        android:id="@+id/radio_group"
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_certificate">
+        app:layout_constraintTop_toBottomOf="@+id/tvCertificate">
 
         <RadioButton
-            android:id="@+id/radio_intermediate"
+            android:id="@+id/radioIntermediate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/dart_pink"
@@ -106,7 +106,7 @@
             android:textColor="@color/black" />
 
         <RadioButton
-            android:id="@+id/radio_college"
+            android:id="@+id/radioCollege"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/dart_pink"
@@ -115,7 +115,7 @@
             android:textColor="@color/black" />
 
         <RadioButton
-            android:id="@+id/radio_university"
+            android:id="@+id/radioUniversity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/dart_pink"
@@ -126,7 +126,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/tv_interest"
+        android:id="@+id/tvInterest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
@@ -136,40 +136,40 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:text="@string/interest_item1"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_interest" />
-
-    <CheckBox
-        android:id="@+id/checkBox3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:text="@string/interest_item2"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/tv_interest" />
+        app:layout_constraintTop_toBottomOf="@+id/tvInterest" />
 
     <CheckBox
         android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
+        android:text="@string/interest_item2"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/checkBox1"
+        app:layout_constraintTop_toBottomOf="@+id/tvInterest" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
         android:text="@string/interest_item3"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/checkBox3"
-        app:layout_constraintTop_toBottomOf="@+id/tv_interest" />
+        app:layout_constraintStart_toEndOf="@+id/checkBox2"
+        app:layout_constraintTop_toBottomOf="@+id/tvInterest" />
 
     <TextView
-        android:id="@+id/tv_moreInfor"
+        android:id="@+id/tvMoreInfor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
@@ -182,7 +182,7 @@
         app:layout_constraintTop_toBottomOf="@id/checkBox2" />
 
     <EditText
-        android:id="@+id/edt_more_info"
+        android:id="@+id/edtMoreInfo"
         android:layout_width="400sp"
         android:layout_height="150sp"
         android:autofillHints=""
@@ -195,10 +195,10 @@
         android:textColorHint="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_moreInfor" />
+        app:layout_constraintTop_toBottomOf="@id/tvMoreInfor" />
 
     <Button
-        android:id="@+id/btn_send"
+        android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/grey"
@@ -207,6 +207,5 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_more_info" />
-
+        app:layout_constraintTop_toBottomOf="@+id/edtMoreInfo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

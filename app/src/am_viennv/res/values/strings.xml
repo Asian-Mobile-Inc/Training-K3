@@ -1,7 +1,5 @@
 <resources>
-
     <string name="app_name" translatable="false">ExVienNv</string>
-
     <string name="title_personel_info">Thông tin cá nhân</string>
     <string name="title_certificate_info">Bằng cấp</string>
     <string name="title_interest">Sở thích</string>
@@ -36,5 +34,4 @@
     <string name="txt_div">/</string>
     <string name="txt_result">Ket qua : </string>
     <string name="txt_hint_result">0</string>
-
 </resources>

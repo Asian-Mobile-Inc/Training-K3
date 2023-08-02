@@ -1,6 +1,7 @@
 package com.example.asian;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -21,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mButtonRelative = findViewById(R.id.btn_relative_layout);
-        mButtonLinear = findViewById(R.id.btn_linear_layout);
-        mButtonConstraint = findViewById(R.id.btn_constrain_layout);
+        mButtonRelative = findViewById(R.id.btnRelativeLayout);
+        mButtonLinear = findViewById(R.id.btnLinearLayout);
+        mButtonConstraint = findViewById(R.id.btnConstrainLayout);
     }
 
     private void listener() {
@@ -40,5 +41,4 @@ public class MainActivity extends AppCompatActivity {
             startActivity(mSwitchActivity);
         });
     }
-
 }

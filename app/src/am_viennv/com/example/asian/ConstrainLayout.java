@@ -1,6 +1,7 @@
 package com.example.asian;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,14 +22,14 @@ public class ConstrainLayout extends AppCompatActivity {
     }
 
     private void initView() {
-        mButtonSend = findViewById(R.id.btn_send);
+        mButtonSend = findViewById(R.id.btnSend);
     }
 
     private void handleClick() {
         mButtonSend.setOnClickListener(view -> {
-            String userName = ((EditText) findViewById(R.id.edt_username)).getText().toString();
-            String cardInfo = ((EditText) findViewById(R.id.edt_card)).getText().toString();
-            String moreInfo = ((EditText) findViewById(R.id.edt_more_info)).getText().toString();
+            String userName = ((EditText) findViewById(R.id.edtUserName)).getText().toString();
+            String cardInfo = ((EditText) findViewById(R.id.edtCard)).getText().toString();
+            String moreInfo = ((EditText) findViewById(R.id.edtMoreInfo)).getText().toString();
             if (
                     validateInfo(view.getContext(), userName, "UserName") &&
                             validateInfo(view.getContext(), cardInfo, "CardInfo") &&
@@ -68,5 +69,4 @@ public class ConstrainLayout extends AppCompatActivity {
     public static void makeText(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
-
 }

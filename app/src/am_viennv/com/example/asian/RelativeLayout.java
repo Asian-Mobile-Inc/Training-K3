@@ -1,6 +1,7 @@
 package com.example.asian;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,9 +25,9 @@ public class RelativeLayout extends AppCompatActivity {
     }
 
     private void initView() {
-        mEmailEditText = findViewById(R.id.edt_email);
-        mPasswordEditText = findViewById(R.id.edt_pass);
-        mButtonLogin = findViewById(R.id.btn_login);
+        mEmailEditText = findViewById(R.id.edtEmail);
+        mPasswordEditText = findViewById(R.id.edtPass);
+        mButtonLogin = findViewById(R.id.btnLogin);
     }
 
     private void handleClick() {
@@ -66,5 +67,4 @@ public class RelativeLayout extends AppCompatActivity {
         }
         return null;
     }
-
 }
