@@ -85,11 +85,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mToolBar = findViewById(R.id.tb_app);
+        mToolBar = findViewById(R.id.tbApp);
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mNavigationView = findViewById(R.id.navigationView);
-        mLinearTopMenu = mNavigationView.getHeaderView(0).findViewById(R.id.ll_topmenu);
-        mFloatingActionButton = findViewById(R.id.fab_action);
+        mLinearTopMenu = mNavigationView.getHeaderView(0).findViewById(R.id.llTopmenu);
+        mFloatingActionButton = findViewById(R.id.fabAction);
     }
-
 }

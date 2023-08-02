@@ -20,5 +20,4 @@ public class ShareFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_share, container, false);
     }
-
 }

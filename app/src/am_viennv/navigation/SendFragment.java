@@ -20,5 +20,4 @@ public class SendFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_send, container, false);
     }
-
 }
