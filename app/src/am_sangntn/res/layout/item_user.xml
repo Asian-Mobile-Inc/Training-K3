@@ -14,9 +14,10 @@
             android:layout_width="100sp"
             android:layout_height="32sp"
             android:gravity="center"
-            android:inputType="number"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            />
+
 
         <TextView
             android:id="@+id/tvUserName"
@@ -31,7 +32,6 @@
             android:layout_width="100sp"
             android:layout_height="32sp"
             android:gravity="center"
-            android:inputType="number"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </LinearLayout>

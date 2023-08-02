@@ -47,12 +47,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = mListUser.get(position);
 
-        holder.tvUserId.setText(String.valueOf(user.getId()));
-        holder.tvUserName.setText(user.getName());
-        holder.tvUserAge.setText(String.valueOf(user.getAge()));
+        holder.mTvUserId.setText(String.valueOf(user.getId()));
+        holder.mTvUserName.setText(user.getName());
+        holder.mTvUserAge.setText(String.valueOf(user.getAge()));
 
         //set du lieu len view
-        holder.btnDelete.setOnClickListener(view -> {
+        holder.mBtnDelete.setOnClickListener(view -> {
             String idUser = String.valueOf(mListUser.get(holder.getAdapterPosition()).getId());
             mUserHelper.queryData(SQL_QUERY_DELETE_USER + idUser);
             mListUser.remove(holder.getAdapterPosition());
@@ -70,25 +70,25 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView tvUserId, tvUserName, tvUserAge;
-        private final Button btnDelete;
+        private final TextView mTvUserId, mTvUserName, mTvUserAge;
+        private final Button mBtnDelete;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvUserId = itemView.findViewById(R.id.tvUserId);
-            tvUserName = itemView.findViewById(R.id.tvUserName);
-            tvUserAge = itemView.findViewById(R.id.tvUserAge);
-            btnDelete = itemView.findViewById(R.id.btnDelete);
+            mTvUserId = itemView.findViewById(R.id.tvUserId);
+            mTvUserName = itemView.findViewById(R.id.tvUserName);
+            mTvUserAge = itemView.findViewById(R.id.tvUserAge);
+            mBtnDelete = itemView.findViewById(R.id.btnDelete);
 
             GradientDrawable border = new GradientDrawable();
             border.setStroke(2, mContext.getResources().getColor(R.color.black));
-            tvUserName.setBackground(border);
+            mTvUserName.setBackground(border);
 
             GradientDrawable border1 = new GradientDrawable();
             border1.setStroke(2, mContext.getResources().getColor(R.color.black));
-            tvUserAge.setBackground(border1);
-            tvUserId.setBackground(border1);
+            mTvUserAge.setBackground(border1);
+            mTvUserId.setBackground(border1);
 
         }
     }
