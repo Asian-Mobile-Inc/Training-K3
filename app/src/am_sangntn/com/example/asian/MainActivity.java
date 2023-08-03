@@ -11,13 +11,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MyChartView myChartView = findViewById(R.id.myChartView);
+        ScalableBarChartView barChartView = findViewById(R.id.barChartView);
 
-        myChartView.addBar(new Data("Jan", 50000, 130000));
-        myChartView.addBar(new Data("Feb", 100000, 20000));
-        myChartView.addBar(new Data("Mar", 7000, 100000));
-        myChartView.addBar(new Data("Apr", 70000, 10000));
-        myChartView.addBar(new Data("May", 40000, 90000));
-        myChartView.addBar(new Data("Jun", 25000, 60000));
+        barChartView.addBar(new Data("Jan", 50000, 130000));
+        barChartView.addBar(new Data("Feb", 100000, 20000));
+        barChartView.addBar(new Data("Mar", 7000, 100000));
+        barChartView.addBar(new Data("Apr", 70000, 10000));
+        barChartView.addBar(new Data("May", 40000, 90000));
+        barChartView.addBar(new Data("Jun", 25000, 60000));
+        barChartView.addBar(new Data("Jan", 50000, 130000));
+        barChartView.addBar(new Data("Feb", 100000, 20000));
+        barChartView.addBar(new Data("Mar", 7000, 100000));
+        barChartView.addBar(new Data("Apr", 70000, 10000));
+        barChartView.addBar(new Data("May", 40000, 90000));
+        barChartView.addBar(new Data("Jun", 25000, 60000));
     }
 }
