@@ -120,8 +120,8 @@ public class MyChartView extends View {
     private float getMaxValue() {
         float max = 0;
         for (SellExpense sellExpense : mData) {
-            float expensesValue = sellExpense.getExpenses();
-            float salesValue = sellExpense.getSales();
+            float expensesValue = sellExpense.getmExpenses();
+            float salesValue = sellExpense.getmSales();
             if (expensesValue > salesValue && expensesValue > max) {
                 max = expensesValue;
             } else if (salesValue > expensesValue && salesValue > max) {
@@ -197,13 +197,13 @@ public class MyChartView extends View {
         List<String> lstLabelMonth = getLstLabel();
         for (int i = 0; i < mData.size(); i++) {
             float leftSales = initValueSales + withCol * i;
-            canvas.drawRect(leftSales, (maxValue - mData.get(i).getSales()) * scale / mScaleFactor,
+            canvas.drawRect(leftSales, (maxValue - mData.get(i).getmSales()) * scale / mScaleFactor,
                     leftSales + withCol, height - height / countLine, mSalesPaint);
             initValueSales += spaceBetween + withCol;
 
             canvas.drawText(lstLabelMonth.get(i), (leftSales + withCol / 2), height + spaceBetween - height / countLine, mPaint);
             float leftEx = initValueEx + withCol * i;
-            canvas.drawRect(leftEx, (maxValue - mData.get(i).getExpenses()) * scale / mScaleFactor,
+            canvas.drawRect(leftEx, (maxValue - mData.get(i).getmExpenses()) * scale / mScaleFactor,
                     leftEx + withCol, height - height / countLine, mExpensesPaint);
             initValueEx += spaceBetween + withCol;
         }
@@ -231,7 +231,7 @@ public class MyChartView extends View {
     private List<String> getLstLabel() {
         List<String> labels = new ArrayList<>();
         for (SellExpense sellExpense : mData) {
-            int monthNumber = sellExpense.getMonth();
+            int monthNumber = sellExpense.getmMonth();
             Month[] months = Month.values();
             if (monthNumber >= 1 && monthNumber <= months.length) {
                 String monthName = months[monthNumber - 1].name();

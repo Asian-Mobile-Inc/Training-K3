@@ -1,25 +1,25 @@
 package com.example.asian;
 
 public class SellExpense {
-    private final int month;
-    private final float sales;
-    private final float expenses;
+    private final int mMonth;
+    private final float mSales;
+    private final float mExpenses;
 
-    public SellExpense(int month, float sales, float expenses) {
-        this.month = month;
-        this.sales = sales;
-        this.expenses = expenses;
+    public SellExpense(int mMonth, float mSales, float mExpenses) {
+        this.mMonth = mMonth;
+        this.mSales = mSales;
+        this.mExpenses = mExpenses;
     }
 
-    public int getMonth() {
-        return month;
+    public int getmMonth() {
+        return mMonth;
     }
 
-    public float getSales() {
-        return sales;
+    public float getmSales() {
+        return mSales;
     }
 
-    public float getExpenses() {
-        return expenses;
+    public float getmExpenses() {
+        return mExpenses;
     }
 }
