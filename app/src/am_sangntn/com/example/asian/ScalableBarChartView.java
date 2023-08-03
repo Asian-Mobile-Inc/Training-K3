@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -15,28 +14,33 @@ import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyChartView extends View {
+public class ScalableBarChartView extends View {
+
     private Paint barPaint1;
     private Paint barPaint2;
     private Paint textPaint;
 
     private Paint framePaint;
     private List<Data> dataPoints;
-
-    private float scaleFactor = 1.0f;
+    private List<Float> barHeights;
+    private List<Paint> barPaints;
+    private float barWidth = 100;
+    private float maxBarHeight = 300;
     private ScaleGestureDetector scaleGestureDetector;
+    private float scaleFactor = 1.0f;
 
-    public MyChartView(Context context) {
+    public ScalableBarChartView(Context context) {
         super(context);
         init();
     }
 
-    public MyChartView(Context context, AttributeSet attrs) {
+    public ScalableBarChartView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
+
         barPaint1 = new Paint();
         barPaint1.setColor(ContextCompat.getColor(getContext(), R.color.darkBlue));
         barPaint1.setAntiAlias(true);
@@ -58,37 +62,28 @@ public class MyChartView extends View {
 
         dataPoints = new ArrayList<>();
 
+        //
+        barHeights = new ArrayList<>();
+        barHeights.add(100f); // Giá trị mặc định cho các cột
+
+        barPaints = new ArrayList<>();
+        barPaints.add(createBarPaint(Color.BLUE)); // Màu sắc mặc định cho các cột
+
         scaleGestureDetector = new ScaleGestureDetector(getContext(), new ScaleListener());
     }
 
-    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
-        @Override
-        public boolean onScale(ScaleGestureDetector detector) {
-            // Khi xảy ra sự kiện phóng to hoặc thu nhỏ, cập nhật giá trị scaleFactor
-            scaleFactor *= detector.getScaleFactor();
-            // Giới hạn giá trị scaleFactor trong khoảng từ 0.1 đến 5
-            scaleFactor = Math.max(0.1f, Math.min(scaleFactor, 5.0f));
-            invalidate();
-            Log.d("ddd", String.valueOf(scaleFactor)); // Yêu cầu vẽ lại Custom View
-            return true;
-        }
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        scaleGestureDetector.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
-
-    public void setData(List<Data> data) {
-        dataPoints.clear();
-        dataPoints.addAll(data);
-        invalidate();
+    private Paint createBarPaint(int color) {
+        Paint paint = new Paint();
+        paint.setColor(color);
+        paint.setAntiAlias(true);
+        return paint;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+
 
         int width = getWidth();
         int height = getHeight();
@@ -102,19 +97,23 @@ public class MyChartView extends View {
         canvas.drawLine(width * 2 / 100, height * 98 / 100, width * 2 / 100, height * 2 / 100, framePaint);
         canvas.drawLine(width * 98 / 100, height * 98 / 100, width * 98 / 100, height * 2 / 100,framePaint);
 
+        canvas.save();
+
+        canvas.rotate(180, getWidth() / 2f, getHeight() / 2f);
         //duong thang ngang
-        canvas.drawLine(150, height * 90 / 100, width - 200, height * 90 / 100, textPaint);
-        canvas.drawLine(150, height * 80 / 100, width - 200, height * 80 / 100, textPaint);
-        canvas.drawLine(150, height * 70 / 100, width - 200, height * 70 / 100, textPaint);
-        canvas.drawLine(150, height * 60 / 100, width - 200, height * 60 / 100, textPaint);
-        canvas.drawLine(150, height * 50 / 100, width - 200, height * 50 / 100, textPaint);
-        canvas.drawLine(150, height * 40 / 100, width - 200, height * 40 / 100, textPaint);
-        canvas.drawLine(150, height * 30 / 100, width - 200, height * 30 / 100, textPaint);
-        canvas.drawLine(150, height * 20 / 100, width - 200, height * 20 / 100, textPaint);
+        canvas.drawLine(width - 150, height * 10 / 100, 150, height * 10 / 100, textPaint);
+        canvas.drawLine(width - 150, height * scaleFactor * 80 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 80 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
+        canvas.drawLine(width - 150, height * scaleFactor * 70 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 70 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
+        canvas.drawLine(width - 150, height * scaleFactor * 60 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 60 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
+        canvas.drawLine(width - 150, height * scaleFactor * 50 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 50 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
+        canvas.drawLine(width - 150, height * scaleFactor * 40 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 40 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
+        canvas.drawLine(width - 150, height * scaleFactor * 30 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 30 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
+        canvas.drawLine(width - 150, height * scaleFactor * 20 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 20 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
 
         canvas.drawLine(width * 2 / 100, height * 98 / 100, width * 98 / 100, height * 98 / 100, framePaint);
         canvas.drawLine(width * 2 / 100, height * 2 / 100, width * 98 / 100, height * 2 / 100, framePaint);
 
+        canvas.restore();
         //gia tri bên trai
         canvas.drawText("$0", (float) width * 3 / 100, (float) height * 90 / 100 + 5, textPaint);
         canvas.drawText("$20,000", (float) width * 3 / 100, (float) height * 80 / 100 + 5, textPaint);
@@ -148,9 +147,9 @@ public class MyChartView extends View {
             bar1Height = (height * 10 / 100) + dataPoint.getValue1() / (200000 / height);
             bar2Height = (height * 10 / 100) + dataPoint.getValue2() / (200000 / height);
 
-             startY = height - bar1Height * scaleFactor;
-             endX = startX + columnWidth * scaleFactor;
-             endY = getHeight();
+            startY = height - bar1Height * scaleFactor;
+            endX = startX + columnWidth * scaleFactor;
+            endY = getHeight();
 
             //canvas.drawRect(startX, startY, endX, endY, barPaints.get(i));
 
@@ -162,7 +161,7 @@ public class MyChartView extends View {
             canvas.drawText(value1, startX + (columnWidth / 2) - (textPaint.measureText(value1) / 2), height - bar1Height - 10, textPaint);*/
 
             // Vẽ cột 2
-            canvas.drawRect(startX + columnWidth * scaleFactor, height - bar2Height * scaleFactor, startX + 2 * columnWidth * scaleFactor, (float) height * scaleFactor * 90 / 100, barPaint2);
+            canvas.drawRect(startX + columnWidth * scaleFactor, height - bar2Height * scaleFactor, startX + 2 * columnWidth * scaleFactor, (float) height * 90 / 100, barPaint2);
             /* String value2 = Integer.toString(dataPoint.getValue2());
             canvas.drawText(value2, startX + columnWidth + (columnWidth / 2) - (textPaint.measureText(value2) / 2), height - bar2Height - 10, textPaint);*/
 
@@ -176,9 +175,27 @@ public class MyChartView extends View {
         }
     }
 
-    public void addBar(Data value) {
-        dataPoints.add(value);
-        invalidate(); // Yêu cầu vẽ lại Custom View
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        scaleGestureDetector.onTouchEvent(event);
+        return true;
     }
 
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            // Khi xảy ra sự kiện phóng to hoặc thu nhỏ, cập nhật giá trị scaleFactor
+            scaleFactor *= detector.getScaleFactor();
+            // Giới hạn giá trị scaleFactor trong khoảng từ 0.1 đến 5
+            scaleFactor = Math.max(0.1f, Math.min(scaleFactor, 5.0f));
+            invalidate(); // Yêu cầu vẽ lại Custom View
+            return true;
+        }
+    }
+
+    public void addBar(Data height) {
+        dataPoints.add(height);
+        invalidate(); // Yêu cầu vẽ lại Custom View
+    }
 }
+
