@@ -102,28 +102,45 @@ public class ScalableBarChartView extends View {
         canvas.rotate(180, getWidth() / 2f, getHeight() / 2f);
         //duong thang ngang
         canvas.drawLine(width - 150, height * 10 / 100, 150, height * 10 / 100, textPaint);
-        canvas.drawLine(width - 150, height * scaleFactor * 80 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 80 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
-        canvas.drawLine(width - 150, height * scaleFactor * 70 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 70 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
-        canvas.drawLine(width - 150, height * scaleFactor * 60 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 60 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
-        canvas.drawLine(width - 150, height * scaleFactor * 50 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 50 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
-        canvas.drawLine(width - 150, height * scaleFactor * 40 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 40 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
-        canvas.drawLine(width - 150, height * scaleFactor * 30 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 30 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
-        canvas.drawLine(width - 150, height * scaleFactor * 20 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100), 200, height * scaleFactor * 20 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100), textPaint);
+        canvas.drawLine(width - 150, height * 80 / 100, 200, height * 80 / 100, textPaint);
+        canvas.drawLine(width - 150, height * 70 / 100, 200, height * 70 / 100, textPaint);
+        canvas.drawLine(width - 150, height * 60 / 100, 200, height * 60 / 100, textPaint);
+        canvas.drawLine(width - 150, height * 50 / 100, 200, height * 50 / 100, textPaint);
+        canvas.drawLine(width - 150, height * 40 / 100, 200, height * 40 / 100, textPaint);
+        canvas.drawLine(width - 150, height * 30 / 100, 200, height * 30 / 100, textPaint);
+        canvas.drawLine(width - 150, height * 20 / 100, 200, height * 20 / 100, textPaint);
 
         canvas.drawLine(width * 2 / 100, height * 98 / 100, width * 98 / 100, height * 98 / 100, framePaint);
         canvas.drawLine(width * 2 / 100, height * 2 / 100, width * 98 / 100, height * 2 / 100, framePaint);
+        canvas.save();
 
-        canvas.restore();
         //gia tri bên trai
-        canvas.drawText("$0", (float) width * 3 / 100, (float) height * 90 / 100 + 5, textPaint);
-        canvas.drawText("$20,000", (float) width * 3 / 100, (float) height * 80 / 100 + 5, textPaint);
-        canvas.drawText("$40,000", (float) width * 3 / 100, (float) height * 70 / 100 + 5, textPaint);
-        canvas.drawText("$60,000", (float) width * 3 / 100, (float) height * 60 / 100 + 5, textPaint);
-        canvas.drawText("$80,000", (float) width * 3 / 100, height * 50 / 100 + 5, textPaint);
-        canvas.drawText("$100,000", (float) width * 3 / 100, height * 40 / 100 + 5, textPaint);
-        canvas.drawText("$120,000", (float) width * 3 / 100, height * 30 / 100 + 5, textPaint);
-        canvas.drawText("$140,000", (float) width * 3 / 100, (float) height * 20 / 100 + 5, textPaint);
 
+        canvas.rotate(180, getWidth() / 2f, getHeight() / 2f);
+        drawValue(width, height, canvas);
+        canvas.restore();
+        /*try {
+            canvas.rotate(180, (width * 87f / 100) + textPaint.measureText("$0") / 2,height * 10f / 100);
+            canvas.drawText("$0", width * 87f / 100, height * 10f / 100 + 7, textPaint);
+            canvas.restore();
+            canvas.save();
+            canvas.rotate(180, (width * 87f / 100) + textPaint.measureText("$20,000") / 2,height * 20f / 100);
+            canvas.drawText("$20,000", width * 87f / 100, height * 20f / 100 + 7, textPaint);
+            canvas.restore();
+
+            canvas.drawText("$40,000", width * 87f / 100, height * 30f / 100 + 7, textPaint);
+            canvas.drawText("$60,000", width * 87f / 100, height * 40f / 100 + 7, textPaint);
+            canvas.drawText("$80,000", width * 87f / 100, height * 50f / 100 + 7, textPaint);
+            canvas.drawText("$100,000", width * 87f / 100, height * 60f / 100 + 7, textPaint);
+            canvas.drawText("$120,000", width * 87f / 100, height * 70f / 100 + 7, textPaint);
+            canvas.drawText("$140,000", width * 87f / 100, height * 80f / 100 + 7, textPaint);
+
+
+        } catch (Exception e)  {
+            Log.d("ddd", e.toString());
+        }*/
+
+        canvas.rotate(180, getWidth() / 2f, getHeight() / 2f);
         //chu thich
         canvas.drawRect(width - 180, (float) height * 45 / 100, (float) (width - 180 + (width * 2 / 100)), (float) ((height * 45 / 100) + (width * 2 / 100)), barPaint1);
         canvas.drawText("Sales", width - 140, (float) (height * 45 / 100 + (width * 2 / 100)), textPaint);
@@ -140,14 +157,11 @@ public class ScalableBarChartView extends View {
 
         for (int i = 0; i < dataSize; i++) {
 
-
-
-
             Data dataPoint = dataPoints.get(i);
-            bar1Height = (height * 10 / 100) + dataPoint.getValue1() / (200000 / height);
-            bar2Height = (height * 10 / 100) + dataPoint.getValue2() / (200000 / height);
+            bar1Height = dataPoint.getValue1() / (200000 / height);
+            bar2Height = dataPoint.getValue2() / (200000 / height);
 
-            startY = height - bar1Height * scaleFactor;
+            startY = ((height - 10f * height / 100) - (bar1Height * scaleFactor));
             endX = startX + columnWidth * scaleFactor;
             endY = getHeight();
 
@@ -159,14 +173,14 @@ public class ScalableBarChartView extends View {
             canvas.drawRect(startX, startY, endX, (float) height * 90 / 100, barPaint1);
             /* String value1 = Integer.toString(dataPoint.getValue1());
             canvas.drawText(value1, startX + (columnWidth / 2) - (textPaint.measureText(value1) / 2), height - bar1Height - 10, textPaint);*/
-
+            startY = ((height - 10f * height / 100) - (bar2Height * scaleFactor));
             // Vẽ cột 2
-            canvas.drawRect(startX + columnWidth * scaleFactor, height - bar2Height * scaleFactor, startX + 2 * columnWidth * scaleFactor, (float) height * 90 / 100, barPaint2);
+            canvas.drawRect(startX + columnWidth * scaleFactor, startY, startX + 2 * columnWidth * scaleFactor, (float) height * 90 / 100, barPaint2);
             /* String value2 = Integer.toString(dataPoint.getValue2());
             canvas.drawText(value2, startX + columnWidth + (columnWidth / 2) - (textPaint.measureText(value2) / 2), height - bar2Height - 10, textPaint);*/
 
             startX += 2 * columnWidth * scaleFactor + 40;
-            canvas.drawText(dataPoint.getName(), startX - columnWidth - 40 - (textPaint.measureText(dataPoint.getName())/2),(float) height * 96 / 100, textPaint);
+            canvas.drawText(dataPoint.getName(), startX - columnWidth * scaleFactor - 40 - (textPaint.measureText(dataPoint.getName())/2),(float) height * 96 / 100, textPaint);
 
             //chia cach cac Object
             canvas.drawLine(startX - 20, (float) (height * 90.0 / 100), startX - 20, (float) height * 92 / 100, textPaint);
@@ -196,6 +210,24 @@ public class ScalableBarChartView extends View {
     public void addBar(Data height) {
         dataPoints.add(height);
         invalidate(); // Yêu cầu vẽ lại Custom View
+    }
+
+    private void drawValue(int width, int height, Canvas canvas) {
+
+        String text = "$";
+        for (int i = 0; i <= 7; i++) {
+                //canvas.rotate(180, (width * 87f / 100) + textPaint.measureText(text + (i * 20) + ",000") / 2, height * (i + 1) * 10f / 100);
+                canvas.drawText(text + (int) ((7-i) * 20 / scaleFactor) + ",000",
+                        width * 3f / 100,
+                             height * (i+2) / 10, textPaint);
+
+                /*canvas.drawLine(width - 150,
+                        height * scaleFactor * 10 / 100  - (height * scaleFactor * 10f / 100 - height * 10f / 100),
+                        200,
+                        height * scaleFactor * 10 / 100 - (height * scaleFactor * 10f / 100 - height * 10f / 100),
+                        textPaint);*/
+
+        }
     }
 }
 

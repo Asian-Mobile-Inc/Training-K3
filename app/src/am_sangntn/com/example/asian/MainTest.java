@@ -17,7 +17,7 @@ public class MainTest extends AppCompatActivity {
 
         barChartView.addBar(new Data("Jan", 50000, 130000));
         barChartView.addBar(new Data("Feb", 100000, 20000));
-        barChartView.addBar(new Data("Mar", 10000, 100000));
+        barChartView.addBar(new Data("Mar", 7000, 100000));
         barChartView.addBar(new Data("Apr", 70000, 10000));
         barChartView.addBar(new Data("May", 40000, 90000));
         barChartView.addBar(new Data("Jun", 25000, 60000));
