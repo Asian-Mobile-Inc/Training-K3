@@ -4,5 +4,7 @@
     <color name="green">#008000</color>
     <color name="purpe">#800080</color>
     <color name="black">#000000</color>
+    <color name="darkBlue">#1F7CC6</color>
+    <color name="darkRed">#9B0B0B</color>
 </resources>
 

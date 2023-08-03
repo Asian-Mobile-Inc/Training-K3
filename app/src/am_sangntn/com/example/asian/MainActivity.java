@@ -16,10 +16,13 @@ public class MainActivity extends AppCompatActivity {
 
         MyChartView myChartView = findViewById(R.id.myChartView);
         List<Data> dataPoints = new ArrayList<>();
-        dataPoints.add(new Data(50, 30));
-        dataPoints.add(new Data(30, 100));
-        dataPoints.add(new Data(70, 10));
-// Thêm dữ liệu của các cột cần vẽ biểu đồ vào dataPoints
+        dataPoints.add(new Data("Jan", 50000, 130000));
+        dataPoints.add(new Data("Feb", 100000, 20000));
+        dataPoints.add(new Data("Mar", 10000, 100000));
+        dataPoints.add(new Data("Apr", 70000, 10000));
+        dataPoints.add(new Data("May", 40000, 90000));
+        dataPoints.add(new Data("Jun", 25000, 60000));
+
         myChartView.setData(dataPoints);
     }
 }
