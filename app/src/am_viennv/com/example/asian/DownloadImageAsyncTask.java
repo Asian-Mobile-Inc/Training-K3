@@ -104,5 +104,4 @@ class DownloadImageAsyncTask extends AsyncTask<String, Integer, Bitmap> {
             mImageView.setImageBitmap(result);
         }
     }
-
 }

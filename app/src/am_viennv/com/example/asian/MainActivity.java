@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initVariable() {
-        mButtonThread = findViewById(R.id.btn_thread);
-        mButtonAsysn = findViewById(R.id.btn_asysn);
-        mImageView = findViewById(R.id.iv_image);
+        mButtonThread = findViewById(R.id.btnThread);
+        mButtonAsysn = findViewById(R.id.btnAsysn);
+        mImageView = findViewById(R.id.ivShowImage);
         mProgressBar = findViewById(R.id.progressBar);
     }
 
@@ -85,5 +85,4 @@ public class MainActivity extends AppCompatActivity {
             downloadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, urlImage);
         }
     }
-
 }

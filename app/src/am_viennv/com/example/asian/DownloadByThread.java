@@ -69,8 +69,5 @@ public class DownloadByThread extends Thread {
             e.printStackTrace();
             Utils.showToast("Download Image Fail !", mContext);
         }
-
     }
-
 }
-
