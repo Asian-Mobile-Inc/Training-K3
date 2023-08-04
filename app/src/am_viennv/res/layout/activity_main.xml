@@ -17,7 +17,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edt_user_name"
+        android:id="@+id/edtUserName"
         android:layout_width="400sp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -29,7 +29,7 @@
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/edt_id"
+        android:id="@+id/edtId"
         android:layout_width="400sp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -48,7 +48,7 @@
         android:paddingHorizontal="10sp">
 
         <Button
-            android:id="@+id/btn_add"
+            android:id="@+id/btnAdd"
             style="?android:attr/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             android:text="@string/name_btn_add" />
 
         <Button
-            android:id="@+id/btn_delete_all"
+            android:id="@+id/btnDeleteAll"
             style="?android:attr/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:text="@string/name_btn_delete_all" />
 
         <Button
-            android:id="@+id/btn_show_all"
+            android:id="@+id/btnShowAll"
             style="?android:attr/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
     </LinearLayout>
 
     <TableLayout
-        android:id="@+id/tbl_info_users"
+        android:id="@+id/tblInfoUsers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -85,7 +85,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/tv_user_id_col"
+                android:id="@+id/tvUserIdCol"
                 android:layout_width="130sp"
                 android:layout_column="1"
                 android:background="@drawable/cell_shape"
@@ -96,7 +96,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_user_name_col"
+                android:id="@+id/tvUserNameCol"
                 android:layout_width="130sp"
                 android:layout_column="1"
                 android:background="@drawable/cell_shape"
@@ -108,7 +108,7 @@
                 tools:ignore="TextSizeCheck" />
 
             <TextView
-                android:id="@+id/tv_user_age_col"
+                android:id="@+id/tvUserAgeCol"
                 android:layout_width="130sp"
                 android:layout_column="1"
                 android:background="@drawable/cell_shape"
@@ -120,9 +120,8 @@
         </TableRow>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv_users"
+            android:id="@+id/rcvUsers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </TableLayout>
-
 </LinearLayout>

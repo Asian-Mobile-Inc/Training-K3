@@ -116,12 +116,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mTextViewUserId = itemView.findViewById(R.id.tv_user_id);
-            mTextViewUserName = itemView.findViewById(R.id.tv_user_name);
-            mTextViewUserAge = itemView.findViewById(R.id.tv_user_age);
-            mButtonDelete = itemView.findViewById(R.id.btn_delete);
+            mTextViewUserId = itemView.findViewById(R.id.tvUserId);
+            mTextViewUserName = itemView.findViewById(R.id.tvUserName);
+            mTextViewUserAge = itemView.findViewById(R.id.tvUserAge);
+            mButtonDelete = itemView.findViewById(R.id.btnDelete);
         }
-
     }
-
 }

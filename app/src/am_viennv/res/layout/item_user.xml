@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tbl_info_user"
+    android:id="@+id/tblInfoUser"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -10,7 +10,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/tv_user_id"
+            android:id="@+id/tvUserId"
             android:layout_width="130sp"
             android:layout_column="1"
             android:background="@drawable/cell_shape"
@@ -22,7 +22,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_user_name"
+            android:id="@+id/tvUserName"
             android:layout_width="130sp"
             android:layout_column="1"
             android:background="@drawable/cell_shape"
@@ -34,7 +34,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_user_age"
+            android:id="@+id/tvUserAge"
             android:layout_width="130sp"
             android:layout_column="1"
             android:background="@drawable/cell_shape"
@@ -47,7 +47,7 @@
     </TableRow>
 
     <Button
-        android:id="@+id/btn_delete"
+        android:id="@+id/btnDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
@@ -57,5 +57,4 @@
         android:textColor="@color/colorBlack"
         android:textSize="24sp"
         android:textStyle="bold" />
-
 </TableLayout>

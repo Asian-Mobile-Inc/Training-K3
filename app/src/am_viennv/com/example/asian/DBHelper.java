@@ -48,5 +48,4 @@ public class DBHelper extends SQLiteOpenHelper {
         db.delete("UsersInfo", "idUser = ?", new String[]{String.valueOf(idUser)});
         db.close();
     }
-
 }

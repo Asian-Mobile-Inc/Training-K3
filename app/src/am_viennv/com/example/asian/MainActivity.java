@@ -37,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mButtonAdd = findViewById(R.id.btn_add);
-        mButtonDeleteAll = findViewById(R.id.btn_delete_all);
-        mButtonShowAll = findViewById(R.id.btn_show_all);
-        mEditTextId = findViewById(R.id.edt_id);
-        mEditTextUserName = findViewById(R.id.edt_user_name);
+        mButtonAdd = findViewById(R.id.btnAdd);
+        mButtonDeleteAll = findViewById(R.id.btnDeleteAll);
+        mButtonShowAll = findViewById(R.id.btnShowAll);
+        mEditTextId = findViewById(R.id.edtId);
+        mEditTextUserName = findViewById(R.id.edtUserName);
     }
 
     private void handleClick() {
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         mDbHelper = new DBHelper(this);
-        RecyclerView mRecyclerViewUsers = findViewById(R.id.rcv_users);
+        RecyclerView mRecyclerViewUsers = findViewById(R.id.rcvUsers);
         mRecyclerViewUsers.setLayoutManager(new LinearLayoutManager(this));
         mUserAdapter = new UserAdapter(this, getList());
         mRecyclerViewUsers.setAdapter(mUserAdapter);
@@ -121,5 +121,4 @@ public class MainActivity extends AppCompatActivity {
         mEditTextUserName.setText("");
         mEditTextId.setText("");
     }
-
 }
