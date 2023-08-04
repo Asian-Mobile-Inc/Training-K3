@@ -20,10 +20,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     Context mContext;
     List<User> mUserList;
-    private final IClickItemUser iClickItemUser;
+    private final IClickItemUser mIClickItemUser;
 
     public UserAdapter(IClickItemUser iClickItemUser) {
-        this.iClickItemUser = iClickItemUser;
+        this.mIClickItemUser = iClickItemUser;
     }
 
     public interface IClickItemUser {
@@ -52,7 +52,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             holder.mTextViewUserName.setText(user.getMUserName());
             holder.mTextViewUserAge.setText(String.format(Locale.getDefault(), "%d", user.getMAge()));
 
-            holder.mButtonDelete.setOnClickListener(view -> iClickItemUser.deleteUser(user));
+            holder.mButtonDelete.setOnClickListener(view -> mIClickItemUser.deleteUser(user));
         }
     }
 
