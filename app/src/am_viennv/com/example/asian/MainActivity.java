@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         newListData.add(new SellExpense(5, 105000, 42000));
         newListData.add(new SellExpense(6, 130000, 80000));
         newListData.add(new SellExpense(7, 170000, 120000));
-        newListData.add(new SellExpense(8, 170000, 110000));
+        newListData.add(new SellExpense(8, 200000, 110000));
         return newListData;
     }
 }

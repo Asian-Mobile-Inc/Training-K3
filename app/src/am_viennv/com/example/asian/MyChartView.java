@@ -29,7 +29,7 @@ public class MyChartView extends View {
     private Paint mPaintSite;
     private Paint mPaint;
     private float mLastTouchY;
-    private float mOffsetY = 0;
+    private float mOffsetY = -50;
     private float mLastTouchX;
     private float mOffsetX = 0;
 
@@ -97,10 +97,10 @@ public class MyChartView extends View {
                 if (mData.size() > 6) {
                     float deltaX = event.getX() - mLastTouchX;
                     mLastTouchX = event.getX();
-                    mOffsetX += deltaX;
+                    mOffsetX += deltaX * 1.2f;
                     invalidate();
                 }
-                if (pointerCount == 2 && mScaleFactor >= 1f) {
+                if (pointerCount == 2) {
                     float newDistance = getDistance(event);
                     float scale = newDistance / mInitialDistance;
                     mScaleFactor *= scale;
@@ -112,7 +112,6 @@ public class MyChartView extends View {
                 mLastTouchX = 0;
                 mLastTouchY = 0;
                 break;
-
         }
         return true;
     }
@@ -137,8 +136,8 @@ public class MyChartView extends View {
         canvas.translate(0, mOffsetY);
         mPaint.setColor(BLACK);
         float height = getHeight();
-        int countLine = 9;
-        float maxValue = getMaxValue() + 10000;
+        int countLine = 10;
+        float maxValue = getMaxValue();
 
         mExpensesPaint.setColor(mExpensesColor);
         mSalesPaint.setColor(mSalesColor);
@@ -147,13 +146,9 @@ public class MyChartView extends View {
         canvas.save();
         if (mScaleFactor < 1) mScaleFactor = 1;
         if (mScaleFactor == 1) {
-            mOffsetY = 0;
+            mOffsetY = -50;
         }
-        if (mScaleFactor < 2) {
-            canvas.scale(1.0f, mScaleFactor, getWidth() / 2f, getHeight() / 2f);
-        } else {
-            mScaleFactor = 2;
-        }
+        canvas.scale(1.0f, mScaleFactor, getWidth() / 2f, getHeight() / 2f);
         drawGrid(canvas, height, countLine);
         if (mData.size() > 6) {
             if (mOffsetX >= 0) {
@@ -164,63 +159,58 @@ public class MyChartView extends View {
                 }
             }
         }
-        float scale = calculateScale(height, maxValue, countLine);
-        drawChartValue(height, countLine, maxValue, canvas, scale);
-        canvas.drawRect(2f, 4, 140, (height - 4) * mScaleFactor, mPaintSite);
+        float scale = calculateScale(height, maxValue);
+        drawChartValue(height, maxValue, canvas, scale);
+        canvas.drawRect(2f, 0, 140, (height + 50) * mScaleFactor, mPaintSite);
         drawTextLabelValue(countLine, maxValue, height, canvas);
         canvas.restore();
     }
 
-    private float calculateScale(float height, float maxValue, int countLine) {
-        return (height - height / countLine) / maxValue;
+    private float calculateScale(float height, float maxValue) {
+        return height / maxValue;
     }
 
     private void drawGrid(Canvas canvas, float height, int countLine) {
         float withPadding = 140;
-        canvas.drawLine(withPadding + 20, height + 20 - height / countLine, withPadding + 20, height / (countLine * (int) mScaleFactor), mPaint);
-        for (int i = 1; i < countLine * ((int) mScaleFactor); i++) {
-            if (mScaleFactor == 2) {
-                if (i != countLine * ((int) mScaleFactor) - 1) {
-                    canvas.drawLine(withPadding, i * height / (countLine * (int) mScaleFactor), (180 * mData.size()) * ((int) mScaleFactor), i * height / (countLine * (int) mScaleFactor), mPaint);
-                }
-            } else {
-                canvas.drawLine(withPadding, i * height / (countLine * (int) mScaleFactor), (180 * mData.size()) * ((int) mScaleFactor), i * height / (countLine * (int) mScaleFactor), mPaint);
-            }
+        canvas.drawLine(withPadding + 20, height + 20, withPadding + 20, height / (countLine * (int) mScaleFactor), mPaint);
+        if (mScaleFactor > 4f) {
+            mScaleFactor = 5f;
+        }
+        for (int i = 1; i <= countLine * ((int) mScaleFactor); i++) {
+            canvas.drawLine(withPadding, i * height / (countLine * (int) mScaleFactor), (180 * mData.size()) * ((int) mScaleFactor), i * height / (countLine * (int) mScaleFactor), mPaint);
         }
     }
 
-    private void drawChartValue(float height, int countLine, float maxValue, Canvas canvas, float scale) {
+    private void drawChartValue(float height, float maxValue, Canvas canvas, float scale) {
         float withCol = 50;
         float initValueSales = 180 + mOffsetX;
         float initValueEx = initValueSales + withCol;
         float spaceBetween = 50;
+        if (mScaleFactor >= 4f) {
+            mPaint.setTextSize(16);
+        }
         List<String> lstLabelMonth = getLstLabel();
         for (int i = 0; i < mData.size(); i++) {
             float leftSales = initValueSales + withCol * i;
-            canvas.drawRect(leftSales, (maxValue - mData.get(i).getmSales()) * scale / mScaleFactor,
-                    leftSales + withCol, height - height / countLine, mSalesPaint);
+            canvas.drawRect(leftSales, (maxValue - mData.get(i).getmSales()) * scale / mScaleFactor, leftSales + withCol, height, mSalesPaint);
             initValueSales += spaceBetween + withCol;
 
-            canvas.drawText(lstLabelMonth.get(i), (leftSales + withCol / 2), height + spaceBetween - height / countLine, mPaint);
+            canvas.drawText(lstLabelMonth.get(i), (leftSales + withCol / 2), height + spaceBetween, mPaint);
             float leftEx = initValueEx + withCol * i;
-            canvas.drawRect(leftEx, (maxValue - mData.get(i).getmExpenses()) * scale / mScaleFactor,
-                    leftEx + withCol, height - height / countLine, mExpensesPaint);
+            canvas.drawRect(leftEx, (maxValue - mData.get(i).getmExpenses()) * scale / mScaleFactor, leftEx + withCol, height, mExpensesPaint);
             initValueEx += spaceBetween + withCol;
         }
     }
 
     private void drawTextLabelValue(int countLine, float maxValue, float height, Canvas canvas) {
-        for (int i = 1; i < countLine * ((int) mScaleFactor); i++) {
-            float value = (maxValue - i * maxValue / ((countLine - 1) * ((int) mScaleFactor)));
+        if (mScaleFactor == 4f) {
+            mPaint.setTextSize(16);
+        }
+        for (int i = 1; i <= countLine * ((int) mScaleFactor); i++) {
+            float value = (maxValue - i * maxValue / ((countLine) * ((int) mScaleFactor)));
             String formattedValue = formatString(value);
             float y = i * height / (countLine * ((int) mScaleFactor));
-            if (mScaleFactor == 2) {
-                if (i != countLine * ((int) mScaleFactor) - 1) {
-                    canvas.drawText(formattedValue, 30, y, mPaint);
-                }
-            } else {
-                canvas.drawText(formattedValue, 30, y, mPaint);
-            }
+            canvas.drawText(formattedValue, 30, y, mPaint);
         }
     }
 
@@ -229,6 +219,9 @@ public class MyChartView extends View {
     }
 
     private List<String> getLstLabel() {
+        if (mScaleFactor == 4f) {
+            mPaint.setTextSize(16);
+        }
         List<String> labels = new ArrayList<>();
         for (SellExpense sellExpense : mData) {
             int monthNumber = sellExpense.getmMonth();
