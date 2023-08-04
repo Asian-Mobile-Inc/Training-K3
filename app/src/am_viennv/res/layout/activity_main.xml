@@ -7,7 +7,7 @@
     android:padding="20sp">
 
     <TextView
-        android:id="@+id/tv_label_latitude"
+        android:id="@+id/tvLabelLatitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_latitude"
+        android:id="@+id/tvLatitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -26,10 +26,10 @@
         android:minHeight="48sp"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_latitude" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelLatitude" />
 
     <TextView
-        android:id="@+id/tv_label_longtitude"
+        android:id="@+id/tvLabelLongtitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -37,10 +37,10 @@
         android:textColor="@color/colorDarkGrey"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_latitude" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLatitude" />
 
     <TextView
-        android:id="@+id/tv_longtitude"
+        android:id="@+id/tvLongtitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -48,10 +48,10 @@
         android:minHeight="48sp"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_longtitude" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelLongtitude" />
 
     <Button
-        android:id="@+id/btn_get_location"
+        android:id="@+id/btnGetLocation"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30sp"
@@ -64,7 +64,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tv_connected"
+        android:id="@+id/tvConnected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorDarkAccent"
@@ -75,5 +75,4 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

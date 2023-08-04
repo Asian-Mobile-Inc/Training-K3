@@ -23,8 +23,4 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
         }
         return false;
     }
-
 }
-
-
-

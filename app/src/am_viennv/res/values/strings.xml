@@ -4,5 +4,4 @@
     <string name="latitude" translatable="false">Latitude</string>
     <string name="longitude" translatable="false">Longitude</string>
     <string name="name_button" translatable="false">Get Location</string>
-
 </resources>

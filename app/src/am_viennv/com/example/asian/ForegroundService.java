@@ -33,7 +33,6 @@ import com.google.android.gms.location.Priority;
 import java.util.Objects;
 
 public class ForegroundService extends Service {
-
     private final IBinder mBinder = new MyBinder();
     private static final String CHANNEL_ID = "2";
     private FusedLocationProviderClient mClient;
@@ -119,7 +118,7 @@ public class ForegroundService extends Service {
     }
 
     private void requestLocationUpdates() {
-        LocationRequest request = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 20000)
+        LocationRequest request = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 2000)
                 .setWaitForAccurateLocation(false)
                 .build();
 
@@ -136,10 +135,9 @@ public class ForegroundService extends Service {
                         Log.d("Location", location);
                     }
                 };
-                // Request location updates and when an update is received, store the location in Firebase
                 mClient.requestLocationUpdates(request, mLocationCallback, null);
             } else {
-                stopLocationUpdates(); // Stop location updates if the network is not connected
+                stopLocationUpdates();
             }
         } else {
             stopSelf();
@@ -156,7 +154,4 @@ public class ForegroundService extends Service {
 
     public static class MyBinder extends Binder {
     }
-
 }
-
-

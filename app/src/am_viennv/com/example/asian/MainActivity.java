@@ -82,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mTextViewLatitude = findViewById(R.id.tv_latitude);
-        mTextViewLongTitude = findViewById(R.id.tv_longtitude);
-        mButtonGetLocate = findViewById(R.id.btn_get_location);
-        mTextViewConnected = findViewById(R.id.tv_connected);
+        mTextViewLatitude = findViewById(R.id.tvLatitude);
+        mTextViewLongTitude = findViewById(R.id.tvLongtitude);
+        mButtonGetLocate = findViewById(R.id.btnGetLocation);
+        mTextViewConnected = findViewById(R.id.tvConnected);
     }
 
     private void requestAppPermissions() {
@@ -138,5 +138,4 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_FINE_LOCATION
         }, 10);
     }
-
 }
