@@ -118,7 +118,7 @@ public class ForegroundService extends Service {
     }
 
     private void requestLocationUpdates() {
-        LocationRequest request = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 2000)
+        LocationRequest request = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 20000)
                 .setWaitForAccurateLocation(false)
                 .build();
 
