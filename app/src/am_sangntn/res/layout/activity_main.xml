@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20sp"
-        android:hint="@string/enter_url"
-        android:autofillHints="" />
+        android:autofillHints=""
+        android:hint="@string/enter_url" />
 
     <Button
         android:id="@+id/btnDownload"

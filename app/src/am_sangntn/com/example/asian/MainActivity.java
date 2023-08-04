@@ -1,5 +1,6 @@
 package com.example.asian;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 mDisposable = d;
             }
 
+            @SuppressLint({"SetTextI18n", "DefaultLocale"})
             @Override
             public void onNext(@NonNull Object data) {
                 if (data instanceof Integer) {
@@ -113,12 +115,11 @@ public class MainActivity extends AppCompatActivity {
                     tvSuccess.setText("Downloading ... " + progress + "%");
 
 
-                } else if (data instanceof  Bitmap) {
+                } else if (data instanceof Bitmap) {
                     mImageView.setImageBitmap((Bitmap) data);
-                  //  mProgressBar.setProgress(100);
                     tvSuccess.setText("Downloaded");
                 } else if (data instanceof Float) {
-                    tvSpeed.setText("Speed: " + String.format("%.2f MB/s",(float) data / 1024 / 1024));
+                    tvSpeed.setText("Speed: " + String.format("%.2f MB/s", (float) data / 1024 / 1024));
                 }
             }
 
