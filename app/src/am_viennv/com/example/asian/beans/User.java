@@ -1,23 +1,37 @@
 package com.example.asian.beans;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "user")
 public class User {
-    private final Integer mIdUser;
+    @PrimaryKey()
+    private int mIdUser;
+
+    @ColumnInfo(name = "user_name")
     private final String mUserName;
+
+    @ColumnInfo(name = "age")
     private final Integer mAge;
 
-    public Integer getmIdUser() {
+    public void setMIdUser(int mIdUser) {
+        this.mIdUser = mIdUser;
+    }
+
+    public int getMIdUser() {
         return mIdUser;
     }
 
-    public String getmUserName() {
+    public String getMUserName() {
         return mUserName;
     }
 
-    public Integer getmAge() {
+    public Integer getMAge() {
         return mAge;
     }
 
-    public User(Integer mIdUser, String mUserName, Integer mAge) {
+    public User(int mIdUser, String mUserName, Integer mAge) {
         this.mIdUser = mIdUser;
         this.mUserName = mUserName;
         this.mAge = mAge;

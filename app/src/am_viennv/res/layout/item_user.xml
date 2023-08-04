@@ -1,55 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tbl_info_user"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llInfoUser"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <TableRow
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_user_id"
-            android:layout_width="130sp"
-            android:layout_column="1"
-            android:background="@drawable/cell_shape"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:minHeight="36sp"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            tools:ignore="UselessParent">
 
-        <TextView
-            android:id="@+id/tv_user_name"
-            android:layout_width="130sp"
-            android:layout_column="1"
-            android:background="@drawable/cell_shape"
-            android:gravity="center"
-            android:minHeight="36sp"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvUserId"
+                android:layout_width="130sp"
+                android:layout_column="1"
+                android:background="@drawable/cell_shape"
+                android:gravity="center"
+                android:minHeight="36sp"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_user_age"
-            android:layout_width="130sp"
-            android:layout_column="1"
-            android:background="@drawable/cell_shape"
-            android:gravity="center"
-            android:minHeight="36sp"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </TableRow>
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="130sp"
+                android:layout_column="1"
+                android:background="@drawable/cell_shape"
+                android:gravity="center"
+                android:minHeight="36sp"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvUserAge"
+                android:layout_width="130sp"
+                android:layout_column="1"
+                android:background="@drawable/cell_shape"
+                android:gravity="center"
+                android:minHeight="36sp"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
 
     <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="match_parent"
+        android:id="@+id/btnDelete"
+        android:layout_width="320sp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="10sp"
         android:background="@color/colorLightGrey"
         android:minHeight="48sp"
@@ -57,5 +66,4 @@
         android:textColor="@color/colorBlack"
         android:textSize="24sp"
         android:textStyle="bold" />
-
-</TableLayout>
+</LinearLayout>

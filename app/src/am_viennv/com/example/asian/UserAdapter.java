@@ -2,7 +2,6 @@ package com.example.asian;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.asian.beans.User;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,12 +20,21 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     Context mContext;
     List<User> mUserList;
-    List<User> mUserListCopy;
+    private final IClickItemUser iClickItemUser;
 
-    public UserAdapter(Context context, List<User> userList) {
-        mContext = context;
-        mUserList = userList;
-        mUserListCopy = userList;
+    public UserAdapter(IClickItemUser iClickItemUser) {
+        this.iClickItemUser = iClickItemUser;
+    }
+
+    public interface IClickItemUser {
+        void deleteUser(User user);
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setData(Context context, List<User> userList) {
+        this.mContext = context;
+        this.mUserList = userList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -43,65 +48,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (mUserList != null && mUserList.size() != 0) {
             User user = mUserList.get(position);
-            holder.mTextViewUserId.setText(String.format(Locale.getDefault(), "%d", user.getmIdUser()));
-            holder.mTextViewUserName.setText(user.getmUserName());
-            holder.mTextViewUserAge.setText(String.format(Locale.getDefault(), "%d", user.getmAge()));
+            holder.mTextViewUserId.setText(String.format(Locale.getDefault(), "%d", user.getMIdUser()));
+            holder.mTextViewUserName.setText(user.getMUserName());
+            holder.mTextViewUserAge.setText(String.format(Locale.getDefault(), "%d", user.getMAge()));
 
-            holder.mButtonDelete.setOnClickListener(view -> {
-                try (DBHelper DB = new DBHelper(mContext)) {
-                    DB.deleteOneUser(user.getmIdUser());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                mUserList.remove(position);
-                mUserListCopy.remove(position);
-                notifyItemRemoved(position);
-            });
+            holder.mButtonDelete.setOnClickListener(view -> iClickItemUser.deleteUser(user));
         }
-    }
-
-    public void addUser(User user) {
-        mUserList.add(user);
-        notifyItemInserted(mUserList.size());
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    public void searchUserByName(String name) {
-        mUserList = new ArrayList<>(mUserListCopy);
-        List<User> newUsersList = new ArrayList<>();
-        if (name.equals("")) {
-            mUserList = ((MainActivity) mContext).getList();
-            notifyDataSetChanged();
-            return;
-        }
-        for (User user : mUserList) {
-            if (user.getmUserName().toLowerCase().contains(name.toLowerCase())) {
-                newUsersList.add(user);
-            }
-        }
-        mUserList.clear();
-        mUserList = newUsersList;
-        notifyDataSetChanged();
-    }
-
-    public void deleteAll() {
-        int itemCount = mUserList.size();
-        mUserList.clear();
-        notifyItemRangeRemoved(0, itemCount);
-    }
-
-    public Integer findIdNewUser() {
-        int newId = 0;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Collections.sort(mUserList, Comparator.comparingInt(User::getmIdUser));
-        }
-        for (int i = 0; i < mUserList.size(); i++) {
-            if (newId != mUserList.get(i).getmIdUser()) {
-                return newId;
-            }
-            newId++;
-        }
-        return newId;
     }
 
     @Override
@@ -116,12 +68,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mTextViewUserId = itemView.findViewById(R.id.tv_user_id);
-            mTextViewUserName = itemView.findViewById(R.id.tv_user_name);
-            mTextViewUserAge = itemView.findViewById(R.id.tv_user_age);
-            mButtonDelete = itemView.findViewById(R.id.btn_delete);
+            mTextViewUserId = itemView.findViewById(R.id.tvUserId);
+            mTextViewUserName = itemView.findViewById(R.id.tvUserName);
+            mTextViewUserAge = itemView.findViewById(R.id.tvUserAge);
+            mButtonDelete = itemView.findViewById(R.id.btnDelete);
         }
-
     }
-
 }

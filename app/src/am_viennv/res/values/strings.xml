@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name" translatable="false">SQLITE and DATABASE</string>
     <string name="title_app">SQLITE TUTORIAL-USER MANAGERMENT</string>
     <string name="hint_text_name">Enter Name</string>
@@ -11,5 +10,4 @@
     <string name="name_col_id">User ID</string>
     <string name="name_col_user_name">User Name</string>
     <string name="name_col_age">User Age</string>
-
 </resources>

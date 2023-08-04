@@ -2,7 +2,7 @@ package com.example.asian;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.asian.beans.User;
+import com.example.asian.database.UserDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonShowAll;
     private EditText mEditTextUserName;
     private EditText mEditTextId;
-    private DBHelper mDbHelper;
+    private List<User> mListUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +40,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mButtonAdd = findViewById(R.id.btn_add);
-        mButtonDeleteAll = findViewById(R.id.btn_delete_all);
-        mButtonShowAll = findViewById(R.id.btn_show_all);
-        mEditTextId = findViewById(R.id.edt_id);
-        mEditTextUserName = findViewById(R.id.edt_user_name);
+        mButtonAdd = findViewById(R.id.btnAdd);
+        mButtonDeleteAll = findViewById(R.id.btnDeleteAll);
+        mButtonShowAll = findViewById(R.id.btnShowAll);
+        mEditTextId = findViewById(R.id.edtId);
+        mEditTextUserName = findViewById(R.id.edtUserName);
+        mListUser = new ArrayList<>();
     }
 
     private void handleClick() {
@@ -49,17 +53,12 @@ public class MainActivity extends AppCompatActivity {
             String nameUser = mEditTextUserName.getText().toString();
             String ageAsStr = mEditTextId.getText().toString();
             if (!nameUser.equals("") && !ageAsStr.equals("")) {
-                Integer newId = mUserAdapter.findIdNewUser();
                 Integer age = Integer.parseInt(ageAsStr);
-                Boolean checkInsertData = mDbHelper.insertUserData(newId, nameUser, age);
-                User user = new User(newId, nameUser, age);
-                if (checkInsertData) {
-                    Toast.makeText(this, "New User Inserted !", Toast.LENGTH_SHORT).show();
-                    mUserAdapter.addUser(user);
-                    clearAllEditText();
-                } else {
-                    Toast.makeText(this, "New User Not Inserted !", Toast.LENGTH_SHORT).show();
-                }
+                User user = new User(createNewUser(), nameUser, age);
+                Toast.makeText(this, "New User Inserted !", Toast.LENGTH_SHORT).show();
+                UserDatabase.getInstance(this).userDAO().insertUser(user);
+                loadData();
+                clearAllEditText();
             } else {
                 Toast.makeText(this, "Please Enter Infomation !", Toast.LENGTH_SHORT).show();
             }
@@ -67,22 +66,28 @@ public class MainActivity extends AppCompatActivity {
         mButtonDeleteAll.setOnClickListener(view -> showDialog());
         mButtonShowAll.setOnClickListener(view -> {
             String nameUser = mEditTextUserName.getText().toString();
-            mUserAdapter.searchUserByName(nameUser);
+            if (nameUser.equals("")) {
+                loadData();
+            } else {
+                List<User> usersIsFound = UserDatabase.getInstance(this).userDAO().findUserByName(nameUser);
+                mUserAdapter.setData(this, usersIsFound);
+            }
         });
 
+    }
+
+    private void clearAllEditText() {
+        mEditTextId.setText("");
+        mEditTextUserName.setText("");
     }
 
     private void showDialog() {
         DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
             switch (which) {
                 case DialogInterface.BUTTON_POSITIVE:
-                    mUserAdapter.deleteAll();
-                    int rowsDeleted = mDbHelper.deleteAll();
-                    if (rowsDeleted > 0) {
-                        Toast.makeText(MainActivity.this, "Delete Success !", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MainActivity.this, "No User Exists !", Toast.LENGTH_SHORT).show();
-                    }
+                    UserDatabase.getInstance(this).userDAO().deleteAll();
+                    loadData();
+                    Toast.makeText(MainActivity.this, "Delete Success !", Toast.LENGTH_SHORT).show();
                     break;
 
                 case DialogInterface.BUTTON_NEGATIVE:
@@ -97,29 +102,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
-        mDbHelper = new DBHelper(this);
-        RecyclerView mRecyclerViewUsers = findViewById(R.id.rcv_users);
+        RecyclerView mRecyclerViewUsers = findViewById(R.id.rcvUsers);
         mRecyclerViewUsers.setLayoutManager(new LinearLayoutManager(this));
-        mUserAdapter = new UserAdapter(this, getList());
+        mUserAdapter = new UserAdapter(this::clickDeleteUser);
+        loadData();
         mRecyclerViewUsers.setAdapter(mUserAdapter);
     }
 
-    public List<User> getList() {
-        List<User> lstUsers = new ArrayList<>();
-        Cursor cursor = mDbHelper.getAllData();
-        if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No User Exists !", Toast.LENGTH_SHORT).show();
-        } else {
-            while (cursor.moveToNext()) {
-                lstUsers.add(new User(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2))));
-            }
+    private void clickDeleteUser(User user) {
+        UserDatabase.getInstance(this).userDAO().delete(user);
+        loadData();
+    }
+
+    private void loadData() {
+        mListUser = UserDatabase.getInstance(this).userDAO().getAll();
+        mUserAdapter.setData(this, mListUser);
+    }
+
+    public Integer createNewUser() {
+        int newId = 0;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Collections.sort(mListUser, Comparator.comparingInt(User::getMIdUser));
         }
-        return lstUsers;
+        for (int i = 0; i < mListUser.size(); i++) {
+            if (newId != mListUser.get(i).getMIdUser()) {
+                return newId;
+            }
+            newId++;
+        }
+        return newId;
     }
-
-    private void clearAllEditText() {
-        mEditTextUserName.setText("");
-        mEditTextId.setText("");
-    }
-
 }
