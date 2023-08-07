@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Asian-Training</string>
+    <string name="btn_delete">DELETE</string>
+    <string name="title">ROOM DATABASE TUTORIAL-USER MANAGEMENT</string>
+    <string name="edtUserName">Enter User Name</string>
+    <string name="edtUserAge">Enter User Age</string>
+    <string name="btnAdd">ADD</string>
+    <string name="btnDeleteAll">DELETE ALL</string>
+    <string name="btnShowAll">SHOW ALL</string>
+    <string name="title_user_id">USER ID</string>
+    <string name="title_user_name">USER NAME</string>
+    <string name="title_user_age">USER AGE</string>
 </resources>
