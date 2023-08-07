@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         mBtnShowAll.setOnClickListener(view -> {
             try {
-              //  mUserAdapter.setData(UserDatabase.getInstance(this).userDao().getListUser());
+                mUserAdapter.setData(UserDatabase.getInstance(this).userDao().getListUser());
             } catch (Exception e) {
                 Log.d("ddd", e.toString());
             }
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     int age = Integer.parseInt(mEdtAge.getText().toString());
                     String name = mEdtName.getText().toString();
-                   // UserDatabase.getInstance(this).userDao().insertUser(new User(name, age));
+                    UserDatabase.getInstance(this).userDao().insertUser(new User(name, age));
                     showToast("Add User successfully !");
                 } catch (Exception e) {
                     Log.d("ddd", e.toString());
