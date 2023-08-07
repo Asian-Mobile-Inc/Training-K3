@@ -15,11 +15,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private EditText mEdtName, mEdtAge;
-    private Button mBtnShowAll, mBtnDeleteAll, mBtnAdd;
 
     private List<User> mListUser;
-
-    private RecyclerView mRcvUser;
 
     private UserAdapter mUserAdapter;
 
@@ -30,27 +27,24 @@ public class MainActivity extends AppCompatActivity {
 
         mEdtAge = findViewById(R.id.edtUserAge);
         mEdtName = findViewById(R.id.edtUserName);
-        mBtnAdd = findViewById(R.id.btnAdd);
-        mBtnDeleteAll = findViewById(R.id.btnDeleteAll);
-        mBtnShowAll = findViewById(R.id.btnShowAll);
-        mRcvUser = findViewById(R.id.rcvListUsers);
+        Button btnAdd = findViewById(R.id.btnAdd);
+        Button btnDeleteAll = findViewById(R.id.btnDeleteAll);
+        Button btnShowAll = findViewById(R.id.btnShowAll);
+        RecyclerView rcvUser = findViewById(R.id.rcvListUsers);
 
         mUserAdapter = new UserAdapter();
         mUserAdapter.setData(mListUser);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        mRcvUser.setLayoutManager(linearLayoutManager);
-        mRcvUser.setAdapter(mUserAdapter);
+        rcvUser.setLayoutManager(linearLayoutManager);
+        rcvUser.setAdapter(mUserAdapter);
 
-        mBtnShowAll.setOnClickListener(view -> {
-            try {
-                mUserAdapter.setData(UserDatabase.getInstance(this).userDao().getListUser());
-            } catch (Exception e) {
-                Log.d("ddd", e.toString());
-            }
+        btnShowAll.setOnClickListener(view -> {
+            mListUser = UserDatabase.getInstance(this).userDao().getListUser();
+            mUserAdapter.setData(mListUser);
         });
 
-        mBtnAdd.setOnClickListener(view -> {
+        btnAdd.setOnClickListener(view -> {
             if (mEdtName.getText().toString().equals("") || (mEdtAge.getText().toString()).equals("")) {
                 showToast("Name or Age do not Empty !");
             } else {
@@ -63,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("ddd", e.toString());
                 }
             }
+        });
+
+        btnDeleteAll.setOnClickListener(view -> {
+            UserDatabase.getInstance(this).userDao().deleteAll();
+
+            mListUser = UserDatabase.getInstance(this).userDao().getListUser();
+            mUserAdapter.setData(mListUser);
         });
     }
 

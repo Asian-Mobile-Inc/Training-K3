@@ -1,5 +1,7 @@
 package com.example.asian;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +15,10 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
+    private Context mContext;
     private List<User> mListUser;
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setData(List<User> mListUser) {
         this.mListUser = mListUser;
         notifyDataSetChanged();
@@ -24,21 +28,25 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
+        mContext = parent.getContext();
         return new UserViewHolder(view);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = mListUser.get(position);
         if (user == null) {
             return;
         }
-        holder.mTvId.setText(user.getId());
-        holder.mTvAge.setText(user.getAge());
+        holder.mTvId.setText(String.valueOf(user.getId()));
+        holder.mTvAge.setText(String.valueOf(user.getAge()));
         holder.mTvName.setText(user.getName());
 
         holder.mBtnDelete.setOnClickListener(view -> {
-
+            UserDatabase.getInstance(mContext).userDao().deleteUser(user);
+            mListUser.remove(holder.getAdapterPosition());
+            notifyDataSetChanged();
         });
 
     }
@@ -51,10 +59,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         return 0;
     }
 
-    public class UserViewHolder extends RecyclerView.ViewHolder {
+    public static class UserViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mTvName, mTvAge, mTvId;
-        private Button mBtnDelete;
+        private final TextView mTvName, mTvAge, mTvId;
+        private final Button mBtnDelete;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);

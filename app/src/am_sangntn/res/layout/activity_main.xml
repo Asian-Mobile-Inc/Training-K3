@@ -20,9 +20,9 @@
         android:id="@+id/edtUserName"
         android:layout_width="350sp"
         android:layout_height="48sp"
+        android:autofillHints=""
         android:gravity="center"
         android:hint="@string/edtUserName"
-        android:autofillHints=""
         android:inputType="text" />
 
     <EditText
