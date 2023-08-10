@@ -9,17 +9,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private MyChartView mMyChartView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MyChartView myChartView = findViewById(R.id.myChartView);
+        initChartView();
+        setColorColumnValue();
+    }
 
+    private void initChartView() {
+        mMyChartView = findViewById(R.id.myChartView);
         List<SellExpense> data = mockData();
-        myChartView.setData(data);
-        myChartView.setSalesColor(ContextCompat.getColor(this, R.color.colorLightBlue));
-        myChartView.setExpensesColor(ContextCompat.getColor(this, R.color.colorDartRed));
+        mMyChartView.setData(data);
+    }
+
+    private void setColorColumnValue() {
+        mMyChartView.setSalesColor(ContextCompat.getColor(this, R.color.colorLightBlue));
+        mMyChartView.setExpensesColor(ContextCompat.getColor(this, R.color.colorDartRed));
     }
 
     private List<SellExpense> mockData() {

@@ -1,14 +1,13 @@
 package com.example.asian;
 
-import static android.graphics.Color.BLACK;
-import static android.graphics.Color.WHITE;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -16,22 +15,27 @@ import androidx.annotation.Nullable;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class MyChartView extends View {
+
     private List<SellExpense> mData;
+    private float mScale;
     private int mSalesColor;
     private int mExpensesColor;
-    private float mInitialDistance;
-    private float mScaleFactor = 1.0f;
-    private Paint mExpensesPaint;
-    private Paint mSalesPaint;
-    private Paint mPaintSite;
-    private Paint mPaint;
-    private float mLastTouchY;
-    private float mOffsetY = -50;
-    private float mLastTouchX;
+    private final int COUNT = 10;
+    private final int AXIS_X = 170;
+    private float mMaxValue = 0;
+    private final Paint mPaintAxis = new Paint();
     private float mOffsetX = 0;
+    private final float COLUMN_WIDTH = 58;
+    private final float COLUMN_SPACING = 20;
+    private ScaleGestureDetector mScaleDetector;
+    private float mScaleFactor = 1.f;
+    private float mScrollY = 0;
+    private float mLastTouchX;
+    private float mLastTouchY;
+    private float mWidth;
+    private float mHeight;
 
     public MyChartView(Context context) {
         super(context);
@@ -47,11 +51,52 @@ public class MyChartView extends View {
 
     public void setData(List<SellExpense> data) {
         this.mData = data;
-        mExpensesPaint = new Paint();
-        mSalesPaint = new Paint();
-        mPaintSite = new Paint();
-        mPaint = new Paint();
+        mMaxValue = getMaxValue();
+        mScaleDetector = new ScaleGestureDetector(getContext(), new ScaleListener());
         invalidate();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mScaleDetector.onTouchEvent(event);
+        switch (event.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN:
+                mLastTouchX = event.getX();
+                mLastTouchY = event.getY();
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+                if (mData.size() > 6) {
+                    float deltaX = event.getX() - mLastTouchX;
+                    mLastTouchX = event.getX();
+                    mOffsetX += deltaX * 2f;
+                    float maxOffsetX;
+                    if (mScaleFactor <= 1) {
+                        maxOffsetX = -(mData.size() - 6) * (COLUMN_WIDTH * 2 + COLUMN_SPACING * 2);
+                    } else {
+                        maxOffsetX = -(mData.size() - 6) * (COLUMN_WIDTH * 6 + COLUMN_SPACING * 6);
+                    }
+                    mOffsetX = Math.min(0, Math.max(maxOffsetX, mOffsetX));
+                }
+                if (mScaleFactor > 1.0f) {
+                    float deltaY = event.getY() - mLastTouchY;
+                    mLastTouchY = event.getY();
+                    if (mScrollY + deltaY >= 0) {
+                        float maxScrollY = mMaxValue * mScale - 100;
+                        mScrollY = Math.min(maxScrollY, mScrollY + deltaY);
+                    }
+                }
+                invalidate();
+                break;
+            case MotionEvent.ACTION_CANCEL:
+            case MotionEvent.ACTION_UP:
+                mLastTouchX = 0;
+                mLastTouchY = 0;
+                invalidate();
+                break;
+        }
+        return true;
     }
 
     public void setSalesColor(int salesColor) {
@@ -64,56 +109,120 @@ public class MyChartView extends View {
         invalidate();
     }
 
-    private float getDistance(MotionEvent event) {
-        float x = event.getX(0) - event.getX(1);
-        float y = event.getY(0) - event.getY(1);
-        return (float) Math.sqrt(x * x + y * y);
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        mWidth = getWidth();
+        mHeight = getHeight();
+        if (mScaleFactor < 1) {
+            mScrollY = 0;
+        }
+        mScale = (mHeight - 20) / getMaxValue();
+        drawMainAxis(canvas);
+        canvas.save();
+        canvas.scale(1.0f, mScaleFactor, mWidth / 2, mHeight - 20);
+        drawGrid(canvas, mScale, COUNT / mScaleFactor);
+        canvas.restore();
+
+        canvas.save();
+        canvas.scale(1.0f, mScaleFactor, mWidth / 2, mHeight - 20);
+        drawDataColumns(canvas, mScale);
+        canvas.restore();
+
+        drawLabelColumn(canvas);
+
+        drawRectangle(canvas);
+        canvas.save();
+        canvas.scale(1.0f, mScaleFactor, mWidth / 2, mHeight - 20);
+        drawTextValue(canvas, getMaxValue());
+        canvas.restore();
     }
 
-    @SuppressLint("ClickableViewAccessibility")
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        int pointerCount = event.getPointerCount();
+    private void drawLabelColumn(Canvas canvas) {
+        mPaintAxis.setColor(Color.BLACK);
+        int initStartX = AXIS_X + (int) mOffsetX + 20;
+        List<String> lstCalender = getLstLabel();
 
-        switch (event.getActionMasked()) {
-            case MotionEvent.ACTION_DOWN:
-                mLastTouchX = event.getX();
-                mLastTouchY = event.getY();
-                break;
-
-            case MotionEvent.ACTION_POINTER_DOWN:
-                if (pointerCount == 2) {
-                    mInitialDistance = getDistance(event);
-                }
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-                if (pointerCount == 1 && mScaleFactor != 1f) {
-                    float deltaY = event.getY() - mLastTouchY;
-                    mLastTouchY = event.getY();
-                    mOffsetY += deltaY;
-                    invalidate();
-                }
-                if (mData.size() > 6) {
-                    float deltaX = event.getX() - mLastTouchX;
-                    mLastTouchX = event.getX();
-                    mOffsetX += deltaX * 1.2f;
-                    invalidate();
-                }
-                if (pointerCount == 2) {
-                    float newDistance = getDistance(event);
-                    float scale = newDistance / mInitialDistance;
-                    mScaleFactor *= scale;
-                    invalidate();
-                }
-                break;
-
-            case MotionEvent.ACTION_CANCEL:
-                mLastTouchX = 0;
-                mLastTouchY = 0;
-                break;
+        for (int i = 1; i <= lstCalender.size(); i++) {
+            canvas.drawText(lstCalender.get(i - 1), initStartX, mHeight, mPaintAxis);
+            initStartX += COLUMN_WIDTH * 2 + COLUMN_SPACING * 2;
         }
-        return true;
+    }
+
+    private void drawTextValue(Canvas canvas, float maxValue) {
+        canvas.translate(0f, mScrollY);
+        int count;
+        if (mScaleFactor > 1) {
+            count = COUNT * ((int) mScaleFactor);
+        } else {
+            count = COUNT;
+        }
+        mPaintAxis.setTextSize(16);
+        float heightLine = (mMaxValue * mScale) / count;
+        for (int i = 1; i <= count; i++) {
+            float value = (maxValue - i * maxValue / count);
+            float y = i * heightLine;
+            canvas.drawText("$" + value, 30, y, mPaintAxis);
+        }
+    }
+
+    private void drawRectangle(Canvas canvas) {
+        mPaintAxis.setColor(Color.WHITE);
+        canvas.drawRect(4, mHeight, AXIS_X - 40, 0, mPaintAxis);
+        mPaintAxis.setColor(Color.BLACK);
+    }
+
+    private List<String> getLstLabel() {
+        List<String> labels = new ArrayList<>();
+        for (SellExpense sellExpense : mData) {
+            int monthNumber = sellExpense.getmMonth();
+            Month[] months = Month.values();
+            if (monthNumber >= 1 && monthNumber <= months.length) {
+                String monthName = months[monthNumber - 1].name();
+                labels.add(monthName);
+            } else {
+                labels.add("Invalid Month");
+            }
+        }
+        return labels;
+    }
+
+    private void drawGrid(Canvas canvas, float mScale, float count) {
+        canvas.translate(0f, mScrollY);
+        int count_2 = (int) count;
+        float heightLine;
+        if (mScaleFactor > 1) {
+            count_2 = COUNT * (int) mScaleFactor;
+            heightLine = (mMaxValue * mScale) / (count_2);
+        } else {
+            heightLine = (mMaxValue * mScale) / COUNT;
+        }
+        mPaintAxis.setTextSize(18);
+        for (int i = 0; i < count_2; i++) {
+            canvas.drawLine(AXIS_X - 40, mHeight - 20 - heightLine * i, mWidth, mHeight - 20 - heightLine * i, mPaintAxis);
+        }
+    }
+
+    private void drawDataColumns(Canvas canvas, float mScale) {
+        canvas.translate(0f, mScrollY);
+        Paint salesPaint = new Paint();
+        salesPaint.setColor(mSalesColor);
+        Paint expensesPaint = new Paint();
+        expensesPaint.setColor(mExpensesColor);
+        int initEndY = (int) mHeight - 20;
+        int initStartX = AXIS_X + (int) mOffsetX;
+        for (int i = 0; i < mData.size(); i++) {
+            float salesHeight = (mMaxValue - mData.get(i).getmSales()) * mScale;
+            float expensesHeight = (mMaxValue - mData.get(i).getmExpenses()) * mScale;
+            canvas.drawRect(initStartX, salesHeight, initStartX + COLUMN_WIDTH, initEndY, salesPaint);
+            canvas.drawRect(initStartX + COLUMN_WIDTH, expensesHeight, initStartX + COLUMN_WIDTH * 2, initEndY, expensesPaint);
+            initStartX += COLUMN_WIDTH * 2 + COLUMN_SPACING * 2;
+        }
+    }
+
+    private void drawMainAxis(Canvas canvas) {
+        canvas.drawLine(AXIS_X - 20, mHeight, AXIS_X - 20, 0, mPaintAxis);
+        canvas.save();
     }
 
     private float getMaxValue() {
@@ -130,109 +239,16 @@ public class MyChartView extends View {
         return max;
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.translate(0, mOffsetY);
-        mPaint.setColor(BLACK);
-        float height = getHeight();
-        int countLine = 10;
-        float maxValue = getMaxValue();
-
-        mExpensesPaint.setColor(mExpensesColor);
-        mSalesPaint.setColor(mSalesColor);
-        mPaintSite.setColor(WHITE);
-        mPaint.setTextSize(16);
-        canvas.save();
-        if (mScaleFactor < 1) mScaleFactor = 1;
-        if (mScaleFactor == 1) {
-            mOffsetY = -50;
-        }
-        canvas.scale(1.0f, mScaleFactor, getWidth() / 2f, getHeight() / 2f);
-        drawGrid(canvas, height, countLine);
-        if (mData.size() > 6) {
-            if (mOffsetX >= 0) {
-                mOffsetX = 0;
-            } else {
-                if (mOffsetX <= -(mData.size() - 6) * 150 * mScaleFactor && mScaleFactor == 1) {
-                    mOffsetX = -(mData.size() - 6) * 150;
-                }
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            float scaleFactor = detector.getScaleFactor();
+            if (scaleFactor > 1.0f || mScaleFactor > 1.0f) {
+                mScaleFactor *= scaleFactor;
+                mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 5.0f));
+                invalidate();
             }
+            return true;
         }
-        float scale = calculateScale(height, maxValue);
-        drawChartValue(height, maxValue, canvas, scale);
-        canvas.drawRect(2f, 0, 140, (height + 50) * mScaleFactor, mPaintSite);
-        drawTextLabelValue(countLine, maxValue, height, canvas);
-        canvas.restore();
-    }
-
-    private float calculateScale(float height, float maxValue) {
-        return height / maxValue;
-    }
-
-    private void drawGrid(Canvas canvas, float height, int countLine) {
-        float withPadding = 140;
-        canvas.drawLine(withPadding + 20, height + 20, withPadding + 20, height / (countLine * (int) mScaleFactor), mPaint);
-        if (mScaleFactor > 4f) {
-            mScaleFactor = 5f;
-        }
-        for (int i = 1; i <= countLine * ((int) mScaleFactor); i++) {
-            canvas.drawLine(withPadding, i * height / (countLine * (int) mScaleFactor), (180 * mData.size()) * ((int) mScaleFactor), i * height / (countLine * (int) mScaleFactor), mPaint);
-        }
-    }
-
-    private void drawChartValue(float height, float maxValue, Canvas canvas, float scale) {
-        float withCol = 50;
-        float initValueSales = 180 + mOffsetX;
-        float initValueEx = initValueSales + withCol;
-        float spaceBetween = 50;
-        if (mScaleFactor >= 4f) {
-            mPaint.setTextSize(16);
-        }
-        List<String> lstLabelMonth = getLstLabel();
-        for (int i = 0; i < mData.size(); i++) {
-            float leftSales = initValueSales + withCol * i;
-            canvas.drawRect(leftSales, (maxValue - mData.get(i).getmSales()) * scale / mScaleFactor, leftSales + withCol, height, mSalesPaint);
-            initValueSales += spaceBetween + withCol;
-
-            canvas.drawText(lstLabelMonth.get(i), (leftSales + withCol / 2), height + spaceBetween, mPaint);
-            float leftEx = initValueEx + withCol * i;
-            canvas.drawRect(leftEx, (maxValue - mData.get(i).getmExpenses()) * scale / mScaleFactor, leftEx + withCol, height, mExpensesPaint);
-            initValueEx += spaceBetween + withCol;
-        }
-    }
-
-    private void drawTextLabelValue(int countLine, float maxValue, float height, Canvas canvas) {
-        if (mScaleFactor == 4f) {
-            mPaint.setTextSize(16);
-        }
-        for (int i = 1; i <= countLine * ((int) mScaleFactor); i++) {
-            float value = (maxValue - i * maxValue / ((countLine) * ((int) mScaleFactor)));
-            String formattedValue = formatString(value);
-            float y = i * height / (countLine * ((int) mScaleFactor));
-            canvas.drawText(formattedValue, 30, y, mPaint);
-        }
-    }
-
-    private String formatString(float inp) {
-        return String.format(Locale.getDefault(), "$%,d", (int) inp);
-    }
-
-    private List<String> getLstLabel() {
-        if (mScaleFactor == 4f) {
-            mPaint.setTextSize(16);
-        }
-        List<String> labels = new ArrayList<>();
-        for (SellExpense sellExpense : mData) {
-            int monthNumber = sellExpense.getmMonth();
-            Month[] months = Month.values();
-            if (monthNumber >= 1 && monthNumber <= months.length) {
-                String monthName = months[monthNumber - 1].name();
-                labels.add(monthName);
-            } else {
-                labels.add("Invalid Month");
-            }
-        }
-        return labels;
     }
 }
