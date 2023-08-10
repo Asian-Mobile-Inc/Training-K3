@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Ex001</string>
+    <string name="btn_delete">DELETE</string>
+    <string name="title">SQL TUTORIAL WITH KOTLIN</string>
+    <string name="edtUserName">Enter name</string>
+    <string name="edtUserAge">Enter age</string>
+    <string name="btnAdd">ADD</string>
+    <string name="btnDeleteAll">DELETE ALL</string>
+    <string name="btnShowAll">SHOW ALL</string>
+    <string name="title_user_id">User ID</string>
+    <string name="title_user_name">User name</string>
+    <string name="title_user_age">User Age</string>
+</resources>
