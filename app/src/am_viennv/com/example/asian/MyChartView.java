@@ -22,13 +22,13 @@ public class MyChartView extends View {
     private float mScale;
     private int mSalesColor;
     private int mExpensesColor;
-    private final int COUNT = 10;
-    private final int AXIS_X = 170;
+    private final int mCount = 10;
+    private final int mAxis = 170;
     private float mMaxValue = 0;
     private final Paint mPaintAxis = new Paint();
     private float mOffsetX = 0;
-    private final float COLUMN_WIDTH = 58;
-    private final float COLUMN_SPACING = 20;
+    private final float mColumnWidth = 58;
+    private final float mColumnSpacing = 20;
     private ScaleGestureDetector mScaleDetector;
     private float mScaleFactor = 1.f;
     private float mScrollY = 0;
@@ -73,9 +73,9 @@ public class MyChartView extends View {
                     mOffsetX += deltaX * 2f;
                     float maxOffsetX;
                     if (mScaleFactor <= 1) {
-                        maxOffsetX = -(mData.size() - 6) * (COLUMN_WIDTH * 2 + COLUMN_SPACING * 2);
+                        maxOffsetX = -(mData.size() - 6) * (mColumnWidth * 2 + mColumnSpacing * 2);
                     } else {
-                        maxOffsetX = -(mData.size() - 6) * (COLUMN_WIDTH * 6 + COLUMN_SPACING * 6);
+                        maxOffsetX = -(mData.size() - 6) * (mColumnWidth * 6 + mColumnSpacing * 6);
                     }
                     mOffsetX = Math.min(0, Math.max(maxOffsetX, mOffsetX));
                 }
@@ -121,7 +121,7 @@ public class MyChartView extends View {
         drawMainAxis(canvas);
         canvas.save();
         canvas.scale(1.0f, mScaleFactor, mWidth / 2, mHeight - 20);
-        drawGrid(canvas, mScale, COUNT / mScaleFactor);
+        drawGrid(canvas, mScale, mCount / mScaleFactor);
         canvas.restore();
 
         canvas.save();
@@ -140,12 +140,12 @@ public class MyChartView extends View {
 
     private void drawLabelColumn(Canvas canvas) {
         mPaintAxis.setColor(Color.BLACK);
-        int initStartX = AXIS_X + (int) mOffsetX + 20;
+        int initStartX = mAxis + (int) mOffsetX + 20;
         List<String> lstCalender = getLstLabel();
 
         for (int i = 1; i <= lstCalender.size(); i++) {
             canvas.drawText(lstCalender.get(i - 1), initStartX, mHeight, mPaintAxis);
-            initStartX += COLUMN_WIDTH * 2 + COLUMN_SPACING * 2;
+            initStartX += mColumnWidth * 2 + mColumnSpacing * 2;
         }
     }
 
@@ -153,9 +153,9 @@ public class MyChartView extends View {
         canvas.translate(0f, mScrollY);
         int count;
         if (mScaleFactor > 1) {
-            count = COUNT * ((int) mScaleFactor);
+            count = mCount * ((int) mScaleFactor);
         } else {
-            count = COUNT;
+            count = mCount;
         }
         mPaintAxis.setTextSize(16);
         float heightLine = (mMaxValue * mScale) / count;
@@ -168,7 +168,7 @@ public class MyChartView extends View {
 
     private void drawRectangle(Canvas canvas) {
         mPaintAxis.setColor(Color.WHITE);
-        canvas.drawRect(4, mHeight, AXIS_X - 40, 0, mPaintAxis);
+        canvas.drawRect(4, mHeight, mAxis - 40, 0, mPaintAxis);
         mPaintAxis.setColor(Color.BLACK);
     }
 
@@ -189,17 +189,17 @@ public class MyChartView extends View {
 
     private void drawGrid(Canvas canvas, float mScale, float count) {
         canvas.translate(0f, mScrollY);
-        int count_2 = (int) count;
+        int countLine = (int) count;
         float heightLine;
         if (mScaleFactor > 1) {
-            count_2 = COUNT * (int) mScaleFactor;
-            heightLine = (mMaxValue * mScale) / (count_2);
+            countLine = mCount * (int) mScaleFactor;
+            heightLine = (mMaxValue * mScale) / (countLine);
         } else {
-            heightLine = (mMaxValue * mScale) / COUNT;
+            heightLine = (mMaxValue * mScale) / mCount;
         }
         mPaintAxis.setTextSize(18);
-        for (int i = 0; i < count_2; i++) {
-            canvas.drawLine(AXIS_X - 40, mHeight - 20 - heightLine * i, mWidth, mHeight - 20 - heightLine * i, mPaintAxis);
+        for (int i = 0; i < countLine; i++) {
+            canvas.drawLine(mAxis - 40, mHeight - 20 - heightLine * i, mWidth, mHeight - 20 - heightLine * i, mPaintAxis);
         }
     }
 
@@ -210,18 +210,18 @@ public class MyChartView extends View {
         Paint expensesPaint = new Paint();
         expensesPaint.setColor(mExpensesColor);
         int initEndY = (int) mHeight - 20;
-        int initStartX = AXIS_X + (int) mOffsetX;
+        int initStartX = mAxis + (int) mOffsetX;
         for (int i = 0; i < mData.size(); i++) {
             float salesHeight = (mMaxValue - mData.get(i).getmSales()) * mScale;
             float expensesHeight = (mMaxValue - mData.get(i).getmExpenses()) * mScale;
-            canvas.drawRect(initStartX, salesHeight, initStartX + COLUMN_WIDTH, initEndY, salesPaint);
-            canvas.drawRect(initStartX + COLUMN_WIDTH, expensesHeight, initStartX + COLUMN_WIDTH * 2, initEndY, expensesPaint);
-            initStartX += COLUMN_WIDTH * 2 + COLUMN_SPACING * 2;
+            canvas.drawRect(initStartX, salesHeight, initStartX + mColumnWidth, initEndY, salesPaint);
+            canvas.drawRect(initStartX + mColumnWidth, expensesHeight, initStartX + mColumnWidth * 2, initEndY, expensesPaint);
+            initStartX += mColumnWidth * 2 + mColumnSpacing * 2;
         }
     }
 
     private void drawMainAxis(Canvas canvas) {
-        canvas.drawLine(AXIS_X - 20, mHeight, AXIS_X - 20, 0, mPaintAxis);
+        canvas.drawLine(mAxis - 20, mHeight, mAxis - 20, 0, mPaintAxis);
         canvas.save();
     }
 
