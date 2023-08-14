@@ -16,13 +16,13 @@ import retrofit2.http.Query;
 public interface ImagesApi {
     @GET("api/images")
     Call<List<Image>> getAllImages(
-            @Query("access_token") String access_token
+            @Query("access_token") String accessToken
     );
 
     @Multipart
     @POST("api/upload")
     Call<Image> uploadImage(
-            @Query("access_token") String access_token,
+            @Query("access_token") String accessToken,
             @Part MultipartBody.Part imagePart,
             @Part("title") RequestBody title
     );
@@ -30,6 +30,6 @@ public interface ImagesApi {
     @DELETE("api/images/{image_id}")
     Call<Image> deleteImage(
             @Path("image_id") String imageId,
-            @Query("access_token") String access_token
+            @Query("access_token") String accessToken
     );
 }
