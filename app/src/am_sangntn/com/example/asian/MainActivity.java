@@ -1,6 +1,7 @@
 package com.example.asian;
 
-import static com.example.asian.api.ApiService.apiService;
+import static com.example.asian.api.ApiGetService.apiGetService;
+import static com.example.asian.api.ApiPostService.apiPostService;
 
 import android.Manifest;
 import android.content.Context;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -40,37 +42,28 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
+@RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
 public class MainActivity extends AppCompatActivity {
-    private Button btnGetApi, btnPostApi;
-
-    private static final String[] PERMISSIONS = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-
+    private static final String[] PERMISSIONS = {Manifest.permission.READ_MEDIA_IMAGES};
     private ImageAdapter imageAdapter;
-
     private static final int REQUEST_CODE_PICK_IMAGE = 100;
     private static final int REQUEST_CODE_PERMISSIONS = 101;
-
     private static final int REQUEST_EXTERNAL_STORAGE_PERMISSION = 2;
-    private static final String BASE_URL = "YOUR_API_BASE_URL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnGetApi = findViewById(R.id.btnGetApi);
-        btnPostApi = findViewById(R.id.btnPost);
+        Button btnGetApi = findViewById(R.id.btnGetApi);
+        Button btnPostApi = findViewById(R.id.btnPost);
 
         btnGetApi.setOnClickListener(view -> callApi());
-
         btnPostApi.setOnClickListener(view -> checkPermissionsAndPickImage());
-
-
     }
 
     private void checkPermissionsAndPickImage() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_CODE_PERMISSIONS);
         } else {
             openImagePicker();
@@ -83,14 +76,11 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_EXTERNAL_STORAGE_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openImagePicker();
-            } else {
-                // Quyền bị từ chối
             }
         }
     }
 
     private void openImagePicker() {
-
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
     }
@@ -98,40 +88,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
             String imagePath = getPath(this, imageUri);
-
             if (imagePath != null) {
-                uploadImage(imagePath);
+                UploadImage(imagePath);
             }
         }
     }
 
-    private void uploadImage(String imagePath) {
-        File imageFile = new File(imagePath);
+    public void UploadImage(String filePath) {
+        File imageFile = new File(filePath);
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
-        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", imageFile.getName(), requestBody);
+        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("imagedata", imageFile.getName(), requestBody);
 
-        Call<UploadResponse> call = apiService.uploadImage(imagePart);
+        Call<UploadResponse> call = apiPostService.uploadImage(imagePart);
+
         call.enqueue(new Callback<UploadResponse>() {
             @Override
             public void onResponse(Call<UploadResponse> call, Response<UploadResponse> response) {
                 if (response.isSuccessful()) {
-                    UploadResponse uploadResponse = response.body();
-                    if (uploadResponse != null) {
-                        Toast.makeText(MainActivity.this, "success !", Toast.LENGTH_LONG).show();
-                    }
+                    Toast.makeText(MainActivity.this, "successfully !", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<UploadResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                Log.d("ddd", t.getMessage());
+                Log.d("ddd", Objects.requireNonNull(t.getMessage()));
             }
         });
+
     }
 
     public static String getPath(Context context, Uri uri) {
@@ -147,16 +133,13 @@ public class MainActivity extends AppCompatActivity {
         return filePath;
     }
 
-
     //https://api.gyazo.com/api/images?access_token=XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo
     private void callApi() {
-        apiService.getImage("XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo").enqueue(new Callback<List<Image>>() {
+        apiGetService.getImage("XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo").enqueue(new Callback<List<Image>>() {
             @Override
             public void onResponse(Call<List<Image>> call, Response<List<Image>> response) {
                 List<Image> listImage = response.body();
-                List<String> imageUrls = new ArrayList<String>();
-
-
+                List<String> imageUrls = new ArrayList<>();
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     listImage.forEach(image -> imageUrls.add(image.getUrl()));
@@ -177,8 +160,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    //
-
-
 }
