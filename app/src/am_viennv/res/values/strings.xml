@@ -1,3 +1,4 @@
 <resources>
-  <string name="app_name" translatable="false">ExVienNv</string>
+    <string name="app_name" translatable="false">RESTfull with Retrofit and Gson</string>
+    <string name="content_description">Content Element</string>
 </resources>
