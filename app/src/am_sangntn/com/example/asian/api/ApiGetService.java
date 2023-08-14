@@ -24,8 +24,7 @@ public interface ApiGetService {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiGetService.class);
-
     @GET("images")
-    Call<List<Image>> getImage(@Query("access_token") String access_token);
+    Call<List<Image>> getImage(@Query("access_token") String accessToken);
 }
 

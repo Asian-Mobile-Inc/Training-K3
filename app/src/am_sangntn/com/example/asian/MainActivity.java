@@ -98,12 +98,12 @@ public class MainActivity extends AppCompatActivity {
             Uri imageUri = data.getData();
             String imagePath = getPath(this, imageUri);
             if (imagePath != null) {
-                UploadImage(imagePath);
+                uploadImage(imagePath);
             }
         }
     }
 
-    public void UploadImage(String filePath) {
+    public void uploadImage(String filePath) {
         File imageFile = new File(filePath);
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
         MultipartBody.Part imagePart = MultipartBody.Part.createFormData("imagedata", imageFile.getName(), requestBody);
@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("ddd", Objects.requireNonNull(t.getMessage()));
             }
         });
-
     }
 
     public static String getPath(Context context, Uri uri) {
@@ -131,9 +130,9 @@ public class MainActivity extends AppCompatActivity {
         String[] projection = {MediaStore.Images.Media.DATA};
         Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
         if (cursor != null) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
-            filePath = cursor.getString(column_index);
+            filePath = cursor.getString(columnIndex);
             cursor.close();
         }
         return filePath;
