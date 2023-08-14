@@ -16,7 +16,6 @@ public interface ApiGetService {
 
     //https://api.gyazo.com/api/images?access_token=XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo
     //https://upload.gyazo.com/api/upload
-
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
 
@@ -28,6 +27,5 @@ public interface ApiGetService {
 
     @GET("images")
     Call<List<Image>> getImage(@Query("access_token") String access_token);
-
 }
 

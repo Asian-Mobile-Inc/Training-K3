@@ -1,5 +1,6 @@
 package com.example.asian;
 
+import static com.example.asian.api.APIDeleteService.apiDeleteService;
 import static com.example.asian.api.ApiGetService.apiGetService;
 import static com.example.asian.api.ApiPostService.apiPostService;
 
@@ -25,6 +26,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.asian.model.DeleteResponse;
 import com.example.asian.model.Image;
 import com.example.asian.model.UploadResponse;
 import com.example.asian.view.ImageAdapter;
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_PERMISSIONS = 101;
     private static final int REQUEST_EXTERNAL_STORAGE_PERMISSION = 2;
 
+    private String mImageId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnGetApi = findViewById(R.id.btnGetApi);
         Button btnPostApi = findViewById(R.id.btnPost);
+        Button btnDeleteApi = findViewById(R.id.btnDelete);
 
-        btnGetApi.setOnClickListener(view -> callApi());
+        btnGetApi.setOnClickListener(view -> getImage());
         btnPostApi.setOnClickListener(view -> checkPermissionsAndPickImage());
+        btnDeleteApi.setOnClickListener(view -> deleteImage());
     }
 
     private void checkPermissionsAndPickImage() {
@@ -134,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //https://api.gyazo.com/api/images?access_token=XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo
-    private void callApi() {
+    private void getImage() {
         apiGetService.getImage("XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo").enqueue(new Callback<List<Image>>() {
             @Override
             public void onResponse(Call<List<Image>> call, Response<List<Image>> response) {
@@ -144,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     listImage.forEach(image -> imageUrls.add(image.getUrl()));
                 }
+                mImageId = listImage.get(0).getImageId();
                 imageAdapter = new ImageAdapter(imageUrls);
 
                 RecyclerView recyclerView = findViewById(R.id.rcvImage);
@@ -156,6 +163,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Image>> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_LONG).show();
+                Log.d("ddd", Objects.requireNonNull(t.getMessage()));
+            }
+        });
+    }
+
+    private void deleteImage() {
+        apiDeleteService.deleteImage("Bearer " + mImageId, "4f5c396e34299a025213db89df802c7f").enqueue(new Callback<DeleteResponse>() {
+            @Override
+            public void onResponse(Call<DeleteResponse> call, Response<DeleteResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "successfully !", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DeleteResponse> call, Throwable t) {
                 Log.d("ddd", Objects.requireNonNull(t.getMessage()));
             }
         });
