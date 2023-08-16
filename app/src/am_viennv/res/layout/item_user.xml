@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:id="@+id/tblInfoUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:id="@+id/tvUserId"
+                    android:layout_width="130sp"
+                    android:layout_column="1"
+                    android:background="@drawable/cell_shape"
+                    android:gravity="center"
+                    android:minHeight="36sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="130sp"
+                    android:layout_column="1"
+                    android:background="@drawable/cell_shape"
+                    android:gravity="center"
+                    android:minHeight="36sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvUserAge"
+                    android:layout_width="130sp"
+                    android:layout_column="1"
+                    android:background="@drawable/cell_shape"
+                    android:gravity="center"
+                    android:minHeight="36sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="320sp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:background="@color/colorLightGrey"
+            android:minHeight="48sp"
+            android:text="@string/name_btn_delete_one"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp" />
+    </LinearLayout>
+</layout>
