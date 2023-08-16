@@ -1,3 +1,18 @@
 <resources>
-  <string name="app_name" translatable="false">ExVienNv</string>
+    <string name="app_name" translatable="false">User Managerment MVVM</string>
+    <string name="title_app">SQLITE TUTORIAL-USER MANAGERMENT</string>
+    <string name="hint_text_name">Enter Name</string>
+    <string name="hint_text_age">Enter Age</string>
+    <string name="name_btn_add">ADD</string>
+    <string name="name_btn_delete_all">DELETE ALL</string>
+    <string name="name_btn_delete_one">DELETE</string>
+    <string name="name_btn_show_all">SHOW ALL</string>
+    <string name="name_col_id">User ID</string>
+    <string name="name_col_user_name">User Name</string>
+    <string name="name_col_age">User Age</string>
+
+    <string name="content_menu">Favorite</string>
+    <string name="name_btn_ex01">Ex01 - User Manasement</string>
+    <string name="name_btn_ex02">Ex02 - View Image From API</string>
+    <string name="title">Coroutines/MVVM/LiveData/View Binding(Kotlin)</string>
 </resources>
