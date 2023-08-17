@@ -30,7 +30,7 @@ class ImageApiViewModel(private val repository: ApiRepository) : ViewModel() {
 
 
     fun fetchImages(token: String) {
-        viewModelScope.launch (Dispatchers.IO) {
+        viewModelScope.launch {
             val imagesList = repository.getImages(token)
             _images.value = imagesList
         }

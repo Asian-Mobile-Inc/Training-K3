@@ -40,36 +40,38 @@ class ApiFragment : Fragment() {
 
         rcv = binding.recyclerView // Sử dụng binding để tìm RecyclerView
 
-        val list: MutableList<ItemImage> = mutableListOf()
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.gyazo.com/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        binding.btnGet.setOnClickListener {
 
-        val apiService = retrofit.create(ApiService::class.java)
-        val repository = ApiRepository(apiService)
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://api.gyazo.com/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
 
-        imageApiViewModel = ViewModelProvider(
-            this,
-            ImageApiViewModelFactory(repository)
-        ).get(ImageApiViewModel::class.java)
-        val accessToken = "XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo"
-        imageApiViewModel.fetchImages(accessToken)
-        Log.d("ddd", "ddad")
-        imageApiViewModel.images.observe(this, Observer { images ->
-            Log.d("ddd", "ddd")
-            for (image in images) {
+            val apiService = retrofit.create(ApiService::class.java)
+            val repository = ApiRepository(apiService)
 
-                if (image.metadata.title != null) {
-                    Log.d("ddd", image.metadata.title)
-                    list.add(ItemImage(image.url, image.metadata.title))
-                } else {
-                    list.add(ItemImage(image.url, "null"))
+            imageApiViewModel = ViewModelProvider(
+                this,
+                ImageApiViewModelFactory(repository)
+            ).get(ImageApiViewModel::class.java)
+            val accessToken = "XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo"
+            imageApiViewModel.fetchImages(accessToken)
+            imageApiViewModel.images.observe(this, Observer { images ->
+                val list: MutableList<ItemImage> = mutableListOf()
+                for (image in images) {
+                    if (image.metadata.title != null) {
+                        //if (list.indexOf(ItemImage(image.url, image.metadata.title)) == -1) {
+                            list.add(ItemImage(image.url, image.metadata.title))
+                        //}
+                    } else {
+                        //if (list.indexOf(ItemImage(image.url, image.metadata.title)) == -1) {
+                            list.add(ItemImage(image.url, "null"))
+                        //}
+                    }
                 }
-            }
-            //  imageAdapter.setData(list)
-        })
-
+                imageAdapter.setData(list)
+            })
+        }
 
         return binding.root
     }
