@@ -40,7 +40,7 @@ class ApiFragment : Fragment() {
 
         rcv = binding.recyclerView // Sử dụng binding để tìm RecyclerView
 
-        /*val list: MutableList<ItemImage> = mutableListOf()
+        val list: MutableList<ItemImage> = mutableListOf()
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.gyazo.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -68,7 +68,7 @@ class ApiFragment : Fragment() {
                 }
             }
             //  imageAdapter.setData(list)
-        })*/
+        })
 
 
         return binding.root

@@ -1,0 +1,213 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from [androidx.databinding:viewbinding:7.4.2] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/6e1da9345dc15dce5ba74f851a2eef3d/transformed/jetified-viewbinding-7.4.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.2] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7d73208592d63babeb6fc270bd6eaa46/transformed/constraintlayout-2.0.2/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.navigation:navigation-ui:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/13b61f1e3b72ade9143569330737d7b4/transformed/navigation-ui-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.2.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/67a6b6e70000e718fe95407d759ba333/transformed/material-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/30891a14132f501b0723920f18972b1c/transformed/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-fragment:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/81d458b0aed3b951e6238e01d9f3bb4e/transformed/navigation-fragment-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/03c9bd7f952f0343d5db420f3678e1de/transformed/jetified-glide-4.12.0/AndroidManifest.xml:2:1-12:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/2365384ad980976d11b4bd9d48d00571/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/9bfe4cd74c7605dc19710fff72651570/transformed/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/0ee68bfbd682d7e290626937651372ad/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.2.4] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/b691e3e3988a28fdc6fd58ff79fe9aa1/transformed/fragment-1.2.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7bc7a5b48c08c285c7816e5896abfab2/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/8255cf8f73e0ec2d884b3aa8102e6cd4/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/064f6efcf72e45025c96c41bb0313fb3/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/722cfa06d51a32340f337ac9798393bf/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/4432a2afdd19fc85814143f134bfa94c/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.3.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/ff30bd3e1e9c2cd2537c6d41a35c8d12/transformed/transition-1.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/5d6dbb7a2526cb46a310f1fa772a8328/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/c17573ade799759c56baf884a28f8de6/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/f4e7914e58ba093567760f9d22f3626d/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/0a32d65d180f598d8df11f4c1d703e41/transformed/navigation-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/859180bb677d07452d44209a6e122258/transformed/jetified-activity-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-common:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/00c7918e2a5b9d4a9685c585a45afca2/transformed/navigation-common-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/1982d2d950a60c10b06ad901f293f496/transformed/core-1.3.1/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/1f624a3ec658e1a90eb17b72d8f4e5aa/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/b1a1a29d4b466d7ca3a24fea947222f7/transformed/jetified-gifdecoder-4.12.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/897993a71f03989f5751d6fec1f87a90/transformed/exifinterface-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7a1ff5a23d45e8270cb10429ea4d29f7/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/d3ff120fd759ad297ee6d776e46f72cd/transformed/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7fe601d2895f83772b336b15683697ae/transformed/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/cfee952266597011e350226a145c4ff0/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/6267c6992e2233c007652c3911cd20a6/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/fe726d578f90e61f945e51ad06a99ee0/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/eb59ad3ff2cc3f8ea455ecf10b9a5b47/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7bd9c161e6b92cb2ac16bb70e4dae038/transformed/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/94c1e08774be1a91ac7aa4bf2cb72cb3/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/2888cef9e7b9741d1c08872ef0fd4bdf/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:2:1-27:12
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:2:1-27:12
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:2:1-27:12
+	package
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:4:5-20:19
+MERGED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:4:5-20:19
+MERGED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:4:5-20:19
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.2] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7d73208592d63babeb6fc270bd6eaa46/transformed/constraintlayout-2.0.2/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.2] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7d73208592d63babeb6fc270bd6eaa46/transformed/constraintlayout-2.0.2/AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.material:material:1.2.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/67a6b6e70000e718fe95407d759ba333/transformed/material-1.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.2.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/67a6b6e70000e718fe95407d759ba333/transformed/material-1.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/03c9bd7f952f0343d5db420f3678e1de/transformed/jetified-glide-4.12.0/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/03c9bd7f952f0343d5db420f3678e1de/transformed/jetified-glide-4.12.0/AndroidManifest.xml:10:5-20
+MERGED from [androidx.core:core:1.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/1982d2d950a60c10b06ad901f293f496/transformed/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/1982d2d950a60c10b06ad901f293f496/transformed/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/b1a1a29d4b466d7ca3a24fea947222f7/transformed/jetified-gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/b1a1a29d4b466d7ca3a24fea947222f7/transformed/jetified-gifdecoder-4.12.0/AndroidManifest.xml:9:5-20
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7a1ff5a23d45e8270cb10429ea4d29f7/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7a1ff5a23d45e8270cb10429ea4d29f7/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:requestLegacyExternalStorage
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:12:9-52
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/1982d2d950a60c10b06ad901f293f496/transformed/core-1.3.1/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:9:9-35
+	android:label
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:7:9-41
+	android:roundIcon
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:8:9-54
+	android:icon
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:6:9-43
+	android:allowBackup
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:5:9-35
+	android:theme
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:10:9-40
+activity#com.example.asian.MainViewActivity
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:12:9-19:20
+	android:exported
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:14:13-36
+	android:name
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:13:13-45
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:15:13-18:29
+action#android.intent.action.MAIN
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:16:17-69
+	android:name
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:17:17-77
+	android:name
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml:17:27-74
+uses-sdk
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:7.4.2] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/6e1da9345dc15dce5ba74f851a2eef3d/transformed/jetified-viewbinding-7.4.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:7.4.2] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/6e1da9345dc15dce5ba74f851a2eef3d/transformed/jetified-viewbinding-7.4.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.2] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7d73208592d63babeb6fc270bd6eaa46/transformed/constraintlayout-2.0.2/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.2] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7d73208592d63babeb6fc270bd6eaa46/transformed/constraintlayout-2.0.2/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.navigation:navigation-ui:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/13b61f1e3b72ade9143569330737d7b4/transformed/navigation-ui-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/13b61f1e3b72ade9143569330737d7b4/transformed/navigation-ui-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.material:material:1.2.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/67a6b6e70000e718fe95407d759ba333/transformed/material-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.2.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/67a6b6e70000e718fe95407d759ba333/transformed/material-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/30891a14132f501b0723920f18972b1c/transformed/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/30891a14132f501b0723920f18972b1c/transformed/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/81d458b0aed3b951e6238e01d9f3bb4e/transformed/navigation-fragment-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/81d458b0aed3b951e6238e01d9f3bb4e/transformed/navigation-fragment-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/03c9bd7f952f0343d5db420f3678e1de/transformed/jetified-glide-4.12.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/03c9bd7f952f0343d5db420f3678e1de/transformed/jetified-glide-4.12.0/AndroidManifest.xml:6:5-8:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/2365384ad980976d11b4bd9d48d00571/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/2365384ad980976d11b4bd9d48d00571/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/9bfe4cd74c7605dc19710fff72651570/transformed/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/9bfe4cd74c7605dc19710fff72651570/transformed/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/0ee68bfbd682d7e290626937651372ad/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/0ee68bfbd682d7e290626937651372ad/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.4] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/b691e3e3988a28fdc6fd58ff79fe9aa1/transformed/fragment-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.4] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/b691e3e3988a28fdc6fd58ff79fe9aa1/transformed/fragment-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7bc7a5b48c08c285c7816e5896abfab2/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7bc7a5b48c08c285c7816e5896abfab2/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/8255cf8f73e0ec2d884b3aa8102e6cd4/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/8255cf8f73e0ec2d884b3aa8102e6cd4/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/064f6efcf72e45025c96c41bb0313fb3/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/064f6efcf72e45025c96c41bb0313fb3/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/722cfa06d51a32340f337ac9798393bf/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/722cfa06d51a32340f337ac9798393bf/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/4432a2afdd19fc85814143f134bfa94c/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/4432a2afdd19fc85814143f134bfa94c/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.3.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/ff30bd3e1e9c2cd2537c6d41a35c8d12/transformed/transition-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.3.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/ff30bd3e1e9c2cd2537c6d41a35c8d12/transformed/transition-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/5d6dbb7a2526cb46a310f1fa772a8328/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/5d6dbb7a2526cb46a310f1fa772a8328/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/c17573ade799759c56baf884a28f8de6/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/c17573ade799759c56baf884a28f8de6/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/f4e7914e58ba093567760f9d22f3626d/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/f4e7914e58ba093567760f9d22f3626d/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/0a32d65d180f598d8df11f4c1d703e41/transformed/navigation-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/0a32d65d180f598d8df11f4c1d703e41/transformed/navigation-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/859180bb677d07452d44209a6e122258/transformed/jetified-activity-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/859180bb677d07452d44209a6e122258/transformed/jetified-activity-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/00c7918e2a5b9d4a9685c585a45afca2/transformed/navigation-common-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common:2.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/00c7918e2a5b9d4a9685c585a45afca2/transformed/navigation-common-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/1982d2d950a60c10b06ad901f293f496/transformed/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.1] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/1982d2d950a60c10b06ad901f293f496/transformed/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/1f624a3ec658e1a90eb17b72d8f4e5aa/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/1f624a3ec658e1a90eb17b72d8f4e5aa/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/b1a1a29d4b466d7ca3a24fea947222f7/transformed/jetified-gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/b1a1a29d4b466d7ca3a24fea947222f7/transformed/jetified-gifdecoder-4.12.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/897993a71f03989f5751d6fec1f87a90/transformed/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/897993a71f03989f5751d6fec1f87a90/transformed/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7a1ff5a23d45e8270cb10429ea4d29f7/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7a1ff5a23d45e8270cb10429ea4d29f7/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/d3ff120fd759ad297ee6d776e46f72cd/transformed/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/d3ff120fd759ad297ee6d776e46f72cd/transformed/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7fe601d2895f83772b336b15683697ae/transformed/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7fe601d2895f83772b336b15683697ae/transformed/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/cfee952266597011e350226a145c4ff0/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/cfee952266597011e350226a145c4ff0/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/6267c6992e2233c007652c3911cd20a6/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/6267c6992e2233c007652c3911cd20a6/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/fe726d578f90e61f945e51ad06a99ee0/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/fe726d578f90e61f945e51ad06a99ee0/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/eb59ad3ff2cc3f8ea455ecf10b9a5b47/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/eb59ad3ff2cc3f8ea455ecf10b9a5b47/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7bd9c161e6b92cb2ac16bb70e4dae038/transformed/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/7bd9c161e6b92cb2ac16bb70e4dae038/transformed/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/94c1e08774be1a91ac7aa4bf2cb72cb3/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/94c1e08774be1a91ac7aa4bf2cb72cb3/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/2888cef9e7b9741d1c08872ef0fd4bdf/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/nguyenthainhatsang/.gradle/caches/transforms-3/2888cef9e7b9741d1c08872ef0fd4bdf/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml
+INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml
+uses-permission#android.permission.POST_NOTIFICATIONS.
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:4:5-77
+	android:name
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:4:22-75
+uses-permission#android.permission.INTERNET
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.READ_MEDIA_IMAGES
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:6:5-76
+	android:name
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:6:22-73
+activity#com.example.asian.MainActivity
+ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:18:9-25:20
+	android:exported
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:20:13-36
+	android:name
+		ADDED from /Users/nguyenthainhatsang/Desktop/Traning Asian Mobile Inc/Training-K3-Task2/app/src/am_sangntn/AndroidManifest.xml:19:13-41

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.example.asian.app-mergeAm_sangntnDebugResources-21:/layout/activity_main.xml",
+        "source": "com.example.asian.app-am_sangntn-23:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.asian.app-mergeAm_sangntnDebugResources-21:/layout/item_image.xml",
+        "source": "com.example.asian.app-am_sangntn-23:/layout/item_image.xml"
+    }
+]
