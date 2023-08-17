@@ -9,7 +9,7 @@
         android:id="@+id/apiFragment"
         android:name="com.example.ex02.view.fragment.ApiFragment"
         android:label="fragment_api"
-        tools:layout="@layout/fragment_api" >
+        tools:layout="@layout/fragment_api">
         <action
             android:id="@+id/action_apiFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/favoriteFragment"
         android:name="com.example.ex02.view.fragment.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" >
+        tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_favoriteFragment_to_apiFragment"
             app:destination="@id/apiFragment" />

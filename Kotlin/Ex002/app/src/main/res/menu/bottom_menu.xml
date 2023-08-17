@@ -5,12 +5,12 @@
     <item
         android:id="@+id/apiFragment"
         android:icon="@drawable/ic_baseline_download_24"
-        android:title="get Images"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/images"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/favoriteFragment"
         android:icon="@drawable/ic_baseline_star_24"
-        android:title="Favorite Images"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/favorite_images"
+        app:showAsAction="ifRoom" />
 </menu>
