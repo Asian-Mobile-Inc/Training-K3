@@ -3,37 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/blankFragment">
-    <fragment
-        android:id="@+id/downloadedFragment"
-        android:name="com.example.roomdb.view.fragment.DownloadedFragment"
-        android:label="DownloadedFragment" >
-        <action
-            android:id="@+id/action_downloadedFragment_to_apiFragment"
-            app:destination="@id/apiFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/favoriteFragment2"
-        android:name="com.example.roomdb.view.fragment.FavoriteFragment"
-        android:label="FavoriteFragment" >
-        <action
-            android:id="@+id/action_favoriteFragment2_to_apiFragment"
-            app:destination="@id/apiFragment" />
-    </fragment>
+    app:startDestination="@id/apiFragment">
+
     <fragment
         android:id="@+id/apiFragment"
-        android:name="com.example.roomdb.view.fragment.ApiFragment"
-        android:label="ApiFragment" >
+        android:name="com.example.ex02.view.fragment.ApiFragment"
+        android:label="fragment_api"
+        tools:layout="@layout/fragment_api">
         <action
-            android:id="@+id/action_apiFragment_to_downloadedFragment"
-            app:destination="@id/downloadedFragment" />
-        <action
-            android:id="@+id/action_apiFragment_to_favoriteFragment2"
-            app:destination="@id/favoriteFragment2" />
+            android:id="@+id/action_apiFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
     </fragment>
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.example.roomdb.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.ex02.view.fragment.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_favoriteFragment_to_apiFragment"
+            app:destination="@id/apiFragment" />
+    </fragment>
 </navigation>
