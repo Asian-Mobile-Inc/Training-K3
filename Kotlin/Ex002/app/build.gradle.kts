@@ -68,6 +68,7 @@ dependencies {
 
     implementation("androidx.room:room-ktx:2.4.2")
     implementation("androidx.room:room-runtime:2.4.2")
+    implementation("androidx.room:room-coroutines:2.1.0-alpha04")
     kapt("androidx.room:room-compiler:2.4.2")
 
     implementation("com.github.bumptech.glide:glide:4.12.0")

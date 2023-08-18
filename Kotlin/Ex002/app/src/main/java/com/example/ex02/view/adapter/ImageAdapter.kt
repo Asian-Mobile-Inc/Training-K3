@@ -16,12 +16,11 @@ import com.bumptech.glide.Glide
 import com.example.ex02.R
 import com.example.ex02.bean.ItemImage
 import com.example.ex02.databinding.ItemImageBinding
-import com.example.ex02.viewmodel.ImageViewModel
+import com.example.ex02.viewmodel.ImageRoomViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -43,9 +42,6 @@ class ImageAdapter() :
         RecyclerView.ViewHolder(binding.root) {
         var imageView = binding.imageView
         var favoriteButton = binding.btnFavorite
-        fun bind(itemImage: ItemImage) {
-            //binding.imageView.setImageBitmap()
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {

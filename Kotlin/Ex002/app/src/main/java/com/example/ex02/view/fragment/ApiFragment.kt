@@ -17,7 +17,7 @@ import com.example.ex02.model.api.ApiService
 import com.example.ex02.view.adapter.ImageAdapter
 import com.example.ex02.viewmodel.ImageApiViewModel
 import com.example.ex02.viewmodel.ImageApiViewModelFactory
-import com.example.ex02.viewmodel.ImageViewModel
+import com.example.ex02.viewmodel.ImageRoomViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import androidx.lifecycle.viewModelScope

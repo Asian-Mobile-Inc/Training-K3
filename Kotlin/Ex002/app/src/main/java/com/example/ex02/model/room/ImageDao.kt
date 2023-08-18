@@ -11,7 +11,7 @@ import com.example.ex02.bean.ItemImage
 @Dao
 interface ImageDao {
     @Query("SELECT * FROM images")
-    fun readAllUsers(): LiveData<List<ItemImage>>
+    fun readAllImages(): LiveData<List<ItemImage>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(image: ItemImage)
