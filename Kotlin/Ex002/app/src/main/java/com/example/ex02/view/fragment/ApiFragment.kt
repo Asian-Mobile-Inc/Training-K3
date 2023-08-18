@@ -26,53 +26,49 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ApiFragment : Fragment() {
     private lateinit var binding: FragmentApiBinding
-   // private lateinit var imageViewModel: ImageViewModel
+
+    // private lateinit var imageViewModel: ImageViewModel
     private lateinit var imageAdapter: ImageAdapter
     private lateinit var imageApiViewModel: ImageApiViewModel
     private lateinit var rcv: RecyclerView
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
 
         binding = FragmentApiBinding.inflate(inflater, container, false)
 
-        rcv = binding.recyclerView // Sử dụng binding để tìm RecyclerView
+        rcv = binding.recyclerView
 
         binding.btnGet.setOnClickListener {
+            try {
+                val retrofit = Retrofit.Builder().baseUrl("https://api.gyazo.com/api/")
+                    .addConverterFactory(GsonConverterFactory.create()).build()
 
-            val retrofit = Retrofit.Builder()
-                .baseUrl("https://api.gyazo.com/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+                val apiService = retrofit.create(ApiService::class.java)
+                val repository = ApiRepository(apiService)
 
-            val apiService = retrofit.create(ApiService::class.java)
-            val repository = ApiRepository(apiService)
+                imageApiViewModel = ViewModelProvider(
+                    this, ImageApiViewModelFactory(repository)
+                ).get(ImageApiViewModel::class.java)
+                val accessToken = "XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo"
 
-            imageApiViewModel = ViewModelProvider(
-                this,
-                ImageApiViewModelFactory(repository)
-            ).get(ImageApiViewModel::class.java)
-            val accessToken = "XZiQLn5Xu3cjUTKYpQKOUsYHweBoxKJVOgCfneoY1Yo"
-            imageApiViewModel.fetchImages(accessToken)
-            imageApiViewModel.images.observe(this, Observer { images ->
-                val list: MutableList<ItemImage> = mutableListOf()
-                for (image in images) {
-                    if (image.metadata.title != null) {
-                        //if (list.indexOf(ItemImage(image.url, image.metadata.title)) == -1) {
-                            list.add(ItemImage(image.url, image.metadata.title))
-                        //}
-                    } else {
-                        //if (list.indexOf(ItemImage(image.url, image.metadata.title)) == -1) {
-                            list.add(ItemImage(image.url, "null"))
-                        //}
+                imageApiViewModel.fetchImages(accessToken)
+                imageApiViewModel.images.observe(this, Observer { images ->
+                    val list: MutableList<ItemImage> = mutableListOf()
+                    for (image in images) {
+                        if (image.metadata.title != null) {
+                            list.add(ItemImage(null, image.url, image.metadata.title))
+                        } else {
+                            list.add(ItemImage(null, image.url, "null"))
+                        }
                     }
-                }
-                imageAdapter.setData(list)
-            })
+                    imageAdapter.setData(list)
+                })
+            } catch (e: Exception) {
+                Log.d("ddd", e.toString())
+            }
         }
-
         return binding.root
     }
 
@@ -82,7 +78,7 @@ class ApiFragment : Fragment() {
         val gridLayoutManager = GridLayoutManager(requireContext(), 3)
         rcv.layoutManager = gridLayoutManager
         imageAdapter = ImageAdapter()
-       // getListItemImage()
+        // getListItemImage()
         rcv.adapter = imageAdapter
 
     }
@@ -90,24 +86,9 @@ class ApiFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         //imageViewModel = ViewModelProvider(this, ImageApiViewModelFactory(repository)).get(ImageViewModel::class.java)
 
     }
 
-
-    private fun getListItemImage() {
-
-
-
-        try {
-
-
-
-
-        } catch (e: Exception) {
-            Log.d("ddd", e.toString())
-        }
-    }
 
 }

@@ -13,6 +13,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ex02.R
 import com.example.ex02.bean.ItemImage
 import com.example.ex02.databinding.ItemImageBinding
 import com.example.ex02.viewmodel.ImageViewModel
@@ -31,7 +32,7 @@ class ImageAdapter() :
     private val images: LiveData<List<ItemImage>> = _images
 
     fun setData(list: MutableList<ItemImage>) {
-       // _images.postValue(null)
+        // _images.postValue(null)
         _images.value = list
         Log.d("ddd", "" + (images.value?.size ?: 0))
         notifyDataSetChanged()
@@ -57,8 +58,12 @@ class ImageAdapter() :
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        //images.value?.let { holder.bind(it[position]) }
-        _images.value?.get(position)?.let { loadImageFromUrl(it.imageUrl, holder.imageView) }
+        Glide.with(holder.imageView.context)
+            .load(_images.value?.get(position)?.imageUrl)
+            .placeholder(R.drawable.ic_baseline_image_search_24)
+            .error(R.drawable.ic_baseline_error_24)
+            .into(holder.imageView)
+        // _images.value?.get(position)?.let { loadImageFromUrl(it.imageUrl, holder.imageView) }
 //        holder.favoriteButton.setOnClickListener {
 //            images.value?.get(position)?.let { it1 -> addImageToFavoriteList(it1) }
 //        }
@@ -86,6 +91,6 @@ class ImageAdapter() :
                 Log.d("ddd", e.toString())
             }
         }
-       // return bitmap
+        // return bitmap
     }
 }
