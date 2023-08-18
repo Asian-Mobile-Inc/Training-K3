@@ -1,2 +1,0 @@
-#- File Locator -
-listingFile=../../apk/am_sangntn/debug/output-metadata.json
