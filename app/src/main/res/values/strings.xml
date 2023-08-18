@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Ex02</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorite_images">Favorite Images</string>
+    <string name="images">Images</string>
+    <string name="title">Ex01 Tutorial With Room Database</string>
+    <string name="edtUserName">Enter username</string>
+    <string name="enter_user_age">Enter User Age</string>
+    <string name="btn_add">ADD</string>
+    <string name="btn_delete_all">DELETE ALL</string>
+    <string name="btn_show_all">SHOW ALL</string>
+    <string name="title_user_id">User Id</string>
+    <string name="title_user_age">User Age</string>
+    <string name="title_user_name">User Name</string>
+    <string name="btn_delete">DELETE</string>
+</resources>
