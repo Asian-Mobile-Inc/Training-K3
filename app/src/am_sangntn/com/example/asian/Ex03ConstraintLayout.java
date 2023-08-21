@@ -1,15 +1,15 @@
 
 package com.example.asian;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class Ex03ConstraintLayout extends AppCompatActivity {
 
-    EditText mEdtName, mEdtCMND, medtEnterInfor;
+    EditText mEdtName, mEdtCMND, mEdtEnterInfor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class Ex03ConstraintLayout extends AppCompatActivity {
 
         mEdtName = findViewById(R.id.edtName);
         mEdtCMND = findViewById(R.id.edtCMND);
-        medtEnterInfor = findViewById(R.id.edtEnterInfor);
+        mEdtEnterInfor = findViewById(R.id.edtEnterInfor);
         Button btnSubmit = findViewById(R.id.btnSubmit);
 
         btnSubmit.setOnClickListener(view -> check());
@@ -26,8 +26,8 @@ public class Ex03ConstraintLayout extends AppCompatActivity {
     }
 
     void check() {
-        if (checkEmpty(medtEnterInfor)) {
-            medtEnterInfor.setError("Information do not empty");
+        if (checkEmpty(mEdtEnterInfor)) {
+            mEdtEnterInfor.setError("Information do not empty");
         }
         if (checkEmpty(mEdtName)) {
             mEdtName.setError("Name do not empty");
@@ -35,8 +35,8 @@ public class Ex03ConstraintLayout extends AppCompatActivity {
         if (checkEmpty(mEdtCMND)) {
             mEdtCMND.setError("CMND do not empty");
         }
-        if (checkLength(medtEnterInfor)) {
-            medtEnterInfor.setError("Information must be >= 100 characters");
+        if (checkLength(mEdtEnterInfor)) {
+            mEdtEnterInfor.setError("Information must be >= 100 characters");
         }
     }
 

@@ -5,8 +5,8 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
-        android:id="@+id/llFirstNumber"
+    <FrameLayout
+        android:id="@+id/flFirstNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -16,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="@string/tv_sohang1"
+            android:layout_marginTop="15sp"
+            android:text="@string/tv_first_number"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -24,13 +25,14 @@
             android:id="@+id/edtFirstNumber"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="90sp"
             android:autofillHints="no"
-            android:hint="@string/et_hint"
+            android:hint="@string/edt_hint"
             android:inputType="number" />
-    </LinearLayout>
+    </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/llSecondNumber"
+    <FrameLayout
+        android:id="@+id/flSecondNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -39,7 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="@string/tv_sohang2"
+            android:layout_marginTop="15sp"
+            android:text="@string/tv_second_number"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -47,32 +50,33 @@
             android:id="@+id/edtSecondNumber"
             android:layout_width="300dp"
             android:layout_height="48dp"
+            android:layout_marginStart="90sp"
             android:importantForAutofill="no"
             android:inputType="number" />
-    </LinearLayout>
+    </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/llButton"
+    <FrameLayout
+        android:id="@+id/flButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/btnPlus"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:background="@color/btnCalculate"
-            android:text="@string/btnPlus"
+            android:text="@string/btn_plus"
             android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btnSub"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="100sp"
             android:background="@color/btnCalculate"
             android:text="@string/btn_sub"
             android:textColor="@color/black" />
@@ -80,8 +84,9 @@
         <Button
             android:id="@+id/btnMul"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="190sp"
             android:layout_marginEnd="10dp"
             android:background="@color/btnCalculate"
             android:text="@string/btn_mul"
@@ -90,15 +95,16 @@
         <Button
             android:id="@+id/btnDiv"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="280sp"
             android:background="@color/btnCalculate"
             android:text="@string/btn_div"
             android:textColor="@color/black" />
-    </LinearLayout>
+    </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/llResult"
+    <FrameLayout
+        android:id="@+id/flResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp">
@@ -106,12 +112,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/tv_ketqua" />
+            android:hint="@string/tv_result" />
 
         <TextView
             android:id="@+id/tvResult"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60sp" />
+    </FrameLayout>
 
 </LinearLayout>
