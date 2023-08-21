@@ -10,15 +10,15 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ConstrainLayout"
+            android:name=".Ex03_UseConstrainLayout"
             android:exported="false" />
 
         <activity
-            android:name=".LinearLayout"
+            android:name=".Ex02_UseLinearLayout"
             android:exported="false" />
 
         <activity
-            android:name=".RelativeLayout"
+            android:name=".Ex01_UseRelativeLayout"
             android:exported="false" />
 
         <activity

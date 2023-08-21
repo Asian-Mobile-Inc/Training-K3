@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class LinearLayout extends AppCompatActivity {
+public class Ex03_UseConstrainLayout extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.linear_layout);
+        setContentView(R.layout.activity_constraint_layout);
     }
 }
