@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30sp"
+        android:paddingHorizontal="20sp"
+        android:text="@string/btn_insert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="10sp"
+        android:text="@string/tv_drawhere"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/flDrawSignature"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:background="@drawable/baseline_arrow_downward_24"
+        android:importantForAccessibility="no"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <FrameLayout
+        android:id="@+id/flDrawSignature"
+        android:layout_width="match_parent"
+        android:layout_height="300sp"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/border_layout"
+        app:layout_constraintBottom_toTopOf="@+id/flIvShow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInsert" />
+
+    <FrameLayout
+        android:id="@+id/flIvShow"
+        android:layout_width="match_parent"
+        android:layout_height="300sp"
+        android:layout_marginBottom="20sp"
+        android:background="#ccc"
+        android:paddingVertical="14sp"
+        app:layout_constraintBottom_toTopOf="@id/ivColorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivShowSignature"
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            android:importantForAccessibility="no" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="10sp"
+        android:text="@string/tv_preview"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/flIvShow" />
+
+    <TextView
+        android:id="@+id/tvValueSize"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/value_seekbar"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="@+id/flIvShow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/eraser" />
+
+    <ImageView
+        android:id="@+id/ivColorBlack"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/dot_black"
+        android:contentDescription="@string/btn_black"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarSize"
+        app:layout_constraintStart_toEndOf="@+id/btnCreate" />
+
+    <ImageView
+        android:id="@+id/ivColorBlue"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:layout_marginStart="30sp"
+        android:background="@drawable/dot_blue"
+        android:contentDescription="@string/btn_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/ivColorBlack"
+        app:layout_constraintStart_toEndOf="@+id/ivColorBlack" />
+
+    <ImageView
+        android:id="@+id/ivColorPink"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:layout_marginStart="30sp"
+        android:background="@drawable/dot_pink"
+        android:contentDescription="@string/btn_pink"
+        app:layout_constraintBottom_toBottomOf="@+id/ivColorBlack"
+        app:layout_constraintStart_toEndOf="@+id/ivColorBlue" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:background="@color/colorAccent"
+        android:text="@string/btn_name"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/seekBarSize"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextSizeCheck" />
+
+    <SeekBar
+        android:id="@+id/seekBarSize"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:max="20"
+        android:min="6"
+        android:progress="13"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvValueSize"
+        app:layout_constraintStart_toEndOf="@+id/btnCreate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
