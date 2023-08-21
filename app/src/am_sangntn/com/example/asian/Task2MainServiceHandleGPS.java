@@ -23,9 +23,7 @@ public class Task2MainServiceHandleGPS extends AppCompatActivity {
         Button startServiceButton = findViewById(R.id.btnStart);
         Button stopServiceButton = findViewById(R.id.btnStop);
 
-        startServiceButton.setOnClickListener(v -> {
-            checkLocationPermission();
-        });
+        startServiceButton.setOnClickListener(v -> checkLocationPermission());
 
         stopServiceButton.setOnClickListener(v -> {
             Intent serviceIntent = new Intent(Task2MainServiceHandleGPS.this, Task2GPSService.class);
@@ -34,9 +32,7 @@ public class Task2MainServiceHandleGPS extends AppCompatActivity {
     }
 
     private void checkLocationPermission() {
-        // Kiểm tra xem quyền truy cập GPS đã được cấp hay chưa
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // Nếu quyền chưa được cấp, yêu cầu người dùng cấp quyền
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {
             Intent serviceIntent = new Intent(Task2MainServiceHandleGPS.this, Task2GPSService.class);
@@ -48,11 +44,8 @@ public class Task2MainServiceHandleGPS extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Người dùng đã cấp quyền, bạn có thể tiếp tục xử lý GPS hoặc bắt đầu Service tại đây
                 Intent serviceIntent = new Intent(Task2MainServiceHandleGPS.this, Task2GPSService.class);
                 startService(serviceIntent);
-            } else {
-                // Người dùng đã từ chối cấp quyền, bạn có thể thông báo hoặc xử lý tương ứng
             }
         }
     }
