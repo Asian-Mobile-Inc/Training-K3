@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".TabLayout_RecyclerView"
+            android:name=".TabLayoutRecyclerViewActivity"
             android:exported="true">
         </activity>
     </application>

@@ -11,7 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class TabLayout_RecyclerView extends AppCompatActivity {
+public class TabLayoutRecyclerViewActivity extends AppCompatActivity {
 
     TabLayout mTabLayout;
 
