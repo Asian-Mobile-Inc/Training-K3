@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:id="@+id/flFirstNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvFirstNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15sp"
+            android:text="@string/tv_first_number"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/edtFirstNumber"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90sp"
+            android:autofillHints="no"
+            android:hint="@string/edt_hint"
+            android:inputType="number" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flSecondNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvSecondNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15sp"
+            android:text="@string/tv_second_number"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/edtSecondNumber"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="90sp"
+            android:importantForAutofill="no"
+            android:inputType="number" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnPlus"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/btnCalculate"
+            android:text="@string/btn_plus"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnSub"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100sp"
+            android:background="@color/btnCalculate"
+            android:text="@string/btn_sub"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnMul"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="190sp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/btnCalculate"
+            android:text="@string/btn_mul"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnDiv"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="280sp"
+            android:background="@color/btnCalculate"
+            android:text="@string/btn_div"
+            android:textColor="@color/black" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/tv_result" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60sp" />
+    </FrameLayout>
+
+</LinearLayout>
