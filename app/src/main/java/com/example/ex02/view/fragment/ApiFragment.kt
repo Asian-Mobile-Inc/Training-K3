@@ -16,13 +16,13 @@ import com.example.ex02.viewmodel.ImageApiViewModelFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ex02.view.adapter.ImageAdapter
+import com.example.ex02.view.adapter.ImageListAdapter
 import com.example.ex02.viewmodel.ImageRoomViewModel
 
 class ApiFragment : Fragment() {
     private lateinit var imageRoomViewModel: ImageRoomViewModel
     private lateinit var binding: FragmentApiBinding
-    private lateinit var imageAdapter: ImageAdapter
+    private lateinit var imageAdapter: ImageListAdapter
     private lateinit var imageApiViewModel: ImageApiViewModel
     private lateinit var rcv: RecyclerView
     override fun onCreateView(
@@ -60,7 +60,8 @@ class ApiFragment : Fragment() {
                         list.add(ItemImage(null, image.url, "null"))
                     }
                 }
-                imageAdapter.setData(list)
+                //imageAdapter.setData(images)
+                imageAdapter.submitList(list)
             }
         }
         return binding.root
@@ -71,7 +72,7 @@ class ApiFragment : Fragment() {
 
         val gridLayoutManager = GridLayoutManager(requireContext(), 3)
         rcv.layoutManager = gridLayoutManager
-        imageAdapter = ImageAdapter(imageRoomViewModel)
+        imageAdapter = ImageListAdapter(imageRoomViewModel)
         rcv.adapter = imageAdapter
     }
 }

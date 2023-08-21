@@ -9,14 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ex02.databinding.FragmentFavoriteBinding
-import com.example.ex02.view.adapter.ImageFavoriteAdapter
+import com.example.ex02.view.adapter.ImageFavoriteListAdapter
 import com.example.ex02.viewmodel.ImageRoomViewModel
 
 class FavoriteFragment : Fragment() {
 
     private lateinit var imageRoomViewModel: ImageRoomViewModel
     private lateinit var binding: FragmentFavoriteBinding
-    private lateinit var imageAdapter: ImageFavoriteAdapter
+    private lateinit var imageAdapter: ImageFavoriteListAdapter
     private lateinit var rcv: RecyclerView
 
     override fun onCreateView(
@@ -33,7 +33,7 @@ class FavoriteFragment : Fragment() {
         rcv = binding.recyclerView
 
         imageRoomViewModel.getAllImage().observe(this) { list ->
-            imageAdapter.setData(list.toMutableList())
+            imageAdapter.submitList(list)
         }
 
         return binding.root
@@ -44,7 +44,7 @@ class FavoriteFragment : Fragment() {
 
         val gridLayoutManager = GridLayoutManager(requireContext(), 3)
         rcv.layoutManager = gridLayoutManager
-        imageAdapter = ImageFavoriteAdapter(imageRoomViewModel)
+        imageAdapter = ImageFavoriteListAdapter(imageRoomViewModel)
         rcv.adapter = imageAdapter
     }
 }
