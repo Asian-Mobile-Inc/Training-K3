@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void listener() {
         mButtonRelative.setOnClickListener(view -> {
-            mSwitchActivity = new Intent(this, Ex01_UseRelativeLayout.class);
+            mSwitchActivity = new Intent(this, Ex01UseRelativeLayout.class);
             startActivity(mSwitchActivity);
         });
         mButtonLinear.setOnClickListener(view -> {
-            mSwitchActivity = new Intent(this, Ex02_UseLinearLayout.class);
+            mSwitchActivity = new Intent(this, Ex02UseLinearLayout.class);
             startActivity(mSwitchActivity);
         });
         mButtonConstraint.setOnClickListener(view -> {
-            mSwitchActivity = new Intent(this, Ex03_UseConstrainLayout.class);
+            mSwitchActivity = new Intent(this, Ex03UseConstrainLayout.class);
             startActivity(mSwitchActivity);
         });
     }
