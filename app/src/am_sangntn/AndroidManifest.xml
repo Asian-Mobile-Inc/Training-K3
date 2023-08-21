@@ -10,7 +10,19 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".MainViewActivity"
+            android:name=".Ex01RelativeLayout"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".Ex02LinearLayout"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".Ex03ConstraintLayout"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

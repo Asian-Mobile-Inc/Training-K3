@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvInfor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tvInforBackGround"
+        android:gravity="center"
+        android:text="@string/tv_information"
+        android:textColor="@color/tvInfor"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/flName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvInfor">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="@string/tv_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="80dp"
+            android:autofillHints="name"
+            android:hint="@string/edt_hint"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flCMND"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flName">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="@string/tv_cmnd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="80dp"
+            android:autofillHints="no"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvDegree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tvCollegeBackGround"
+        android:gravity="center"
+        android:text="@string/tv_degree"
+        android:textColor="@color/tvInfor"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/flCMND" />
+
+    <RadioGroup
+        android:id="@+id/rgDegree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDegree">
+
+        <RadioButton
+            android:id="@+id/rbSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_secondary" />
+
+        <RadioButton
+            android:id="@+id/rbCollege"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_college" />
+
+        <RadioButton
+            android:id="@+id/rbUniversity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_university" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvFavorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tvCollegeBackGround"
+        android:gravity="center"
+        android:text="@string/tv_favorite"
+        android:textColor="@color/tvInfor"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/rgDegree" />
+
+    <FrameLayout
+        android:id="@+id/flFavorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFavorite">
+
+        <CheckBox
+            android:id="@+id/cbReadNewspaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_read_newspaper" />
+
+        <CheckBox
+            android:id="@+id/cbReadBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="95sp"
+            android:text="@string/tv_read_book" />
+
+        <CheckBox
+            android:id="@+id/cbReadCoding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="190sp"
+            android:text="@string/tv_read_coding" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvEnterInfor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="@string/tv_enter_information"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flFavorite" />
+
+    <EditText
+        android:id="@+id/edtEnterInfor"
+        android:layout_width="400dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/edt_hint"
+        android:importantForAccessibility="no"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flFavorite" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_send_information"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtEnterInfor" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

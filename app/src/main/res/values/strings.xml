@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Asian-Training</string>
+    <string name="tv_information">Thông tin cá nhân</string>
+    <string name="tv_name">Họ tên:</string>
+    <string name="tv_cmnd">CMND:</string>
+    <string name="tv_degree">Bằng cấp</string>
+    <string name="tv_secondary">Trung cấp</string>
+    <string name="tv_college">Cao đẳng</string>
+    <string name="tv_university">Đại học</string>
+    <string name="tv_favorite">Sở thích</string>
+    <string name="tv_read_newspaper">Đọc báo</string>
+    <string name="tv_read_book">Đọc sách</string>
+    <string name="tv_read_coding">Đọc coding</string>
+    <string name="tv_enter_information">Nhập thông tin bổ sung - có thể để trống</string>
+    <string name="tv_send_information">Gửi thông tin</string>
+    <string name="edt_hint" />
+    <string name="tv_first_number">Số hạng 1</string>
+    <string name="tv_second_number">Số hạng 2</string>
+    <string name="btn_plus">+</string>
+    <string name="btn_mul">*</string>
+    <string name="btn_div">/</string>
+    <string name="btn_sub">-</string>
+    <string name="tv_result">Ket qua:</string>
+    <string name="tv_title_facebook">FACEBOOK</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="hint_username">Email or Phone</string>
 </resources>
