@@ -1,13 +1,16 @@
 package com.example.asian;
 
-import android.annotation.SuppressLint;
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.OpenableColumns;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,12 +18,15 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.asian.databinding.ActivityMainBinding;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,12 +82,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupClickListeners() {
-        mActivityMainBinding.flbUpload.setOnClickListener(view -> {
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            someActivityResultLauncher.launch(intent);
+        mActivityMainBinding.fabUpload.setOnClickListener(view -> {
+            if (checkAccessPermission()) {
+                chooseImageFromStorage();
+            } else {
+                requestPermissions();
+            }
         });
+    }
+
+    private void chooseImageFromStorage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        someActivityResultLauncher.launch(intent);
+    }
+
+    private boolean checkAccessPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            return Environment.isExternalStorageManager();
+        } else {
+            int write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            int read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+            return write == PackageManager.PERMISSION_GRANTED && read == PackageManager.PERMISSION_GRANTED;
+        }
+    }
+
+    private void requestPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+            intent.setData(Uri.fromParts("package", getPackageName(), null));
+            startActivity(intent);
+        } else {
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[]{
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                    },
+                    1
+            );
+        }
     }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -94,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
         }
     });
 
-    @SuppressLint("CheckResult")
     private void uploadImage(Uri imageUri) {
         String mBaseUrlUpload = "https://upload.gyazo.com/";
         mImagesApiService = new ImagesApiService(mBaseUrlUpload);
@@ -156,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 inputStream.close();
                 return tempFile.getAbsolutePath();
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
@@ -168,18 +208,16 @@ public class MainActivity extends AppCompatActivity {
         mImageAdapter.setData(mImages);
     }
 
-    @SuppressLint("Range")
     private String getFileNameFromUri(Uri uri) {
         String displayName = null;
         try (Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
-            if (cursor != null && cursor.moveToFirst()) {
-                displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+            int columnIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+            if (cursor.moveToFirst() && columnIndex >= 0) {
+                displayName = cursor.getString(columnIndex);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (displayName == null) {
-            displayName = uri.getLastPathSegment();
+            if (displayName == null) {
+                displayName = uri.getLastPathSegment();
+            }
         }
         return displayName;
     }
