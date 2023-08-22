@@ -3,7 +3,6 @@ package com.example.asian;
 import static com.example.asian.MainActivity.mTextViewConnected;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -109,27 +108,31 @@ public class ForegroundService extends Service {
         startForeground(1, builder.build());
     }
 
-    @SuppressLint("SetTextI18n")
     private void stopLocationUpdates() {
         if (mLocationCallback != null) {
-            mTextViewConnected.setText("No Connect");
+            mTextViewConnected.setText(R.string.app_name);
             mClient.removeLocationUpdates(mLocationCallback);
         }
     }
 
     private void requestLocationUpdates() {
-        LocationRequest request = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 20000)
+        LocationRequest request = new LocationRequest
+                .Builder(Priority.PRIORITY_HIGH_ACCURACY, 20000)
                 .setWaitForAccurateLocation(false)
                 .build();
 
-        int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        int permission = ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        );
 
         if (permission == PackageManager.PERMISSION_GRANTED) {
             if (NetworkChangeReceiver.mIsConnected) {
                 mLocationCallback = new LocationCallback() {
                     @Override
                     public void onLocationResult(@NonNull LocationResult locationResult) {
-                        String location = "Latitude : " + Objects.requireNonNull(locationResult.getLastLocation()).getLatitude() +
+                        String location = "Latitude : "
+                                + Objects.requireNonNull(locationResult.getLastLocation()).getLatitude() +
                                 "\nLongitude : " + locationResult.getLastLocation().getLongitude();
                         MainActivity.upDateUI(locationResult.getLastLocation());
                         Log.d("Location", location);

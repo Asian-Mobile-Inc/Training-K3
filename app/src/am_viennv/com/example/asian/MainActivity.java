@@ -1,8 +1,5 @@
 package com.example.asian;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -17,6 +14,9 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Hủy đăng ký BroadcastReceiver khi Activity bị hủy
         unregisterReceiver(mNetworkChangeReceiver);
     }
 
@@ -70,14 +69,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @SuppressLint("SetTextI18n")
     public static void upDateUI(Location location) {
         mTextViewLatitude.setText(String.valueOf(location.getLatitude()));
         mTextViewLongTitude.setText(String.valueOf(location.getLongitude()));
         if (NetworkChangeReceiver.mIsConnected) {
-            mTextViewConnected.setText("Connected");
+            mTextViewConnected.setText(R.string.text_connected);
         } else {
-            mTextViewConnected.setText("No Connect");
+            mTextViewConnected.setText(R.string.text_no_connected);
         }
     }
 
@@ -97,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
                         if (report.areAllPermissionsGranted()) {
-                            startService(new Intent(MainActivity.this, ForegroundService.class));
+                            startService(new Intent(MainActivity.this,
+                                    ForegroundService.class)
+                            );
                         }
 
                         if (report.isAnyPermissionPermanentlyDenied()) {
@@ -106,7 +106,8 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions,
+                                                                   PermissionToken token) {
                         token.continuePermissionRequest();
                     }
                 })

@@ -4,4 +4,6 @@
     <string name="latitude" translatable="false">Latitude</string>
     <string name="longitude" translatable="false">Longitude</string>
     <string name="name_button" translatable="false">Get Location</string>
+    <string name="text_no_connected" translatable="false">No Connect</string>
+    <string name="text_connected" translatable="false">Connected</string>
 </resources>
