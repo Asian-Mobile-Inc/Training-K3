@@ -1,5 +1,6 @@
 package com.example.ex02.view.adapter
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +12,8 @@ import com.example.ex02.bean.ItemImage
 import com.example.ex02.databinding.ItemImageBinding
 import com.example.ex02.viewmodel.ImageRoomViewModel
 
-class ImageListAdapter(private val imageRoomViewModel: ImageRoomViewModel) : ListAdapter<ItemImage, ImageListAdapter.ImageViewHolder>(ImageDiffCallback()) {
+class ImageListAdapter(private val imageRoomViewModel: ImageRoomViewModel) :
+    ListAdapter<ItemImage, ImageListAdapter.ImageViewHolder>(ImageDiffCallback()) {
 
     class ImageViewHolder(binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
         var imageView = binding.imageView
@@ -35,12 +37,28 @@ class ImageListAdapter(private val imageRoomViewModel: ImageRoomViewModel) : Lis
             Log.d("ddd", e.toString())
         }
 
+        if (checkExist(image.imageUrl)) {
+            holder.favoriteButton.setBackgroundColor(Color.CYAN + 100)
+        } else {
+            holder.favoriteButton.setBackgroundColor(Color.GRAY)
+        }
+
         holder.favoriteButton.setOnClickListener {
-            addImageToFavoriteList(image)
+            if (addImageToFavoriteList(image)) {
+                holder.favoriteButton.setBackgroundColor(Color.CYAN + 100)
+            } else {
+                holder.favoriteButton.setBackgroundColor(Color.GRAY )
+            }
         }
     }
 
-    private fun addImageToFavoriteList(itemImage: ItemImage) {
-        imageRoomViewModel.addItemIfNotExists(itemImage)
+    private fun addImageToFavoriteList(itemImage: ItemImage): Boolean {
+        return imageRoomViewModel.addItemIfNotExists(itemImage)
     }
+
+    private fun checkExist(url: String): Boolean {
+
+        return imageRoomViewModel.checkExistence(url)
+    }
+
 }

@@ -17,4 +17,8 @@ class ImageRepository(private val imageDao: ImageDao) {
     suspend fun doesImageExist(url: String): Boolean {
         return imageDao.getImageByUrl(url) != null
     }
+
+    suspend fun deleteImageByUrl(url: String) {
+        return imageDao.deleteImageByUrl(url)
+    }
 }

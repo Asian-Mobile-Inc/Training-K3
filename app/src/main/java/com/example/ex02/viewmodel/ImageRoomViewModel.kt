@@ -9,6 +9,7 @@ import com.example.ex02.model.room.ImageDatabase
 import com.example.ex02.model.room.ImageRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ImageRoomViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -37,15 +38,50 @@ class ImageRoomViewModel(application: Application) : AndroidViewModel(applicatio
         return readAllImage
     }
 
-    private suspend fun checkImageExistence(url: String): Boolean {
+    suspend fun checkImageExistence(url: String): Boolean {
         return repository.doesImageExist(url)
     }
 
-    fun addItemIfNotExists(image: ItemImage) {
+    /*fun addItemIfNotExists(image: ItemImage): Boolean {
+        var check = true
         viewModelScope.launch {
             if (!checkImageExistence(image.imageUrl)) {
                 addImage(image)
+            } else {
+                repository.deleteImageByUrl(image.imageUrl)
+                check = false;
             }
         }
+        return check
+    }*/
+
+    fun addItemIfNotExists(image: ItemImage): Boolean {
+        return runBlocking {
+            var check = true
+            if (!checkImageExistence(image.imageUrl)) {
+                addImage(image)
+            } else {
+                repository.deleteImageByUrl(image.imageUrl)
+                check = false
+            }
+            check
+        }
     }
+
+    fun checkExistence(url: String): Boolean {
+        return runBlocking {
+            repository.doesImageExist(url)
+        }
+    }
+
+    /*fun checkExistence(url: String): Boolean {
+        var check = true
+        viewModelScope.launch {
+            val deferredValue: Deferred<Boolean> = async {
+                repository.doesImageExist(url)
+            }
+            check = deferredValue.await()
+        }
+        return check
+    }*/
 }

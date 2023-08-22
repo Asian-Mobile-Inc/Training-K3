@@ -38,7 +38,6 @@ class ApiFragment : Fragment() {
 
         rcv = binding.recyclerView
 
-        binding.btnGet.setOnClickListener {
             val retrofit = Retrofit.Builder().baseUrl("https://api.gyazo.com/api/")
                 .addConverterFactory(GsonConverterFactory.create()).build()
 
@@ -63,7 +62,6 @@ class ApiFragment : Fragment() {
                 //imageAdapter.setData(images)
                 imageAdapter.submitList(list)
             }
-        }
         return binding.root
     }
 

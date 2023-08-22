@@ -21,4 +21,7 @@ interface ImageDao {
 
     @Query("SELECT * FROM images WHERE imageUrl = :url")
     suspend fun getImageByUrl(url: String): ItemImage?
+
+    @Query("DELETE FROM images WHERE imageUrl = :url ")
+    suspend fun deleteImageByUrl(url: String)
 }

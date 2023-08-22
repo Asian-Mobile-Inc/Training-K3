@@ -58,7 +58,7 @@ class ImageFavoriteAdapter(private val imageRoomViewModel: ImageRoomViewModel) :
         holder.favoriteButton.text = "Delete"
 
         holder.favoriteButton.setOnClickListener {
-            images.value?.let { it1 -> deleteImageInFavoriteList(it1.get(position)) }
+            _images.value?.let { it1 -> deleteImageInFavoriteList(it1.get(position)) }
         }
     }
 
