@@ -15,10 +15,6 @@ public class User {
     @ColumnInfo(name = "age")
     private final Integer mAge;
 
-    public void setMIdUser(int mIdUser) {
-        this.mIdUser = mIdUser;
-    }
-
     public int getMIdUser() {
         return mIdUser;
     }

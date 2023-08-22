@@ -1,6 +1,5 @@
-package com.example.asian;
+package com.example.asian.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.asian.R;
 import com.example.asian.beans.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,17 +26,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     public UserAdapter(IClickItemUser iClickItemUser) {
         this.mIclickItemUser = iClickItemUser;
+        mUserList = new ArrayList<>();
     }
 
     public interface IClickItemUser {
         void deleteUser(User user);
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     public void setData(Context context, List<User> userList) {
         this.mContext = context;
-        this.mUserList = userList;
-        notifyDataSetChanged();
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtilsCallback(mUserList, userList));
+        mUserList.clear();
+        mUserList.addAll(userList);
+        diffResult.dispatchUpdatesTo(this);
     }
 
     @NonNull

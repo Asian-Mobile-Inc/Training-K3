@@ -12,11 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.asian.adapter.UserAdapter;
 import com.example.asian.beans.User;
 import com.example.asian.database.UserDatabase;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     public Integer createNewUser() {
         int newId = 0;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Collections.sort(mListUser, Comparator.comparingInt(User::getMIdUser));
+            mListUser.sort(Comparator.comparing(User::getMIdUser));
         }
         for (int i = 0; i < mListUser.size(); i++) {
             if (newId != mListUser.get(i).getMIdUser()) {
