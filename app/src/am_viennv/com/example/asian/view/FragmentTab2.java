@@ -19,9 +19,7 @@ import java.util.ArrayList;
 public class FragmentTab2 extends Fragment {
 
     private RecyclerView mRecyclerView;
-
     private CustomAdapter mCustomAdapter;
-
     private final ArrayList<String> mListData;
     private View mRootView;
 

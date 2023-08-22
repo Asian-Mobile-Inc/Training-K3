@@ -17,10 +17,10 @@ import com.example.asian.adapter.CustomAdapter;
 import java.util.ArrayList;
 
 public class FragmentTab1 extends Fragment {
+
     private RecyclerView mRecyclerView;
     private CustomAdapter mCustomAdapter;
     private final ArrayList<String> mListData;
-
     private View mRootView;
 
     public FragmentTab1(ArrayList<String> mListData) {

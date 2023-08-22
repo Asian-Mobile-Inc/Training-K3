@@ -1,14 +1,8 @@
 package com.example.asian;
 
 import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
-
 import static com.example.asian.CaseAction.CASE_ADD;
 import static com.example.asian.CaseAction.CASE_DEL;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,6 +11,11 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.asian.adapter.ViewPagerAdapter;
 import com.example.asian.view.FragmentTab1;
@@ -129,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.custom_dialog);
-
             initView();
             handleClick();
         }

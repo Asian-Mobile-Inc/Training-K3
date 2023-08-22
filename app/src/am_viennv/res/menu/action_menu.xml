@@ -12,5 +12,4 @@
     <item
         android:id="@+id/option_add"
         android:title="@string/option_add" />
-
 </menu>
