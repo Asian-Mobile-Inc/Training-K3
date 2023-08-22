@@ -32,7 +32,6 @@
             android:paddingHorizontal="10sp"
             android:text="@string/name_fragment_two"
             android:textSize="18sp" />
-
     </LinearLayout>
 
     <FrameLayout

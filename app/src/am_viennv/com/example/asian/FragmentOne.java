@@ -2,26 +2,22 @@ package com.example.asian;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 public class FragmentOne extends Fragment {
 
-    private static String mParam;
+    private static String mParamColor;
 
-    public FragmentOne() {
-    }
-
-    public static FragmentOne newInstance(String param) {
+    public static FragmentOne newInstance(String paramColor) {
         FragmentOne fragment = new FragmentOne();
-        mParam = param;
+        mParamColor = paramColor;
         return fragment;
     }
 
@@ -39,7 +35,7 @@ public class FragmentOne extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         FrameLayout frameLayout = view.findViewById(R.id.fragmentOne);
-        frameLayout.setBackgroundColor(Color.parseColor(mParam));
+        frameLayout.setBackgroundColor(Color.parseColor(mParamColor));
         super.onViewCreated(view, savedInstanceState);
     }
 }

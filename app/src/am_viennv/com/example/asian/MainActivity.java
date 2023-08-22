@@ -1,41 +1,56 @@
 package com.example.asian;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 public class MainActivity extends AppCompatActivity {
+
     private int mCountSwitch;
     private FragmentManager mFragmentManager;
+    private Button mBtnFragmentOne;
+    private Button mBtnFragmentTwo;
 
     @Override
-    @SuppressLint({"MissingInflatedId", "LocalSuppress"})
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initView();
+        handleOnclick();
+    }
+
+    private void handleOnclick() {
+        mBtnFragmentOne.setOnClickListener(view -> {
+            checkClearBackStack();
+            handleChangeFragment(
+                    FragmentOne.newInstance("#338837"),
+                    "Fragment One");
+        });
+        mBtnFragmentTwo.setOnClickListener(view -> {
+            checkClearBackStack();
+            handleChangeFragment(
+                    FragmentTwo.newInstance("#671063"),
+                    "Fragment Two");
+        });
+    }
+
+    private void initView() {
         mCountSwitch = 0;
-        Button btnFragmentOne = findViewById(R.id.btnFragmentOne);
-        Button btnFragmentTwo = findViewById(R.id.btnFragmentTwo);
+        mBtnFragmentOne = findViewById(R.id.btnFragmentOne);
+        mBtnFragmentTwo = findViewById(R.id.btnFragmentTwo);
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.addOnBackStackChangedListener(this::handleBackStackChanged);
-        btnFragmentOne.setOnClickListener(view -> {
-            checkClearBackStack();
-            FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.containerFragment, FragmentOne.newInstance("#338837"));
-            fragmentTransaction.addToBackStack("Fragment One");
-            fragmentTransaction.commit();
-        });
-        btnFragmentTwo.setOnClickListener(view -> {
-            checkClearBackStack();
-            FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.containerFragment, FragmentTwo.newInstance("#671063"));
-            fragmentTransaction.addToBackStack("Fragment Two");
-            fragmentTransaction.commit();
-        });
+    }
+
+    private void handleChangeFragment(Fragment fragment, String nameBackStack) {
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.containerFragment, fragment);
+        fragmentTransaction.addToBackStack(nameBackStack);
+        fragmentTransaction.commit();
     }
 
     private void handleBackStackChanged() {
