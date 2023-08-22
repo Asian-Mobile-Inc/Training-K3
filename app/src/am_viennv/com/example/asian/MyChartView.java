@@ -1,6 +1,5 @@
 package com.example.asian;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -56,7 +55,12 @@ public class MyChartView extends View {
         invalidate();
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean performClick() {
+        super.performClick();
+        return true;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         mScaleDetector.onTouchEvent(event);
@@ -96,6 +100,7 @@ public class MyChartView extends View {
                 invalidate();
                 break;
         }
+        performClick();
         return true;
     }
 
