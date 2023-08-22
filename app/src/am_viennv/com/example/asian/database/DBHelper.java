@@ -1,4 +1,4 @@
-package com.example.asian;
+package com.example.asian.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -34,6 +34,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.rawQuery("Select * from UsersInfo", null);
+    }
+
+    public Cursor findAllData(String nameToFind) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery("SELECT * FROM UsersInfo WHERE name LIKE '%" + nameToFind + "%'", null);
     }
 
     public int deleteAll() {
