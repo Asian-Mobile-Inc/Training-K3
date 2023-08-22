@@ -26,5 +26,4 @@
         android:title="@string/content_des_more"
         app:showAsAction="ifRoom"
         tools:ignore="AppCompatResource" />
-
 </menu>

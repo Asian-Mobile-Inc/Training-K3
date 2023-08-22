@@ -54,8 +54,9 @@ public class MainActivity extends AppCompatActivity {
             mToolBar.setTitle("Title");
         });
 
-        mFloatingActionButton.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_SHORT).show());
-
+        mFloatingActionButton.setOnClickListener(view -> Snackbar.make(view,
+                "Replace with your own action",
+                Snackbar.LENGTH_SHORT).show());
     }
 
     private void action() {
