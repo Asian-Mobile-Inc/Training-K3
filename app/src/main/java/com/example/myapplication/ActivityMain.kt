@@ -24,7 +24,8 @@ import java.io.FileOutputStream
 class ActivityMain : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignatureBinding
-
+    private val PICK_PDF_REQUEST_CODE = 123
+    private lateinit var signatureBitmap: Bitmap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,33 +33,60 @@ class ActivityMain : AppCompatActivity() {
         binding = ActivitySignatureBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val clearButton: Button = binding.clearButton
-        val saveButton: Button = binding.saveButton
+
 
         val signatureView: SignatureView = binding.signatureView
 
-        saveButton.setOnClickListener {
-            val signatureBitmap = signatureView.getSignatureBitmap()
 
-            openChooseActivity(signatureBitmap)
+        binding.btnClear.setOnClickListener {
+            val displayMetrics = resources.displayMetrics
+            val dpi = displayMetrics.densityDpi
+            Log.d("ddd", "" + dpi)
         }
 
-        clearButton.setOnClickListener {
-            val signatureBitmap = signatureView.getSignatureBitmap()
-            signatureView.clearSignature()
-        }
-
-        /*clearButton.setOnClickListener {
-            signaturePad.clear()
-
-        }
-        saveButton.setOnClickListener {
-            val signatureBitmap = signaturePad.signatureBitmap
-            if (signatureBitmap.width > 0 && signatureBitmap.height > 0) {
-                openChooseActivity(signatureBitmap)
-            }
-        }*/
+       binding.btnChoose.setOnClickListener {
+           signatureBitmap = signatureView.getSignatureBitmap()
+           openPdfDocument()
+       }
     }
+
+    private fun openPdfDocument() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "application/pdf"
+        }
+        startActivityForResult(intent, PICK_PDF_REQUEST_CODE)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_PDF_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            data?.data?.let { selectedPdfUri ->
+                openPdf(selectedPdfUri, signatureBitmap)
+            }
+        }
+    }
+
+    private fun openPdf(pdfUri: Uri, signatureBitmap: Bitmap) {
+        val cachePath = File(cacheDir, "images")
+        cachePath.mkdirs()
+
+        val file = File(cachePath, "image1.jpg")
+        val outputStream = FileOutputStream(file)
+        signatureBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        outputStream.close()
+
+        val intent = Intent(this, PdfViewerActivity::class.java)
+        intent.putExtra("pdfUri", pdfUri.toString())
+        intent.putExtra("imagePathAdd", file.absolutePath)
+        try {
+            startActivity(intent)
+        } catch (e: Exception) {
+            Log.d("ddd", e.toString())
+        }
+    }
+
 
     private fun openChooseActivity(signatureBitmap: Bitmap) {
         val intent = Intent(this, ChoosePdfActivity::class.java)

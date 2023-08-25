@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back Page"
-        app:layout_constraintBottom_toTopOf="@+id/pdfView"
+        app:layout_constraintBottom_toTopOf="@+id/flPdfView"
         app:layout_constraintEnd_toStartOf="@+id/btnNext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,19 +20,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next Page"
-        app:layout_constraintBottom_toTopOf="@+id/pdfView"
+        app:layout_constraintBottom_toTopOf="@+id/flPdfView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnPrevious"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdfView"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/flPdfView"
+        android:layout_width="410sp"
         android:layout_height="535sp"
         app:layout_constraintBottom_toTopOf="@+id/btnBack"
         app:layout_constraintTop_toBottomOf="@+id/btnNext"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/pdfView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="80sp"
+            android:layout_height="80sp" />
+
+    </FrameLayout>
+
 
     <Button
         android:id="@+id/btnBack"
@@ -42,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSave"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pdfView" />
+        app:layout_constraintTop_toBottomOf="@+id/flPdfView" />
 
     <Button
         android:id="@+id/btnSave"
@@ -52,6 +64,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnBack"
-        app:layout_constraintTop_toBottomOf="@+id/pdfView" />
+        app:layout_constraintTop_toBottomOf="@+id/flPdfView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

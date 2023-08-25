@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,10 +11,13 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
+import android.util.TypedValue
+import android.view.MotionEvent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.example.myapplication.databinding.ActivityPdfViewerBinding
 import com.github.barteksc.pdfviewer.PDFView
 import com.github.barteksc.pdfviewer.util.FitPolicy
@@ -35,6 +39,7 @@ class PdfViewerActivity : AppCompatActivity() {
     private lateinit var pdfView: PDFView
     private lateinit var binding: ActivityPdfViewerBinding
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPdfViewerBinding.inflate(layoutInflater)
@@ -43,8 +48,40 @@ class PdfViewerActivity : AppCompatActivity() {
         pdfView = binding.pdfView
         val pdfUriString = intent.getStringExtra("pdfUri")
         val pdfUri = Uri.parse(pdfUriString)
-
+        val imageView = binding.imageView
         val imagePath = intent.getStringExtra("imagePathAdd")
+
+        imageView.setImageURI(Uri.fromFile(File(imagePath)))
+
+
+        var lastX = 0f
+        var lastY = 0f
+
+        imageView.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    lastX = event.x
+                    lastY = event.y
+                }
+
+                MotionEvent.ACTION_MOVE -> {
+                    var distanceX = event.x - lastX
+                    var distanceY = event.y - lastY
+
+                    view.x = view.x + distanceX
+                    view.y = view.y + distanceY
+                    Log.d("ddd", "" + view.x + " || " + view.y )
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    lastX = view.x
+                    lastY = view.y
+                }
+            }
+            true
+        }
+
+
 
         binding.btnSave.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
@@ -54,7 +91,8 @@ class PdfViewerActivity : AppCompatActivity() {
                 if (imagePath != null) {
                     val imageFile = File(imagePath)
                     if (imageFile.exists()) {
-                        addImageToPdfAndSave(pdfUri, Uri.fromFile(imageFile))
+                        addImageToPdfAndSave(pdfUri, Uri.fromFile(imageFile), pdfView.currentPage, lastX, lastY)
+
                         imageFile.delete()
                     }
                 }
@@ -93,9 +131,12 @@ class PdfViewerActivity : AppCompatActivity() {
             .enableDoubletap(true)
             .pageFitPolicy(FitPolicy.WIDTH)
             .load()
+
+
+
     }
 
-    private fun addImageToPdfAndSave(pdfUri: Uri, imageUri: Uri) {
+    private fun addImageToPdfAndSave(pdfUri: Uri, imageUri: Uri, pageIndex: Int, lastX: Float, lastY: Float) {
 
 
         val downloadsDirectory =
@@ -110,12 +151,12 @@ class PdfViewerActivity : AppCompatActivity() {
 
         val document = Document(pdf)
         val image = Image(ImageDataFactory.create(imageUri.toString()))
-        if (image != null) {
-            image.scaleToFit(200f, 200f) // Scale the image if needed
-            document.add(image)
-        } else {
-            Log.d("ddd", "null")
-        }
+
+        image.scaleToFit(120f, 120f)
+        image.setFixedPosition(pageIndex + 1, lastX / 2.34f ,  (1600 - lastY) / 2.34f)
+        Log.d("ddd","$lastY || $lastX")
+        document.add(image)
+
 
 
         document.close()
@@ -139,5 +180,8 @@ class PdfViewerActivity : AppCompatActivity() {
         }
     }
 
-
+    private fun translation(pixelValue: Float): Float {
+        val dpi = 300
+        return pixelValue / (dpi / 72)
+    }
 }
