@@ -39,29 +39,31 @@
     <FrameLayout
         android:id="@+id/flDrawSignature"
         android:layout_width="match_parent"
-        android:layout_height="300sp"
+        android:layout_height="0sp"
         android:layout_marginBottom="10sp"
         android:background="@drawable/border_layout"
         app:layout_constraintBottom_toTopOf="@+id/flIvShow"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="@dimen/height_40_percent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnInsert" />
 
     <FrameLayout
         android:id="@+id/flIvShow"
         android:layout_width="match_parent"
-        android:layout_height="300sp"
+        android:layout_height="0sp"
         android:layout_marginBottom="20sp"
         android:background="#ccc"
-        android:paddingVertical="14sp"
+        android:paddingTop="14sp"
         app:layout_constraintBottom_toTopOf="@id/ivColorBlack"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="@dimen/height_40_percent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/ivShowSignature"
             android:layout_width="match_parent"
-            android:layout_height="300sp"
+            android:layout_height="match_parent"
             android:importantForAccessibility="no" />
     </FrameLayout>
 
@@ -103,7 +105,8 @@
         android:layout_height="20sp"
         android:layout_marginStart="30sp"
         android:layout_marginBottom="5sp"
-        android:background="@drawable/dot_black"
+        android:background="@drawable/dot_circle"
+        android:backgroundTint="@color/colorBlack"
         android:contentDescription="@string/btn_black"
         app:layout_constraintBottom_toTopOf="@+id/seekBarSize"
         app:layout_constraintStart_toEndOf="@+id/btnCreate" />
@@ -113,7 +116,8 @@
         android:layout_width="20sp"
         android:layout_height="20sp"
         android:layout_marginStart="30sp"
-        android:background="@drawable/dot_blue"
+        android:background="@drawable/dot_circle"
+        android:backgroundTint="@color/colorBlue"
         android:contentDescription="@string/btn_blue"
         app:layout_constraintBottom_toBottomOf="@+id/ivColorBlack"
         app:layout_constraintStart_toEndOf="@+id/ivColorBlack" />
@@ -123,10 +127,22 @@
         android:layout_width="20sp"
         android:layout_height="20sp"
         android:layout_marginStart="30sp"
-        android:background="@drawable/dot_pink"
+        android:background="@drawable/dot_circle"
+        android:backgroundTint="@color/colorPink"
         android:contentDescription="@string/btn_pink"
         app:layout_constraintBottom_toBottomOf="@+id/ivColorBlack"
         app:layout_constraintStart_toEndOf="@+id/ivColorBlue" />
+
+    <ImageView
+        android:id="@+id/ivColorGreen"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:layout_marginStart="30sp"
+        android:background="@drawable/dot_circle"
+        android:backgroundTint="@color/colorGreen"
+        android:contentDescription="@string/btn_pink"
+        app:layout_constraintBottom_toBottomOf="@+id/ivColorBlack"
+        app:layout_constraintStart_toEndOf="@+id/ivColorPink" />
 
     <Button
         android:id="@+id/btnCreate"
@@ -146,11 +162,10 @@
         android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10sp"
-        android:max="20"
-        android:min="6"
-        android:progress="13"
+        android:max="25"
+        android:min="10"
+        android:progress="15"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvValueSize"
         app:layout_constraintStart_toEndOf="@+id/btnCreate" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

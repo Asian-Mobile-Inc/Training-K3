@@ -62,11 +62,11 @@ class MainActivity : AppCompatActivity() {
 
         mBinding.btnInsert?.setOnClickListener {
             if (mBitmap == null) {
-                Toast.makeText(baseContext, "Please draw your signature !", Toast.LENGTH_SHORT)
+                Toast.makeText(baseContext, "Please create your signature !", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
-            val mIntent = Intent(this, InsertImageToPDF::class.java)
+            val mIntent = Intent(this, InsertSignatureToPDFActivity::class.java)
             val stream = ByteArrayOutputStream()
             mBitmap?.compress(Bitmap.CompressFormat.PNG, 100, stream)
             val byteArray = stream.toByteArray()
@@ -84,6 +84,9 @@ class MainActivity : AppCompatActivity() {
 
         mBinding.ivColorPink?.setOnClickListener {
             mSignatureView.setStrokeColor(ContextCompat.getColor(baseContext, R.color.colorPink))
+        }
+        mBinding.ivColorGreen?.setOnClickListener {
+            mSignatureView.setStrokeColor(ContextCompat.getColor(baseContext, R.color.colorGreen))
         }
     }
 
