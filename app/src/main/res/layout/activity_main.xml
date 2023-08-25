@@ -9,28 +9,45 @@
     <com.github.gcacace.signaturepad.views.SignaturePad
         android:id="@+id/signaturePad"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="320dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewPdf"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        app:layout_constraintTop_toBottomOf="@id/signaturePad"
+        app:layout_constraintBottom_toTopOf="@id/btnAbc" />
+
     <Button
         android:id="@+id/btnClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Clear"
-        app:layout_constraintTop_toBottomOf="@id/signaturePad"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAbc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewPdf" />
 
-        />
     <Button
-        android:id="@+id/btnSubmit"
+        android:id="@+id/btnAbc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/signaturePad"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/btnChoose"
+        app:layout_constraintStart_toEndOf="@+id/btnClear"
+        app:layout_constraintTop_toBottomOf="@id/imageViewPdf" />
+
+    <Button
+        android:id="@+id/btnChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="choose pdf file"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Submit"
-        app:layout_constraintStart_toEndOf="@+id/btnClear"/>
+        app:layout_constraintStart_toEndOf="@+id/btnAbc"
+        app:layout_constraintTop_toBottomOf="@id/imageViewPdf" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
