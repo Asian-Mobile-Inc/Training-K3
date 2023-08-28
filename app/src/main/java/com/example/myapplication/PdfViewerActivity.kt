@@ -11,14 +11,10 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
-import android.util.TypedValue
 import android.view.MotionEvent
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
-import com.bumptech.glide.Glide
 import com.example.myapplication.databinding.ActivityPdfViewerBinding
 import com.github.barteksc.pdfviewer.PDFView
 import com.github.barteksc.pdfviewer.util.FitPolicy
@@ -27,13 +23,9 @@ import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfReader
 import com.itextpdf.kernel.pdf.PdfWriter
 import com.itextpdf.layout.element.Image
-import com.itextpdf.layout.property.UnitValue
 import com.itextpdf.layout.Document
-import com.itextpdf.layout.element.Paragraph
 import java.io.File
 import java.io.FileOutputStream
-import java.net.URL
-
 
 @Suppress("DEPRECATION")
 class PdfViewerActivity : AppCompatActivity() {
@@ -53,7 +45,7 @@ class PdfViewerActivity : AppCompatActivity() {
         val imageView = binding.imageView
         val imagePath = intent.getStringExtra("imagePathAdd")
 
-        imageView.setImageURI(Uri.fromFile(File(imagePath)))
+        imageView.setImageURI(Uri.fromFile(imagePath?.let { File(it) }))
 
         var lastX = 0f
         var lastY = 0f
@@ -82,8 +74,8 @@ class PdfViewerActivity : AppCompatActivity() {
                 }
 
                 MotionEvent.ACTION_MOVE -> {
-                    var distanceX = event.x - lastX
-                    var distanceY = event.y - lastY
+                    val distanceX = event.x - lastX
+                    val distanceY = event.y - lastY
 
                     view.x = view.x + distanceX
                     view.y = view.y + distanceY
@@ -204,9 +196,7 @@ class PdfViewerActivity : AppCompatActivity() {
         Log.d("ddd", "ddd")
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 123) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-            } else {
+            if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 onBackPressed()
             }
         }

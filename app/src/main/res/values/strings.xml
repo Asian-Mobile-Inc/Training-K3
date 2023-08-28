@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="btn_back_page">Back Page</string>
+    <string name="btn_next_page">Next Page</string>
+    <string name="todo">TODO</string>
+    <string name="btn_back_activity">Back</string>
+    <string name="btn_save_pdf">Save</string>
+    <string name="title_signature_pad">Signaturing Here:</string>
+    <string name="btn_choose_pdf_file">Choose Pdf File</string>
+    <string name="btn_clear_signature">Clear Signature</string>
 </resources>

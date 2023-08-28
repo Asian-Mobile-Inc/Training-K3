@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -24,6 +25,7 @@ class SignatureView(context: Context, attrs: AttributeSet?) : View(context, attr
         canvas?.drawPath(path, paint)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         when (event?.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -37,6 +39,11 @@ class SignatureView(context: Context, attrs: AttributeSet?) : View(context, attr
             }
         }
         return false
+    }
+
+    fun clearSignature() {
+        path.reset()
+        invalidate()
     }
 
     fun getSignatureBitmap(): Bitmap {

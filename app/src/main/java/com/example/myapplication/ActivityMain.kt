@@ -3,29 +3,24 @@ package com.example.myapplication
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivitySignatureBinding
-import com.github.gcacace.signaturepad.views.SignaturePad
-
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
 import java.io.File
 import java.io.FileOutputStream
 
 
+@Suppress("DEPRECATION")
 class ActivityMain : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignatureBinding
-    private val PICK_PDF_REQUEST_CODE = 123
     private lateinit var signatureBitmap: Bitmap
+
+    companion object {
+        private const val PICK_PDF_REQUEST_CODE = 123
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +31,9 @@ class ActivityMain : AppCompatActivity() {
         val signatureView: SignatureView = binding.signatureView
 
         binding.btnClear.setOnClickListener {
-            val displayMetrics = resources.displayMetrics
-            val dpi = displayMetrics.densityDpi
-            Log.d("ddd", "" + dpi)
+            signatureView.clearSignature()
         }
+
         binding.btnChoose.setOnClickListener {
             signatureBitmap = signatureView.getSignatureBitmap()
             openPdfDocument()
@@ -81,4 +75,6 @@ class ActivityMain : AppCompatActivity() {
             Log.d("ddd", e.toString())
         }
     }
+
+
 }
