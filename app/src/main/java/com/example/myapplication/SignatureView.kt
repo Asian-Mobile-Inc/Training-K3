@@ -39,11 +39,6 @@ class SignatureView(context: Context, attrs: AttributeSet?) : View(context, attr
         return false
     }
 
-    fun clearSignature() {
-        path.reset()
-        invalidate()
-    }
-
     fun getSignatureBitmap(): Bitmap {
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
