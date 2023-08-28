@@ -62,8 +62,8 @@ class ImageViewCustom @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         mBitmap?.let {
             if (mScaledBitmap == null) {
-                val width = it.width / 8
-                val height = it.height / 8
+                val width = it.width / 6
+                val height = it.height / 6
                 mScaledBitmap = Bitmap.createScaledBitmap(it, width, height, true)
             }
             canvas.drawBitmap(mScaledBitmap!!, 0f, 0f, null)

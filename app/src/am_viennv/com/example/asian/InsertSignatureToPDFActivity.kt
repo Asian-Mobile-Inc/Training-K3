@@ -39,18 +39,19 @@ class InsertSignatureToPDFActivity : AppCompatActivity() {
     private lateinit var mPdfViewDemo: PDFView
     private lateinit var mBinding: ActivityInsertImageToPdfBinding
     private lateinit var mSignatureBitmap: Bitmap
-    private var mCurrentPage: Int = 0
-    private var mImagePosX = 0f
-    private var mImagePosY = 0f
+    private lateinit var customImageView: ImageViewCustom
     private lateinit var mFilePdfChoosen: PDFView.Configurator
     private lateinit var mPdfReader: PdfReader
     private lateinit var mFileName: String
-    private val mPdfUrl = "register-job.pdf"
     private var mFileInput: File? = null
-    private var mIsGetFromAssets: Boolean = true
-    private val mScaleImageView = 1.45f
+    private var mIsGetFromAssets = true
+    private val mPdfUrl = "don_xin_viec.pdf"
+    private val mDefaultPageHeight = 820f
+    private val mScaleImageView = 1.48f
     private var mScaleZoomPdf = 1f
-    private lateinit var customImageView: ImageViewCustom
+    private var mCurrentPage = 0
+    private var mImagePosX = 0f
+    private var mImagePosY = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -138,30 +139,25 @@ class InsertSignatureToPDFActivity : AppCompatActivity() {
             }
             mScaleZoomPdf = mPdfViewDemo.zoom
             val page = pdfDocument.getPage(mCurrentPage + 1)
+            page.pageSize.height = mDefaultPageHeight
             val image = ImageDataFactory.create(signatureBitmapToByteArray(mSignatureBitmap))
             val pdfCanvas = PdfCanvas(page)
-
-            val pdfPageWidth = page.pageSize.width
-            val pdfPageHeight = page.pageSize.height
-            val mScaleWidth = pdfPageWidth / mBinding.pdfView.width
-            val mScaleHeight = pdfPageHeight / mBinding.pdfView.measuredHeight
+            val mScaleWidth = page.pageSize.width / mBinding.pdfView.width
+            val mScaleHeight = mDefaultPageHeight / mBinding.pdfView.measuredHeight
             val mCurrentYOffset = mBinding.pdfView.currentYOffset
             val mCurrentXOffset =
                 mBinding.pdfView.currentXOffset + 1080f * mCurrentPage * mScaleZoomPdf
             val mImageHeight = mBinding.imageViewSignature.measuredHeight.toFloat() * mScaleHeight
             val mImageWidth = mBinding.imageViewSignature.measuredWidth.toFloat() * mScaleWidth
-
             val position = customImageView.getImagePosition()
             mImagePosX = position.first
             mImagePosY = position.second
-
             val pdfImageX =
                 (mImagePosX - mCurrentXOffset) * mScaleWidth / mScaleZoomPdf
             val pdfImageY =
                 mScaleImageView * (
                         mBinding.pdfView.measuredHeight - mImagePosY - mImageHeight - mCurrentYOffset) *
                         mScaleHeight / mScaleZoomPdf
-
             pdfCanvas.addImageWithTransformationMatrix(
                 image,
                 mImageWidth,
@@ -169,7 +165,7 @@ class InsertSignatureToPDFActivity : AppCompatActivity() {
                 0f,
                 mImageHeight,
                 pdfImageX,
-                pdfImageY
+                pdfImageY - 34f
             )
             Toast.makeText(baseContext, "Save to: ${outputFile.absolutePath}", Toast.LENGTH_SHORT)
                 .show()

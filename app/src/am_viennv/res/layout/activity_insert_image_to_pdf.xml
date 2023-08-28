@@ -39,9 +39,8 @@
 
     <com.example.asian.ImageViewCustom
         android:id="@+id/imageViewSignature"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:focusable="true"
+        android:layout_width="58sp"
+        android:layout_height="72sp"
         app:layout_constraintBottom_toBottomOf="@+id/pdfView"
         app:layout_constraintEnd_toEndOf="@+id/pdfView"
         app:layout_constraintStart_toStartOf="parent"

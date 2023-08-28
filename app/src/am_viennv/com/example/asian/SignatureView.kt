@@ -77,7 +77,6 @@ class SignatureView(context: Context) : View(context) {
                         mPath.lineTo(historicalX, historicalY)
                     }
                 }
-                mPath.lineTo(event.x, event.y)
             }
 
             else -> {
