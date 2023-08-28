@@ -6,21 +6,19 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivitySignatureBinding
 import java.io.File
 import java.io.FileOutputStream
 
 
-@Suppress("DEPRECATION")
 class ActivityMain : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignatureBinding
     private lateinit var signatureBitmap: Bitmap
 
-    companion object {
-        private const val PICK_PDF_REQUEST_CODE = 123
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +34,13 @@ class ActivityMain : AppCompatActivity() {
 
         binding.btnChoose.setOnClickListener {
             signatureBitmap = signatureView.getSignatureBitmap()
-            openPdfDocument()
+            openSomeActivityForResult()
         }
+    }
+
+    /*
+    companion object {
+        private const val PICK_PDF_REQUEST_CODE = 123
     }
 
     private fun openPdfDocument() {
@@ -48,10 +51,28 @@ class ActivityMain : AppCompatActivity() {
         startActivityForResult(intent, PICK_PDF_REQUEST_CODE)
     }
 
+
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_PDF_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            data?.data?.let { selectedPdfUri ->
+                openPdf(selectedPdfUri, signatureBitmap)
+            }
+        }
+    }*/
+
+    private fun openSomeActivityForResult() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "application/pdf"
+        }
+        resultLauncher.launch(intent)
+    }
+
+    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
             data?.data?.let { selectedPdfUri ->
                 openPdf(selectedPdfUri, signatureBitmap)
             }

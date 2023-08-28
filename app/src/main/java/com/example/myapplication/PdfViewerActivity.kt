@@ -51,16 +51,12 @@ class PdfViewerActivity : AppCompatActivity() {
         var lastY = 0f
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             if (ContextCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-                != PackageManager.PERMISSION_GRANTED
+                    this, android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
             ) {
 
                 ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                    123
+                    this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 123
                 )
 
             }
@@ -79,7 +75,6 @@ class PdfViewerActivity : AppCompatActivity() {
 
                     view.x = view.x + distanceX
                     view.y = view.y + distanceY
-                    Log.d("ddd", "" + view.x + " || " + view.y)
                 }
 
                 MotionEvent.ACTION_UP -> {
@@ -105,7 +100,6 @@ class PdfViewerActivity : AppCompatActivity() {
                             lastX / resources.displayMetrics.density / 0.6653f,
                             lastY / resources.displayMetrics.density / 0.6746f
                         )
-
                         imageFile.delete()
                     }
                 }
@@ -131,23 +125,14 @@ class PdfViewerActivity : AppCompatActivity() {
             }
         }
 
-        pdfView.fromUri(pdfUri)
-            .defaultPage(0)
-            .enableSwipe(false)
+        pdfView.fromUri(pdfUri).defaultPage(0).enableSwipe(false)
 //            .swipeHorizontal(false)
-            .enableAnnotationRendering(true)
-            .onPageChange(null)
-            .enableDoubletap(true)
-            .pageFitPolicy(FitPolicy.WIDTH)
-            .load()
+            .enableAnnotationRendering(true).onPageChange(null).enableDoubletap(true)
+            .pageFitPolicy(FitPolicy.WIDTH).load()
     }
 
     private fun addImageToPdfAndSave(
-        pdfUri: Uri,
-        imageUri: Uri,
-        pageIndex: Int,
-        lastX: Float,
-        lastY: Float
+        pdfUri: Uri, imageUri: Uri, pageIndex: Int, lastX: Float, lastY: Float
     ) {
         val downloadsDirectory =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
@@ -189,9 +174,7 @@ class PdfViewerActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         Log.d("ddd", "ddd")
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
