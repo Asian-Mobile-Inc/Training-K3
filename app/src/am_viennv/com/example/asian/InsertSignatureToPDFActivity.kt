@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.asian.databinding.ActivityInsertImageToPdfBinding
 import com.github.barteksc.pdfviewer.PDFView
+import com.github.barteksc.pdfviewer.util.FitPolicy
 import com.itextpdf.io.image.ImageDataFactory
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfReader
@@ -46,8 +47,6 @@ class InsertSignatureToPDFActivity : AppCompatActivity() {
     private var mFileInput: File? = null
     private var mIsGetFromAssets = true
     private val mPdfUrl = "don_xin_viec.pdf"
-    private val mDefaultPageHeight = 820f
-    private val mScaleImageView = 1.48f
     private var mScaleZoomPdf = 1f
     private var mCurrentPage = 0
     private var mImagePosX = 0f
@@ -84,8 +83,8 @@ class InsertSignatureToPDFActivity : AppCompatActivity() {
                 ).show()
                 requestPermissions()
             }
-
         }
+
     }
 
     private fun receiveImageViewFromMainActivity() {
@@ -97,16 +96,17 @@ class InsertSignatureToPDFActivity : AppCompatActivity() {
     }
 
     private fun configPdfView() {
-        mPdfViewDemo.maxZoom = 1.6f
-        mPdfViewDemo.minZoom = 1f
-        mPdfViewDemo.midZoom = 1.3f
+        mPdfViewDemo.midZoom = 1f
+        mPdfViewDemo.minZoom = 0.5f
+        mPdfViewDemo.maxZoom = 1.2f
         mFilePdfChoosen.onPageChange { page, pageCount ->
             mCurrentPage = page
             println("onPageChange() called with: page = [$page], pageCount = [$pageCount]")
         }.onPageScroll { page, pageCount ->
             mCurrentPage = page
             println("onPageScroll() called with: page = [$page], pageCount = [$pageCount]")
-        }.swipeHorizontal(true).load()
+        }.swipeHorizontal(true).pageFitPolicy(FitPolicy.WIDTH).pageFling(true).fitEachPage(true)
+            .autoSpacing(true).load()
     }
 
     private fun initView() {
@@ -122,6 +122,10 @@ class InsertSignatureToPDFActivity : AppCompatActivity() {
     }
 
     private fun exportPdfWithImage() {
+        if (!checkAllFilesAccessPermission()) {
+            requestPermissions()
+            return
+        }
         val outputDirectory =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
         val time = listOf(('0'..'9'), ('a'..'z'), ('A'..'Z')).flatten().random()
@@ -129,54 +133,77 @@ class InsertSignatureToPDFActivity : AppCompatActivity() {
         val outputFile = File(outputDirectory, outputFileName)
 
         try {
-            val pdfDocument: PdfDocument
-            val writer = PdfWriter(FileOutputStream(outputFile))
-            if (mIsGetFromAssets) {
-                pdfDocument = PdfDocument(PdfReader(assets.open(mPdfUrl)), writer)
-            } else {
-                mPdfReader = PdfReader(mFileInput)
-                pdfDocument = PdfDocument(mPdfReader, writer)
-            }
-            mScaleZoomPdf = mPdfViewDemo.zoom
-            val page = pdfDocument.getPage(mCurrentPage + 1)
-            page.pageSize.height = mDefaultPageHeight
-            val image = ImageDataFactory.create(signatureBitmapToByteArray(mSignatureBitmap))
-            val pdfCanvas = PdfCanvas(page)
-            val mScaleWidth = page.pageSize.width / mBinding.pdfView.width
-            val mScaleHeight = mDefaultPageHeight / mBinding.pdfView.measuredHeight
-            val mCurrentYOffset = mBinding.pdfView.currentYOffset
-            val mCurrentXOffset =
-                mBinding.pdfView.currentXOffset + 1080f * mCurrentPage * mScaleZoomPdf
-            val mImageHeight = mBinding.imageViewSignature.measuredHeight.toFloat() * mScaleHeight
-            val mImageWidth = mBinding.imageViewSignature.measuredWidth.toFloat() * mScaleWidth
-            val position = customImageView.getImagePosition()
-            mImagePosX = position.first
-            mImagePosY = position.second
-            val pdfImageX =
-                (mImagePosX - mCurrentXOffset) * mScaleWidth / mScaleZoomPdf
-            val pdfImageY =
-                mScaleImageView * (
-                        mBinding.pdfView.measuredHeight - mImagePosY - mImageHeight - mCurrentYOffset) *
-                        mScaleHeight / mScaleZoomPdf
-            pdfCanvas.addImageWithTransformationMatrix(
-                image,
-                mImageWidth,
-                0f,
-                0f,
-                mImageHeight,
-                pdfImageX,
-                pdfImageY - 34f
-            )
+            val pdfDocument = createPdfDocument(outputFile)
+            addImageToPdf(pdfDocument)
             Toast.makeText(baseContext, "Save to: ${outputFile.absolutePath}", Toast.LENGTH_SHORT)
                 .show()
             pdfDocument.close()
-        } catch (e: Exception) {
-            e.printStackTrace()
+        } catch (e: IOException) {
+            Toast.makeText(baseContext, "Save to: $e", Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun createPdfDocument(outputFile: File): PdfDocument {
+        val pdfDocument: PdfDocument
+        val writer = PdfWriter(FileOutputStream(outputFile))
+        if (mIsGetFromAssets) {
+            pdfDocument = PdfDocument(PdfReader(assets.open(mPdfUrl)), writer)
+        } else {
+            mPdfReader = PdfReader(mFileInput)
+            pdfDocument = PdfDocument(mPdfReader, writer)
+        }
+        mScaleZoomPdf = mPdfViewDemo.zoom
+        return pdfDocument
+    }
+
+    private fun addImageToPdf(pdfDocument: PdfDocument) {
+        var page = pdfDocument.getPage(mCurrentPage + 1)
+        val image = ImageDataFactory.create(signatureBitmapToByteArray(mSignatureBitmap))
+        var pdfCanvas = PdfCanvas(page)
+        val mScaleWidth = page.pageSize.width / mBinding.pdfView.width
+        val mCurrentYOffset = mBinding.pdfView.currentYOffset
+        val mScaleHeight =
+            page.pageSize.height / (resources.displayMetrics.heightPixels - 2 * mCurrentYOffset)
+        val mCurrentXOffset =
+            mBinding.pdfView.currentXOffset + resources.displayMetrics.widthPixels * mCurrentPage * mScaleZoomPdf
+        val size = customImageView.getSize()
+        var mImageHeight = size.second * mScaleHeight
+        var mImageWidth = size.first * mScaleWidth
+        val position = customImageView.getImagePosition()
+        mImagePosX = position.first
+        mImagePosY = position.second
+        val mScaleFactorImage = customImageView.getScale()
+        var pdfImageX =
+            (mImagePosX - mCurrentXOffset) * mScaleWidth / mScaleZoomPdf + mBinding.imageViewSignature.width * mScaleHeight / 2 - mImageWidth / 2
+
+        var pdfImageY =
+            (resources.displayMetrics.heightPixels - mImagePosY - mCurrentYOffset) * mScaleHeight - mBinding.imageViewSignature.height * mScaleHeight + mImageHeight / 2
+
+        if (mScaleZoomPdf < 0.6f) {
+            if (pdfImageX >= page.pageSize.width) {
+                page = pdfDocument.getPage(mCurrentPage + 2)
+                pdfCanvas = PdfCanvas(page)
+                pdfImageX -= page.pageSize.width
+            }
+            if (mScaleFactorImage >= 1f) {
+                mImageWidth /= mScaleZoomPdf
+                pdfImageX -= mImageWidth * mScaleZoomPdf / 2
+                mImageWidth /= mScaleFactorImage
+            } else {
+                mImageHeight *= mScaleFactorImage
+                pdfImageY += mImageHeight * mScaleFactorImage
+            }
+        }
+        if (mScaleZoomPdf > 1f) {
+            mImageHeight *= mScaleFactorImage
+        }
+        pdfCanvas.addImageWithTransformationMatrix(
+            image, mImageWidth, 0f, 0f, mImageHeight, pdfImageX, pdfImageY
+        )
+    }
+
     private fun selectPdf() {
-        val pdfIntent = Intent(Intent.ACTION_GET_CONTENT)
+        val pdfIntent = Intent(Intent.ACTION_OPEN_DOCUMENT)
         pdfIntent.type = "application/pdf"
         pdfIntent.addCategory(Intent.CATEGORY_OPENABLE)
         mResultLauncher.launch(pdfIntent)

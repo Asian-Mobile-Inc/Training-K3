@@ -18,7 +18,7 @@
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
-        android:layout_height="400sp"
+        android:layout_height="0sp"
         android:src="@drawable/loading_app"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

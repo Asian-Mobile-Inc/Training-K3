@@ -5,6 +5,7 @@
     <string name="btn_black">Set color paint black</string>
     <string name="btn_pink">Set color paint pink</string>
     <string name="btn_insert">Insert Signature</string>
+    <string name="btn_save_image">Save Image</string>
     <string name="btn_exportpdf">Export Pdf</string>
     <string name="value_seekbar">13</string>
     <string name="tv_drawhere">Draw here</string>
