@@ -33,10 +33,14 @@ import java.io.FileOutputStream
 class PdfViewerActivity : AppCompatActivity() {
     private lateinit var pdfView: PDFView
     private lateinit var binding: ActivityPdfViewerBinding
-    private var limit = 1870f / 3.5f
+    private val limitY = 1870f / 3.5f
+    private val limitX = 1425f / 3.5f
     private lateinit var scaleGestureDetector: ScaleGestureDetector
+    private var scaleFactor = 1.0f
+    private lateinit var scaleGestureDetectorPdf: ScaleGestureDetector
 
-    class ScaleListener(private val imageView: ImageView) :
+
+    class ScaleImageListener(private val imageView: ImageView) :
         ScaleGestureDetector.SimpleOnScaleGestureListener() {
 
         private var scale = 1.0f
@@ -47,6 +51,7 @@ class PdfViewerActivity : AppCompatActivity() {
             imageView.scaleX *= scale
             imageView.scaleY *= scale
             scaleImage = imageView.scaleX
+
             Log.d("ddd", "imageView: " + imageView.scaleX)
             return true
         }
@@ -56,13 +61,54 @@ class PdfViewerActivity : AppCompatActivity() {
         }
     }
 
+    private inner class ScalePDFListener(private val pdfView: PDFView) :
+        ScaleGestureDetector.SimpleOnScaleGestureListener() {
+        override fun onScale(detector: ScaleGestureDetector): Boolean {
+            scaleFactor = pdfView.scaleX
+            Log.d("ddd", "" + scaleFactor)
+            if (!(pdfView.scaleX * detector.scaleFactor > 2.0f || pdfView.scaleX * detector.scaleFactor < 0.5f)) {
+                pdfView.scaleX *= detector.scaleFactor
+                pdfView.scaleY *= detector.scaleFactor
+            }
+            return true
+        }
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPdfViewerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var lastPDFX = 0f
+        var lastPDFY = 0f
+
         pdfView = binding.pdfView
+        scaleGestureDetectorPdf = ScaleGestureDetector(this, ScalePDFListener(pdfView))
+        pdfView.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    lastPDFX = event.x
+                    lastPDFY = event.y
+                }
+
+                MotionEvent.ACTION_MOVE -> {
+                    val distanceX = event.x - lastPDFX
+                    val distanceY = event.y - lastPDFY
+
+                    view.x = view.x + distanceX
+                    view.y = view.y + distanceY
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    lastPDFX = view.x
+                    lastPDFY = view.y
+                }
+            }
+            scaleGestureDetectorPdf.onTouchEvent(event)
+            true
+
+        }
         val pdfUriString = intent.getStringExtra("pdfUri")
         val pdfUri = Uri.parse(pdfUriString)
         val imageView = binding.imageView
@@ -84,7 +130,7 @@ class PdfViewerActivity : AppCompatActivity() {
 
             }
         }
-        val scaleListener = ScaleListener(imageView)
+        val scaleListener = ScaleImageListener(imageView)
         scaleGestureDetector = ScaleGestureDetector(this, scaleListener)
 
 
@@ -101,8 +147,6 @@ class PdfViewerActivity : AppCompatActivity() {
 
                     view.x = view.x + distanceX
                     view.y = view.y + distanceY
-
-                    Log.d("ddd", "" + view.x + " || " + view.y)
                 }
 
                 MotionEvent.ACTION_UP -> {
@@ -128,7 +172,9 @@ class PdfViewerActivity : AppCompatActivity() {
                             pdfView.currentPage,
                             lastX / resources.displayMetrics.density / 0.6653f,
                             lastY / resources.displayMetrics.density / 0.6746f,
-                            scaleListener.getScaleImageValue()
+                            scaleListener.getScaleImageValue(),
+                            lastPDFX / resources.displayMetrics.density / 0.6653f,
+                            lastPDFY / resources.displayMetrics.density / 0.6746f
                         )
                         imageFile.delete()
                     }
@@ -155,16 +201,26 @@ class PdfViewerActivity : AppCompatActivity() {
             }
         }
 
-        pdfView.fromUri(pdfUri).defaultPage(0).enableSwipe(false)
-//            .swipeHorizontal(false)
+        pdfView.fromUri(pdfUri)
+            .defaultPage(0)
+            .enableSwipe(true)
+            .enableAntialiasing(true)
+            .swipeHorizontal(false)
             .enableAnnotationRendering(true)
             .onPageChange(null)
-            .enableDoubletap(true)
+            .enableDoubletap(false)
             .pageFitPolicy(FitPolicy.WIDTH).load()
     }
 
     private fun addImageToPdfAndSave(
-        pdfUri: Uri, imageUri: Uri, pageIndex: Int, lastX: Float, lastY: Float, scale: Float
+        pdfUri: Uri,
+        imageUri: Uri,
+        pageIndex: Int,
+        lastX: Float,
+        lastY: Float,
+        scale: Float,
+        lastPDFX: Float,
+        lastPDFY: Float
     ) {
         val downloadsDirectory =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
@@ -179,17 +235,28 @@ class PdfViewerActivity : AppCompatActivity() {
         val document = Document(pdf)
         val image = Image(ImageDataFactory.create(imageUri.toString()))
 
-        image.scaleToFit(120f * scale, 120f * scale)
-        image.setFixedPosition(pageIndex + 1, lastX - 57 * (scale - 1), (limit / 0.6764f - lastY - 120f * scale) + 61 * (scale - 1))
+        var x = (lastX - lastPDFX - 57 * (scale - 1)) // x khi chua scale pdf
+        var y =
+            ((limitY / 0.6746f - lastY + lastPDFY - 120f * scale / scaleFactor) + 61 * (scale - 1)) // y khi chua scale pdf
+        val h = limitY / 0.6746f
+        x = (x - (limitX / 0.6653f / 2 - limitX / 0.6653f / 2 * scaleFactor)) / scaleFactor
+        y =
+            h - ((h / 2 - y + h / 2 * scaleFactor - 120f * scale / scaleFactor) / scaleFactor) - 120f * scale / scaleFactor
+
+        image.scaleToFit(120f * scale / scaleFactor, 120f * scale / scaleFactor)
+        image.setFixedPosition(pageIndex + 1, x, y)
         document.add(image)
 
+        Log.d(
+            "ddd",
+            "" + y + " || " + (lastX - 57 * (scale - 1)) + "  --  " + ((limitY / 0.6746f - lastY - 120f * scale) + 61 * (scale - 1)) + " -- " + scaleFactor
+        )
 
         document.close()
         pdf.close()
         outputStream.close()
 
         updateMediaStore(pdfFile)
-
     }
 
     private fun updateMediaStore(file: File) {
@@ -202,6 +269,9 @@ class PdfViewerActivity : AppCompatActivity() {
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             contentResolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)
+        } else {
+            val contentUri = MediaStore.Files.getContentUri("external")
+            applicationContext.contentResolver.insert(contentUri, values)
         }
     }
 

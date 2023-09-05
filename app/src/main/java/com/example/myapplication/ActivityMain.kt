@@ -82,14 +82,15 @@ class ActivityMain : AppCompatActivity() {
     private fun openPdf(pdfUri: Uri, signatureBitmap: Bitmap) {
         val cachePath = File(cacheDir, "images")
         cachePath.mkdirs()
-        val file = File(cachePath, "image1.jpg")
+        val file = File(cachePath, "image1.png")
         val outputStream = FileOutputStream(file)
-        signatureBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        signatureBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
         outputStream.close()
 
         val intent = Intent(this, PdfViewerActivity::class.java)
         intent.putExtra("pdfUri", pdfUri.toString())
         intent.putExtra("imagePathAdd", file.absolutePath)
+
         try {
             startActivity(intent)
         } catch (e: Exception) {

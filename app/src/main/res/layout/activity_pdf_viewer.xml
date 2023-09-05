@@ -27,10 +27,11 @@
     <FrameLayout
         android:id="@+id/flPdfView"
         android:layout_width="410sp"
-        android:layout_height="535sp"
+        android:layout_height="534sp"
         app:layout_constraintBottom_toTopOf="@+id/btnBack"
         app:layout_constraintTop_toBottomOf="@+id/btnNext"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.github.barteksc.pdfviewer.PDFView
             android:id="@+id/pdfView"

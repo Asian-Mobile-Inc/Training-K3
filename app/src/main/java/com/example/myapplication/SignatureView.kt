@@ -7,6 +7,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
+import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -49,6 +50,7 @@ class SignatureView(context: Context, attrs: AttributeSet?) : View(context, attr
     fun getSignatureBitmap(): Bitmap {
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
+        //canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
         draw(canvas)
         return bitmap
     }
